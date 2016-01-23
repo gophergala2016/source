@@ -3,8 +3,6 @@
 // data/app.tml
 // data/dev/database.tml
 // data/dev/view.tml
-// data/prod/database.tml
-// data/prod/view.tml
 // data/test/database.tml
 // data/test/view.tml
 // DO NOT EDIT!
@@ -68,7 +66,7 @@ func dataAppTml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/app.tml", size: 128, mode: os.FileMode(420), modTime: time.Unix(1453564926, 0)}
+	info := bindataFileInfo{name: "data/app.tml", size: 128, mode: os.FileMode(420), modTime: time.Unix(1453564975, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -93,10 +91,7 @@ func dataDevDatabaseTml() (*asset, error) {
 	return a, nil
 }
 
-var _dataDevViewTml = []byte(`[view.ga]
-property_id = "UA-34139434-6"
-
-[view.template]
+var _dataDevViewTml = []byte(`[view.template]
 delimiters = "{{{ }}}"
 
 `)
@@ -111,50 +106,7 @@ func dataDevViewTml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/dev/view.tml", size: 81, mode: os.FileMode(420), modTime: time.Unix(1453522739, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _dataProdDatabaseTml = []byte(`[database]
-driver = "mysql"
-source = "root@tcp(localhost:3306)/source?charset=utf8mb4&parseTime=True"
-`)
-
-func dataProdDatabaseTmlBytes() ([]byte, error) {
-	return _dataProdDatabaseTml, nil
-}
-
-func dataProdDatabaseTml() (*asset, error) {
-	bytes, err := dataProdDatabaseTmlBytes()
-	if err != nil {
-		return nil, err
-	}
-
-	info := bindataFileInfo{name: "data/prod/database.tml", size: 102, mode: os.FileMode(420), modTime: time.Unix(1453532929, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _dataProdViewTml = []byte(`[view.ga]
-property_id = "UA-34139434-6"
-
-[view.template]
-delimiters = "{{{ }}}"
-
-`)
-
-func dataProdViewTmlBytes() ([]byte, error) {
-	return _dataProdViewTml, nil
-}
-
-func dataProdViewTml() (*asset, error) {
-	bytes, err := dataProdViewTmlBytes()
-	if err != nil {
-		return nil, err
-	}
-
-	info := bindataFileInfo{name: "data/prod/view.tml", size: 81, mode: os.FileMode(420), modTime: time.Unix(1453522739, 0)}
+	info := bindataFileInfo{name: "data/dev/view.tml", size: 40, mode: os.FileMode(420), modTime: time.Unix(1453565757, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -179,10 +131,7 @@ func dataTestDatabaseTml() (*asset, error) {
 	return a, nil
 }
 
-var _dataTestViewTml = []byte(`[view.ga]
-property_id = "UA-34139434-6"
-
-[view.template]
+var _dataTestViewTml = []byte(`[view.template]
 delimiters = "{{{ }}}"
 
 `)
@@ -197,7 +146,7 @@ func dataTestViewTml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/test/view.tml", size: 81, mode: os.FileMode(420), modTime: time.Unix(1453522739, 0)}
+	info := bindataFileInfo{name: "data/test/view.tml", size: 40, mode: os.FileMode(420), modTime: time.Unix(1453565757, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -257,8 +206,6 @@ var _bindata = map[string]func() (*asset, error){
 	"data/app.tml":           dataAppTml,
 	"data/dev/database.tml":  dataDevDatabaseTml,
 	"data/dev/view.tml":      dataDevViewTml,
-	"data/prod/database.tml": dataProdDatabaseTml,
-	"data/prod/view.tml":     dataProdViewTml,
 	"data/test/database.tml": dataTestDatabaseTml,
 	"data/test/view.tml":     dataTestViewTml,
 }
@@ -309,10 +256,6 @@ var _bintree = &bintree{nil, map[string]*bintree{
 		"dev": {nil, map[string]*bintree{
 			"database.tml": {dataDevDatabaseTml, map[string]*bintree{}},
 			"view.tml":     {dataDevViewTml, map[string]*bintree{}},
-		}},
-		"prod": {nil, map[string]*bintree{
-			"database.tml": {dataProdDatabaseTml, map[string]*bintree{}},
-			"view.tml":     {dataProdViewTml, map[string]*bintree{}},
 		}},
 		"test": {nil, map[string]*bintree{
 			"database.tml": {dataTestDatabaseTml, map[string]*bintree{}},

@@ -2,8 +2,6 @@
 // data/app.tml
 // data/dev/database.tml
 // data/dev/view.tml
-// data/prod/database.tml
-// data/prod/view.tml
 // data/test/database.tml
 // data/test/view.tml
 // DO NOT EDIT
@@ -20,22 +18,19 @@ import (
 )
 
 type (
-	App struct {
-		Secret   string `toml:"secret"`
-		ClientID string `toml:"client_id"`
-		Name     string `toml:"name"`
-	}
 	Database struct {
 		Driver string `toml:"driver"`
 		Source string `toml:"source"`
 	}
 	View struct {
-		Ga struct {
-			PropertyID string `toml:"property_id"`
-		}
 		Template struct {
 			Delimiters string `toml:"delimiters"`
 		}
+	}
+	App struct {
+		ClientID string `toml:"client_id"`
+		Name     string `toml:"name"`
+		Secret   string `toml:"secret"`
 	}
 
 	ConfigData struct {
@@ -65,8 +60,6 @@ func Load() {
 		"app.tml",
 		"dev/database.tml",
 		"dev/view.tml",
-		"prod/database.tml",
-		"prod/view.tml",
 		"test/database.tml",
 		"test/view.tml",
 	}
