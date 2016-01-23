@@ -11,20 +11,19 @@ recommended library
 
 | Name | Type | Description | Example |
 | ------- | ------- | ------- | ------- |
-| **comment** | *string* | user comment | `"example"` |
 | **created_at** | *date-time* | when item was created | `"2015-01-01T12:00:00Z"` |
 | **description** | *string* | github description | `"example"` |
 | **github_url** | *string* | github url | `"example"` |
 | **id** | *integer* | identity | `42` |
 | **name** | *string* | github name | `"example"` |
 | **tags** | *array* | tags item has | `[{"id":42,"name":"example","color":"example","created_at":"2015-01-01T12:00:00Z","updated_at":"2015-01-01T12:00:00Z"}]` |
-| **updated_at** | *date-time* | when item was updated | `"2015-01-01T12:00:00Z"` |
+| **[updated_at](#resource-user)** | *date-time* | when item was updated | `"2015-01-01T12:00:00Z"` |
 | **[user:avatar_url](#resource-user)** | *string* | github user avatar url | `"example"` |
 | **[user:created_at](#resource-user)** | *date-time* | when me was created | `"2015-01-01T12:00:00Z"` |
 | **[user:id](#resource-user)** | *integer* | identity | `42` |
 | **[user:location](#resource-user)** | *string* | github user location | `"example"` |
 | **[user:name](#resource-user)** | *string* | github user id | `"example"` |
-| **[user:updated_at](#resource-user)** | *date-time* | when me was updated | `"2015-01-01T12:00:00Z"` |
+| **user:updated_at** | *date-time* | when me was updated | `"2015-01-01T12:00:00Z"` |
 
 ### Item Create
 
@@ -39,11 +38,7 @@ POST /item
 | Name | Type | Description | Example |
 | ------- | ------- | ------- | ------- |
 | **access_token** | *string* | token to access api | `"example"` |
-| **comment** | *string* | user comment | `"example"` |
-| **description** | *string* | github description | `"example"` |
 | **github_url** | *string* | github url | `"example"` |
-| **name** | *string* | github name | `"example"` |
-| **tags** | *array* | tag ids | `[null]` |
 
 
 #### Curl Example
@@ -52,13 +47,7 @@ POST /item
 $ curl -n -X POST https://api.getsource.io/v1/item \
   -d '{
   "access_token": "example",
-  "github_url": "example",
-  "name": "example",
-  "comment": "example",
-  "description": "example",
-  "tags": [
-    null
-  ]
+  "github_url": "example"
 }' \
   -H "Content-Type: application/json"
 ```
@@ -75,7 +64,6 @@ HTTP/1.1 201 Created
   "id": 42,
   "github_url": "example",
   "name": "example",
-  "comment": "example",
   "description": "example",
   "created_at": "2015-01-01T12:00:00Z",
   "updated_at": "2015-01-01T12:00:00Z",
@@ -126,7 +114,6 @@ HTTP/1.1 200 OK
   "id": 42,
   "github_url": "example",
   "name": "example",
-  "comment": "example",
   "description": "example",
   "created_at": "2015-01-01T12:00:00Z",
   "updated_at": "2015-01-01T12:00:00Z",
@@ -189,7 +176,6 @@ HTTP/1.1 200 OK
       "id": 42,
       "github_url": "example",
       "name": "example",
-      "comment": "example",
       "description": "example",
       "created_at": "2015-01-01T12:00:00Z",
       "updated_at": "2015-01-01T12:00:00Z",
@@ -252,7 +238,6 @@ HTTP/1.1 201 Created
   "id": 42,
   "github_url": "example",
   "name": "example",
-  "comment": "example",
   "description": "example",
   "created_at": "2015-01-01T12:00:00Z",
   "updated_at": "2015-01-01T12:00:00Z",
@@ -317,7 +302,6 @@ HTTP/1.1 200 OK
       "id": 42,
       "github_url": "example",
       "name": "example",
-      "comment": "example",
       "description": "example",
       "created_at": "2015-01-01T12:00:00Z",
       "updated_at": "2015-01-01T12:00:00Z",

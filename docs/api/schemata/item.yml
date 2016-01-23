@@ -29,10 +29,6 @@ definitions:
     description: github description 
     type:
     - string
-  comment:
-    description: user comment
-    type:
-    - string
   created_at:
     description: when item was created
     format: date-time
@@ -54,18 +50,6 @@ links:
         "$ref": "/schemata/me#/definitions/access_token"
       github_url:
         "$ref": "/schemata/item#/definitions/github_url"
-      name:
-        "$ref": "/schemata/item#/definitions/name"
-      comment:
-        "$ref": "/schemata/item#/definitions/comment"
-      description:
-        "$ref": "/schemata/item#/definitions/description"
-      tags:
-        description: tag ids
-        type:
-        - array
-        items:
-          "$ref": "/schemata/tag#/definitions/id"
     type:
     - object
   title: Create
@@ -139,8 +123,6 @@ properties:
     "$ref": "/schemata/item#/definitions/github_url"
   name:
     "$ref": "/schemata/item#/definitions/name"
-  comment:
-    "$ref": "/schemata/item#/definitions/comment"
   description:
     "$ref": "/schemata/item#/definitions/description"
   created_at:
