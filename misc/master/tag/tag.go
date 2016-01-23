@@ -18,7 +18,7 @@ func main() {
 	defer file.Close()
 
 	queries := bytes.NewBuffer(make([]byte, 0))
-	insertQuery := "INSERT INTO tag (name,color) VALUES('%s','%s');\n"
+	insertQuery := "INSERT INTO tag (name,color,created_at,updated_at) VALUES('%s','%s', now(), now());\n"
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		info := strings.Split(scanner.Text(), ":")
