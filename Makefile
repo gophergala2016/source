@@ -30,6 +30,8 @@ test:
 
 generate: gen-core gen-app
 
+generate-gae: gen-core gen-app-gae
+
 gen-core:
 	go generate ./core/...
 
