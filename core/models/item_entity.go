@@ -5,7 +5,7 @@ import (
 )
 
 type Item struct {
-	ID          uint64    `json:"id"          gorm:"column:id;primary_key" sql:"not null;type:bigint(20)"`
+	ID          uint64    `json:"id"          gorm:"column:id;primary_key"`
 	UserID      uint64    `json:"user_id"     gorm:"column:user_id"        sql:"not null;index;type:bigint(20)"`
 	GithubURL   string    `json:"github_url"  gorm:"column:github_url"     sql:"default null;unique_index;type:varchar(190)"`
 	Name        string    `json:"name"        gorm:"column:name"           sql:"default null;type:varchar(190)"`
@@ -15,6 +15,13 @@ type Item struct {
 	DeletedAt   time.Time `json:"deleted_at"  gorm:"column:deleted_at"     sql:"default null;type:datetime"`
 }
 
-func NewItem() *Item {
-	return &Item{}
+func NewItem(userID uint64, githubURL string) *Item {
+	return &Item{
+		UserID:    userID,
+		GithubURL: githubURL,
+	}
+}
+
+func (e Item) TableName() string {
+	return "item"
 }

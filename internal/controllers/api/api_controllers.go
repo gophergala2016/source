@@ -54,9 +54,55 @@ func (c APIUserController) GetUser(id string) {
 }
 
 func (c *APIMeController) GetMe() {
+	//// Apply Request Parameters
+	param := parameters.NewGetMeRequest()
+	if ok := c.API().Preprocess(&param); !ok {
+		return
+	}
+
+	//// Call a facade
+	meFacade := facades.NewMeFacade(c.GetContext())
+	me, err := meFacade.GetMe(param.GetAccessToken())
+	if err != nil {
+		c.API().InternalServerError(map[string]interface{}{
+			"status":  "NG",
+			"func":    "GetMe::MeFacade",
+			"message": err,
+		})
+		return
+	}
+
+	// Render result
+	c.API().OK(map[string]interface{}{
+		"status":   "OK",
+		"instance": me,
+	})
 }
 
 func (c *APIMeController) LoginMe() {
+	//// Apply Request Parameters
+	param := parameters.NewLoginMeRequest()
+	if ok := c.API().Preprocess(&param); !ok {
+		return
+	}
+
+	//// Call a facade
+	meFacade := facades.NewMeFacade(c.GetContext())
+	me, err := meFacade.LoginMe(param.Name, param.AvatarURL, param.Location)
+	if err != nil {
+		c.API().InternalServerError(map[string]interface{}{
+			"status":  "NG",
+			"func":    "LoginMe::MeFacade",
+			"message": err,
+		})
+		return
+	}
+
+	// Render result
+	c.API().OK(map[string]interface{}{
+		"status":   "OK",
+		"instance": me,
+	})
 }
 
 func (c *APIItemController) GetItem(id string) {

@@ -11,6 +11,13 @@ type ItemImpression struct {
 	UpdatedAt time.Time `json:"updated_at" gorm:"column:updated_at"          sql:"not null;type:datetime"`
 }
 
-func NewItemImpression() *ItemImpression {
-	return &ItemImpression{}
+func NewItemImpression(itemID uint64) *ItemImpression {
+	return &ItemImpression{
+		ItemID: itemID,
+		Count:  0,
+	}
+}
+
+func (e ItemImpression) TableName() string {
+	return "item_impression"
 }

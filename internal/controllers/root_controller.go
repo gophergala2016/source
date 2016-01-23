@@ -107,7 +107,7 @@ func (c *RootController) JSON(code int, obj interface{}) {
 // IsAllowedMethod checks HTTP Method
 func (c RootController) IsAllowedMethod() bool {
 	switch c.GetContext().Request().Method() {
-	case "GET", "POST", "PUT", "DELETE":
+	case "GET", "POST", "PATCH", "PUT", "DELETE":
 		return true
 	}
 	return false

@@ -30,6 +30,14 @@ func (r *UserRepository) GetByAccessToken(token string) (*User, error) {
 	return ent, nil
 }
 
+func (r *UserRepository) GetByName(name string) (*User, error) {
+	ent := new(User)
+	if err := r.Orm.Where("name = ?", name).First(ent).Error; err != nil {
+		return nil, err
+	}
+	return ent, nil
+}
+
 func (r *UserRepository) Create(ent *User) (*User, error) {
 	if err := r.Orm.Create(ent).Error; err != nil {
 		return nil, err

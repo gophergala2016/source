@@ -11,6 +11,13 @@ type UserFavoriteItem struct {
 	UpdatedAt time.Time `json:"updated_at" gorm:"column:updated_at"          sql:"not null;type:datetime"`
 }
 
-func NewUserFavoriteItem() *UserFavoriteItem {
-	return &UserFavoriteItem{}
+func NewUserFavoriteItem(userID, itemID uint64) *UserFavoriteItem {
+	return &UserFavoriteItem{
+		UserID: userID,
+		ItemID: itemID,
+	}
+}
+
+func (e UserFavoriteItem) TableName() string {
+	return "user_favorite_item"
 }

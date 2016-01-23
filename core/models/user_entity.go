@@ -5,7 +5,7 @@ import (
 )
 
 type User struct {
-	ID          uint64    `json:"id"           gorm:"column:id;primary_key" sql:"not null;type:bigint(20)"`
+	ID          uint64    `json:"id"           gorm:"column:id;primary_key"`
 	Name        string    `json:"name"         gorm:"column:name"           sql:"not null;unique_index;type:varchar(190)"`
 	AvatarURL   string    `json:"avatar_url"   gorm:"column:avatar_url"     sql:"default null;type:varchar(190)"`
 	Location    string    `json:"location"     gorm:"column:location"       sql:"default null;type:varchar(190)"`
@@ -15,6 +15,15 @@ type User struct {
 	DeletedAt   time.Time `json:"deleted_at"   gorm:"column:deleted_at"     sql:"default null;type:datetime"`
 }
 
-func NewUser() *User {
-	return &User{}
+func NewUser(name, avatarURL, location, accessToken string) *User {
+	return &User{
+		Name:        name,
+		AvatarURL:   avatarURL,
+		Location:    location,
+		AccessToken: accessToken,
+	}
+}
+
+func (e User) TableName() string {
+	return "user"
 }

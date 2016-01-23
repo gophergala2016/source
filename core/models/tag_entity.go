@@ -10,3 +10,14 @@ type Tag struct {
 	CreatedAt time.Time `json:"created_at" gorm:"column:created_at"     sql:"not null;type:datetime"`
 	UpdatedAt time.Time `json:"updated_at" gorm:"column:updated_at"     sql:"not null;type:datetime"`
 }
+
+func NewTag(id uint64, name string) *Tag {
+	return &Tag{
+		ID:   id,
+		Name: name,
+	}
+}
+
+func (e Tag) TableName() string {
+	return "tag"
+}
