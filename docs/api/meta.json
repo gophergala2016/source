@@ -1,0 +1,9 @@
+{
+  "description": "source API",
+  "id": "source-prmd",
+  "links": [{
+    "href": "https://api.getsource.io/v1",
+    "rel": "self"
+  }],
+  "title": "source"
+}
