@@ -17,6 +17,10 @@ definitions:
     description: language name
     type:
     - string
+  color:
+    description: language color
+    type:
+    - string
   created_at:
     description: when tag was created
     format: date-time
