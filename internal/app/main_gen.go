@@ -35,11 +35,6 @@ func main() {
 
 	router := router()
 
-	router.Static("/public", internal.JoinPath("./public"))
-
-	router.LoadHTMLGlob(filepath.Clean(internal.JoinPath("./internal/views")),
-		filepath.Clean(internal.JoinPath("./internal/views")))
-
 	switch {
 	case len(*sock) != 0:
 		router.RunUnix(*sock)
