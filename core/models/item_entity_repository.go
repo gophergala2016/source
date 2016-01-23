@@ -29,7 +29,7 @@ func (r *ItemRepository) Create(ent *Item) (*Item, error) {
 	return ent, nil
 }
 
-func (r *ItemRepository) FindByIDs(ids []int) ([]Item, error) {
+func (r *ItemRepository) FindByIDs(ids []uint64) ([]Item, error) {
 	var ents []Item
 	if err := r.Orm.Where("id IN (?)", ids).Find(&ents).Error; err != nil {
 		return nil, err

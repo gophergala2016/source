@@ -14,7 +14,7 @@ func NewTagRepository(ctx foundation.Context) *TagRepository {
 	}
 }
 
-func (r *TagRepository) GetByItemID(id uint64) (*Tag, error) {
+func (r *TagRepository) GetByID(id uint64) (*Tag, error) {
 	ent := new(Tag)
 	if err := r.Orm.Where("id = ?", id).First(ent).Error; err != nil {
 		return nil, err
