@@ -36,6 +36,9 @@ gen-core:
 gen-app:
 	go generate ./internal/app/...
 
+gen-app-gae:
+	SOURCE_GAE=1 go generate ./internal/app/...
+
 verify: vet
 
 lint:

@@ -156,7 +156,13 @@ func run() int {
 
 	// Write to main_gen.go
 	outputName = filepath.Join(*srcDir, "main_gen.go")
-	if err := execute(mg, mainSource, outputName, params); err != nil {
+	var src string
+	if v := os.Getenv("SOURCE_GAE"); v != "" {
+		src = gaeSource
+	} else {
+		src = mainSource
+	}
+	if err := execute(mg, src, outputName, params); err != nil {
 		log.Fatalf("writing output: %s", err)
 	}
 
@@ -194,14 +200,14 @@ const (
 )
 
 var (
-	port = flag.String("port", "", "Port number to listen the application. (default \"8080\")")
+	port = flag.String("port", "", "Port number to listen the application. (default \"8888\")")
 	sock = flag.String("sock", "", "Path to a UNIX socket to listen the application.")
 )
 
 func main() {
 	flag.Parse()
 	if len(*port) == 0 {
-		*port = ":8080"
+		*port = ":8888"
 	}
 
 	if !strings.HasPrefix(*port, ":") {
@@ -224,6 +230,49 @@ func main() {
 	default:
 		router.Run(*port)
 	}
+}
+`
+
+const gaeSource = `
+import (
+	"flag"
+	"strings"
+	"path/filepath"
+	"net/http"
+
+	"github.com/gophergala2016/source/internal"
+)
+
+const (
+	appName = "{{.appName}}"
+)
+
+var (
+	port = flag.String("port", "", "Port number to listen the application. (default \"8888\")")
+	sock = flag.String("sock", "", "Path to a UNIX socket to listen the application.")
+)
+
+func init() {
+	flag.Parse()
+	if len(*port) == 0 {
+		*port = ":8888"
+	}
+
+	if !strings.HasPrefix(*port, ":") {
+		*port = ":"+*port
+	}
+
+	// Initialize App
+	internal.Init(appName, *port)
+
+	router := router()
+{{range .static}}
+	router.Static("{{.Path}}", internal.JoinPath("{{.RelativePath}}")){{end}}
+{{range .html}}
+	router.LoadHTMLGlob(filepath.Clean(internal.JoinPath("{{.RelativePath}}")),
+		filepath.Clean(internal.JoinPath("{{.Pattern}}"))){{end}}
+
+	http.Handle("/", router.DefaultMux())
 }
 `
 

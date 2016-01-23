@@ -2,6 +2,7 @@ package foundation
 
 import (
 	"os"
+	"path"
 
 	"github.com/gin-gonic/gin"
 )
@@ -29,7 +30,7 @@ func init() {
 		if err != nil {
 			Panic(err)
 		}
-		BasePath = dir
+		BasePath = path.Clean(path.Join(dir, "..", ".."))
 	}
 }
 
@@ -58,6 +59,11 @@ func Default() *Engine {
 	}
 	engine.Use(mws...)
 	return engine
+}
+
+// DefaultMux returns
+func (engine *Engine) DefaultMux() *gin.Engine {
+	return engine.core
 }
 
 // Attachs a global middleware to the router.
