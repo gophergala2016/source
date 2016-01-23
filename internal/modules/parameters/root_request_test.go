@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/gophergala2016/source/core/parameters/accesstoken"
+	"github.com/gophergala2016/source/internal/modules/parameters/accesstoken"
 )
 
 // TestRootRequest tests
