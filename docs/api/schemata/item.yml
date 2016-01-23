@@ -97,7 +97,7 @@ links:
     type:
     - object
 - description: Favorite one item.
-  href: "/item/{(%2Fschemata%2Fitem%23%2Fdefinitions%2Fidentity)}/favorite"
+  href: "/favorite/{(%2Fschemata%2Fitem%23%2Fdefinitions%2Fidentity)}"
   method: POST
   rel: create
   schema:
@@ -108,7 +108,7 @@ links:
     - object
   title: Favorite
 - description: Favorite List existing items.
-  href: "/item/favorites"
+  href: "/favorites"
   method: GET
   rel: instances
   title: List

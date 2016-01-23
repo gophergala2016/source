@@ -220,7 +220,7 @@ HTTP/1.1 200 OK
 Favorite one item.
 
 ```
-POST /item/{item_id}/favorite
+POST /favorite/{item_id}
 ```
 
 #### Optional Parameters
@@ -233,7 +233,7 @@ POST /item/{item_id}/favorite
 #### Curl Example
 
 ```bash
-$ curl -n -X POST https://api.getsource.io/v1/item/$ITEM_ID/favorite \
+$ curl -n -X POST https://api.getsource.io/v1/favorite/$ITEM_ID \
   -d '{
   "access_token": "example"
 }' \
@@ -281,7 +281,7 @@ HTTP/1.1 201 Created
 Favorite List existing items.
 
 ```
-GET /item/favorites
+GET /favorites
 ```
 
 #### Optional Parameters
@@ -296,7 +296,7 @@ GET /item/favorites
 #### Curl Example
 
 ```bash
-$ curl -n https://api.getsource.io/v1/item/favorites
+$ curl -n https://api.getsource.io/v1/favorites
  -G \
   -d access_token=example \
   -d limit=42 \
