@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+<h2><a name="resource-common"></a>Common Parameters</h2>
+
+<p>for list request</p>
+
+<h2><a name="resource-item"></a>Item</h2>
+
+<p>recommended library</p>
+
+<h3>Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>comment</strong></td>
+<td><em>string</em></td>
+<td>user comment</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>created_at</strong></td>
+<td><em>date-time</em></td>
+<td>when item was created</td>
+<td><code>&quot;2015-01-01T12:00:00Z&quot;</code></td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td><em>string</em></td>
+<td>github description</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>github_url</strong></td>
+<td><em>string</em></td>
+<td>github url</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><em>integer</em></td>
+<td>identity</td>
+<td><code>42</code></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><em>string</em></td>
+<td>github name</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td><em>array</em></td>
+<td>tags item has</td>
+<td><code>[{&quot;id&quot;:42,&quot;name&quot;:&quot;example&quot;,&quot;created_at&quot;:&quot;2015-01-01T12:00:00Z&quot;,&quot;updated_at&quot;:&quot;2015-01-01T12:00:00Z&quot;}]</code></td>
+</tr>
+<tr>
+<td><strong><a href="#resource-user">updated_at</a></strong></td>
+<td><em>date-time</em></td>
+<td>when item was updated</td>
+<td><code>&quot;2015-01-01T12:00:00Z&quot;</code></td>
+</tr>
+<tr>
+<td><strong><a href="#resource-user">user:avatar_url</a></strong></td>
+<td><em>string</em></td>
+<td>github user avatar url</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong><a href="#resource-user">user:created_at</a></strong></td>
+<td><em>date-time</em></td>
+<td>when me was created</td>
+<td><code>&quot;2015-01-01T12:00:00Z&quot;</code></td>
+</tr>
+<tr>
+<td><strong><a href="#resource-user">user:id</a></strong></td>
+<td><em>integer</em></td>
+<td>identity</td>
+<td><code>42</code></td>
+</tr>
+<tr>
+<td><strong><a href="#resource-user">user:location</a></strong></td>
+<td><em>string</em></td>
+<td>github user location</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong><a href="#resource-user">user:name</a></strong></td>
+<td><em>string</em></td>
+<td>github user id</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>user:updated_at</strong></td>
+<td><em>date-time</em></td>
+<td>when me was updated</td>
+<td><code>&quot;2015-01-01T12:00:00Z&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3>Item Create</h3>
+
+<p>Create a new item.</p>
+
+<pre><code>POST /item
+</code></pre>
+
+<h4>Optional Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>access_token</strong></td>
+<td><em>string</em></td>
+<td>token to access api</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>comment</strong></td>
+<td><em>string</em></td>
+<td>user comment</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td><em>string</em></td>
+<td>github description</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>github_url</strong></td>
+<td><em>string</em></td>
+<td>github url</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><em>string</em></td>
+<td>github name</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h4>Curl Example</h4>
+
+<pre><code class="bash">$ curl -n -X POST https://api.getsource.io/v1/item \
+  -d &#39;{
+  &quot;access_token&quot;: &quot;example&quot;,
+  &quot;github_url&quot;: &quot;example&quot;,
+  &quot;name&quot;: &quot;example&quot;,
+  &quot;comment&quot;: &quot;example&quot;,
+  &quot;description&quot;: &quot;example&quot;
+}&#39; \
+  -H &quot;Content-Type: application/json&quot;
+</code></pre>
+
+<h4>Response Example</h4>
+
+<pre><code>HTTP/1.1 201 Created
+</code></pre>
+
+<pre><code class="json">{
+  &quot;id&quot;: 42,
+  &quot;github_url&quot;: &quot;example&quot;,
+  &quot;name&quot;: &quot;example&quot;,
+  &quot;comment&quot;: &quot;example&quot;,
+  &quot;description&quot;: &quot;example&quot;,
+  &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+  &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+  &quot;user&quot;: {
+    &quot;id&quot;: 42,
+    &quot;name&quot;: &quot;example&quot;,
+    &quot;avatar_url&quot;: &quot;example&quot;,
+    &quot;location&quot;: &quot;example&quot;,
+    &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+    &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+  },
+  &quot;tags&quot;: [
+    {
+      &quot;id&quot;: 42,
+      &quot;name&quot;: &quot;example&quot;,
+      &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+      &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+    }
+  ]
+}
+</code></pre>
+
+<h3>Item Info</h3>
+
+<p>Info for existing item.</p>
+
+<pre><code>GET /item/{item_id}
+</code></pre>
+
+<h4>Curl Example</h4>
+
+<pre><code class="bash">$ curl -n https://api.getsource.io/v1/item/$ITEM_ID
+</code></pre>
+
+<h4>Response Example</h4>
+
+<pre><code>HTTP/1.1 200 OK
+</code></pre>
+
+<pre><code class="json">{
+  &quot;id&quot;: 42,
+  &quot;github_url&quot;: &quot;example&quot;,
+  &quot;name&quot;: &quot;example&quot;,
+  &quot;comment&quot;: &quot;example&quot;,
+  &quot;description&quot;: &quot;example&quot;,
+  &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+  &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+  &quot;user&quot;: {
+    &quot;id&quot;: 42,
+    &quot;name&quot;: &quot;example&quot;,
+    &quot;avatar_url&quot;: &quot;example&quot;,
+    &quot;location&quot;: &quot;example&quot;,
+    &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+    &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+  },
+  &quot;tags&quot;: [
+    {
+      &quot;id&quot;: 42,
+      &quot;name&quot;: &quot;example&quot;,
+      &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+      &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+    }
+  ]
+}
+</code></pre>
+
+<h3>Item List</h3>
+
+<p>List existing items.</p>
+
+<pre><code>GET /items
+</code></pre>
+
+<h4>Optional Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>limit</strong></td>
+<td><em>integer</em></td>
+<td>Limit</td>
+<td><code>42</code></td>
+</tr>
+<tr>
+<td><strong>offset</strong></td>
+<td><em>integer</em></td>
+<td>Offset</td>
+<td><code>42</code></td>
+</tr>
+</tbody></table>
+
+<h4>Curl Example</h4>
+
+<pre><code class="bash">$ curl -n https://api.getsource.io/v1/items
+ -G \
+  -d limit=42 \
+  -d offset=42
+</code></pre>
+
+<h4>Response Example</h4>
+
+<pre><code>HTTP/1.1 200 OK
+</code></pre>
+
+<pre><code class="json">{
+  &quot;instances&quot;: [
+    {
+      &quot;id&quot;: 42,
+      &quot;github_url&quot;: &quot;example&quot;,
+      &quot;name&quot;: &quot;example&quot;,
+      &quot;comment&quot;: &quot;example&quot;,
+      &quot;description&quot;: &quot;example&quot;,
+      &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+      &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+      &quot;user&quot;: {
+        &quot;id&quot;: 42,
+        &quot;name&quot;: &quot;example&quot;,
+        &quot;avatar_url&quot;: &quot;example&quot;,
+        &quot;location&quot;: &quot;example&quot;,
+        &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+        &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+      },
+      &quot;tags&quot;: [
+        {
+          &quot;id&quot;: 42,
+          &quot;name&quot;: &quot;example&quot;,
+          &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+          &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+
+<h3>Item Favorite</h3>
+
+<p>Favorite one item.</p>
+
+<pre><code>POST /item/{item_id}/favorite
+</code></pre>
+
+<h4>Optional Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>access_token</strong></td>
+<td><em>string</em></td>
+<td>token to access api</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h4>Curl Example</h4>
+
+<pre><code class="bash">$ curl -n -X POST https://api.getsource.io/v1/item/$ITEM_ID/favorite \
+  -d &#39;{
+  &quot;access_token&quot;: &quot;example&quot;
+}&#39; \
+  -H &quot;Content-Type: application/json&quot;
+</code></pre>
+
+<h4>Response Example</h4>
+
+<pre><code>HTTP/1.1 201 Created
+</code></pre>
+
+<pre><code class="json">{
+  &quot;id&quot;: 42,
+  &quot;github_url&quot;: &quot;example&quot;,
+  &quot;name&quot;: &quot;example&quot;,
+  &quot;comment&quot;: &quot;example&quot;,
+  &quot;description&quot;: &quot;example&quot;,
+  &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+  &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+  &quot;user&quot;: {
+    &quot;id&quot;: 42,
+    &quot;name&quot;: &quot;example&quot;,
+    &quot;avatar_url&quot;: &quot;example&quot;,
+    &quot;location&quot;: &quot;example&quot;,
+    &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+    &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+  },
+  &quot;tags&quot;: [
+    {
+      &quot;id&quot;: 42,
+      &quot;name&quot;: &quot;example&quot;,
+      &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+      &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+    }
+  ]
+}
+</code></pre>
+
+<h3>Item Favorite List</h3>
+
+<p>Favorite List existing items.</p>
+
+<pre><code>GET /item/favorites
+</code></pre>
+
+<h4>Optional Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>access_token</strong></td>
+<td><em>string</em></td>
+<td>token to access api</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>limit</strong></td>
+<td><em>integer</em></td>
+<td>Limit</td>
+<td><code>42</code></td>
+</tr>
+<tr>
+<td><strong>offset</strong></td>
+<td><em>integer</em></td>
+<td>Offset</td>
+<td><code>42</code></td>
+</tr>
+</tbody></table>
+
+<h4>Curl Example</h4>
+
+<pre><code class="bash">$ curl -n https://api.getsource.io/v1/item/favorites
+ -G \
+  -d access_token=example \
+  -d limit=42 \
+  -d offset=42
+</code></pre>
+
+<h4>Response Example</h4>
+
+<pre><code>HTTP/1.1 200 OK
+</code></pre>
+
+<pre><code class="json">{
+  &quot;instances&quot;: [
+    {
+      &quot;id&quot;: 42,
+      &quot;github_url&quot;: &quot;example&quot;,
+      &quot;name&quot;: &quot;example&quot;,
+      &quot;comment&quot;: &quot;example&quot;,
+      &quot;description&quot;: &quot;example&quot;,
+      &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+      &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+      &quot;user&quot;: {
+        &quot;id&quot;: 42,
+        &quot;name&quot;: &quot;example&quot;,
+        &quot;avatar_url&quot;: &quot;example&quot;,
+        &quot;location&quot;: &quot;example&quot;,
+        &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+        &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+      },
+      &quot;tags&quot;: [
+        {
+          &quot;id&quot;: 42,
+          &quot;name&quot;: &quot;example&quot;,
+          &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+          &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+
+<h3>Item Tag</h3>
+
+<p>Tagged one item.</p>
+
+<pre><code>POST /item/{item_id}/tag/{tag_id}
+</code></pre>
+
+<h4>Optional Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>access_token</strong></td>
+<td><em>string</em></td>
+<td>token to access api</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h4>Curl Example</h4>
+
+<pre><code class="bash">$ curl -n -X POST https://api.getsource.io/v1/item/$ITEM_ID/tag/$TAG_ID \
+  -d &#39;{
+  &quot;access_token&quot;: &quot;example&quot;
+}&#39; \
+  -H &quot;Content-Type: application/json&quot;
+</code></pre>
+
+<h4>Response Example</h4>
+
+<pre><code>HTTP/1.1 201 Created
+</code></pre>
+
+<pre><code class="json">{
+  &quot;id&quot;: 42,
+  &quot;github_url&quot;: &quot;example&quot;,
+  &quot;name&quot;: &quot;example&quot;,
+  &quot;comment&quot;: &quot;example&quot;,
+  &quot;description&quot;: &quot;example&quot;,
+  &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+  &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+  &quot;user&quot;: {
+    &quot;id&quot;: 42,
+    &quot;name&quot;: &quot;example&quot;,
+    &quot;avatar_url&quot;: &quot;example&quot;,
+    &quot;location&quot;: &quot;example&quot;,
+    &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+    &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+  },
+  &quot;tags&quot;: [
+    {
+      &quot;id&quot;: 42,
+      &quot;name&quot;: &quot;example&quot;,
+      &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+      &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+    }
+  ]
+}
+</code></pre>
+
+<h2><a name="resource-me"></a>Me</h2>
+
+<p>login user</p>
+
+<h3>Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>access_token</strong></td>
+<td><em>string</em></td>
+<td>token to access api</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>avatar_url</strong></td>
+<td><em>string</em></td>
+<td>github user avatar url</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>created_at</strong></td>
+<td><em>date-time</em></td>
+<td>when me was created</td>
+<td><code>&quot;2015-01-01T12:00:00Z&quot;</code></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><em>integer</em></td>
+<td>identity</td>
+<td><code>42</code></td>
+</tr>
+<tr>
+<td><strong>location</strong></td>
+<td><em>string</em></td>
+<td>github user location</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><em>string</em></td>
+<td>github user id</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>updated_at</strong></td>
+<td><em>date-time</em></td>
+<td>when me was updated</td>
+<td><code>&quot;2015-01-01T12:00:00Z&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3>Me Create</h3>
+
+<p>Create a new me.</p>
+
+<pre><code>POST /me
+</code></pre>
+
+<h4>Optional Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>avatar_url</strong></td>
+<td><em>string</em></td>
+<td>github user avatar url</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>location</strong></td>
+<td><em>string</em></td>
+<td>github user location</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><em>string</em></td>
+<td>github user id</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h4>Curl Example</h4>
+
+<pre><code class="bash">$ curl -n -X POST https://api.getsource.io/v1/me \
+  -d &#39;{
+  &quot;name&quot;: &quot;example&quot;,
+  &quot;avatar_url&quot;: &quot;example&quot;,
+  &quot;location&quot;: &quot;example&quot;
+}&#39; \
+  -H &quot;Content-Type: application/json&quot;
+</code></pre>
+
+<h4>Response Example</h4>
+
+<pre><code>HTTP/1.1 201 Created
+</code></pre>
+
+<pre><code class="json">{
+  &quot;id&quot;: 42,
+  &quot;name&quot;: &quot;example&quot;,
+  &quot;avatar_url&quot;: &quot;example&quot;,
+  &quot;location&quot;: &quot;example&quot;,
+  &quot;access_token&quot;: &quot;example&quot;,
+  &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+  &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+}
+</code></pre>
+
+<h3>Me Info</h3>
+
+<p>Info for existing me.</p>
+
+<pre><code>GET /me
+</code></pre>
+
+<h4>Optional Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>access_token</strong></td>
+<td><em>string</em></td>
+<td>token to access api</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h4>Curl Example</h4>
+
+<pre><code class="bash">$ curl -n https://api.getsource.io/v1/me
+ -G \
+  -d access_token=example
+</code></pre>
+
+<h4>Response Example</h4>
+
+<pre><code>HTTP/1.1 200 OK
+</code></pre>
+
+<pre><code class="json">{
+  &quot;id&quot;: 42,
+  &quot;name&quot;: &quot;example&quot;,
+  &quot;avatar_url&quot;: &quot;example&quot;,
+  &quot;location&quot;: &quot;example&quot;,
+  &quot;access_token&quot;: &quot;example&quot;,
+  &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+  &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+}
+</code></pre>
+
+<h3>Me Update</h3>
+
+<p>Update an existing me.</p>
+
+<pre><code>PATCH /me
+</code></pre>
+
+<h4>Optional Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>access_token</strong></td>
+<td><em>string</em></td>
+<td>token to access api</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>avatar_url</strong></td>
+<td><em>string</em></td>
+<td>github user avatar url</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>location</strong></td>
+<td><em>string</em></td>
+<td>github user location</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><em>string</em></td>
+<td>github user id</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h4>Curl Example</h4>
+
+<pre><code class="bash">$ curl -n -X PATCH https://api.getsource.io/v1/me \
+  -d &#39;{
+  &quot;access_token&quot;: &quot;example&quot;,
+  &quot;name&quot;: &quot;example&quot;,
+  &quot;avatar_url&quot;: &quot;example&quot;,
+  &quot;location&quot;: &quot;example&quot;
+}&#39; \
+  -H &quot;Content-Type: application/json&quot;
+</code></pre>
+
+<h4>Response Example</h4>
+
+<pre><code>HTTP/1.1 200 OK
+</code></pre>
+
+<pre><code class="json">{
+  &quot;id&quot;: 42,
+  &quot;name&quot;: &quot;example&quot;,
+  &quot;avatar_url&quot;: &quot;example&quot;,
+  &quot;location&quot;: &quot;example&quot;,
+  &quot;access_token&quot;: &quot;example&quot;,
+  &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+  &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+}
+</code></pre>
+
+<h2><a name="resource-tag"></a>Tag</h2>
+
+<p>programming language tag</p>
+
+<h3>Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>created_at</strong></td>
+<td><em>date-time</em></td>
+<td>when tag was created</td>
+<td><code>&quot;2015-01-01T12:00:00Z&quot;</code></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><em>integer</em></td>
+<td>identity</td>
+<td><code>42</code></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><em>string</em></td>
+<td>language name</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>updated_at</strong></td>
+<td><em>date-time</em></td>
+<td>when tag was updated</td>
+<td><code>&quot;2015-01-01T12:00:00Z&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3>Tag Create</h3>
+
+<p>Create a new tag.</p>
+
+<pre><code>POST /tag
+</code></pre>
+
+<h4>Curl Example</h4>
+
+<pre><code class="bash">$ curl -n -X POST https://api.getsource.io/v1/tag \
+  -H &quot;Content-Type: application/json&quot;
+</code></pre>
+
+<h4>Response Example</h4>
+
+<pre><code>HTTP/1.1 201 Created
+</code></pre>
+
+<pre><code class="json">{
+  &quot;id&quot;: 42,
+  &quot;name&quot;: &quot;example&quot;,
+  &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+  &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+}
+</code></pre>
+
+<h3>Tag Info</h3>
+
+<p>Info for existing tag.</p>
+
+<pre><code>GET /article/{tag_name}
+</code></pre>
+
+<h4>Curl Example</h4>
+
+<pre><code class="bash">$ curl -n https://api.getsource.io/v1/article/$TAG_NAME
+</code></pre>
+
+<h4>Response Example</h4>
+
+<pre><code>HTTP/1.1 200 OK
+</code></pre>
+
+<pre><code class="json">{
+  &quot;id&quot;: 42,
+  &quot;name&quot;: &quot;example&quot;,
+  &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+  &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+}
+</code></pre>
+
+<h3>Tag List</h3>
+
+<p>List existing tags.</p>
+
+<pre><code>GET /tags
+</code></pre>
+
+<h4>Curl Example</h4>
+
+<pre><code class="bash">$ curl -n https://api.getsource.io/v1/tags
+</code></pre>
+
+<h4>Response Example</h4>
+
+<pre><code>HTTP/1.1 200 OK
+</code></pre>
+
+<pre><code class="json">{
+  &quot;instances&quot;: [
+    {
+      &quot;id&quot;: 42,
+      &quot;name&quot;: &quot;example&quot;,
+      &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+      &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+    }
+  ]
+}
+</code></pre>
+
+<h2><a name="resource-user"></a>User</h2>
+
+<p>User</p>
+
+<h3>Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>avatar_url</strong></td>
+<td><em>string</em></td>
+<td>github user avatar url</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>created_at</strong></td>
+<td><em>date-time</em></td>
+<td>when me was created</td>
+<td><code>&quot;2015-01-01T12:00:00Z&quot;</code></td>
+</tr>
+<tr>
+<td><strong>id</strong></td>
+<td><em>integer</em></td>
+<td>identity</td>
+<td><code>42</code></td>
+</tr>
+<tr>
+<td><strong>location</strong></td>
+<td><em>string</em></td>
+<td>github user location</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><em>string</em></td>
+<td>github user id</td>
+<td><code>&quot;example&quot;</code></td>
+</tr>
+<tr>
+<td><strong>updated_at</strong></td>
+<td><em>date-time</em></td>
+<td>when me was updated</td>
+<td><code>&quot;2015-01-01T12:00:00Z&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3>User Info</h3>
+
+<p>Info for existing user.</p>
+
+<pre><code>GET /user/{user_id}
+</code></pre>
+
+<h4>Curl Example</h4>
+
+<pre><code class="bash">$ curl -n https://api.getsource.io/v1/user/$USER_ID
+</code></pre>
+
+<h4>Response Example</h4>
+
+<pre><code>HTTP/1.1 200 OK
+</code></pre>
+
+<pre><code class="json">{
+  &quot;id&quot;: 42,
+  &quot;name&quot;: &quot;example&quot;,
+  &quot;avatar_url&quot;: &quot;example&quot;,
+  &quot;location&quot;: &quot;example&quot;,
+  &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
+  &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;
+}
+</code></pre>
+</body></html>

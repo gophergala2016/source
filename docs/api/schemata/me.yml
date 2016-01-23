@@ -1,0 +1,101 @@
+---
+"$schema": http://json-schema.org/draft-04/hyper-schema
+title: Me
+description: login user
+stability: prototype
+strictProperties: true
+type:
+- object
+definitions:
+  id:
+    description: identity
+    type:
+    - integer
+  identity:
+    "$ref": "/schemata/me#/definitions/id"
+  name:
+    description: github user id
+    type:
+    - string
+  avatar_url:
+    description: github user avatar url
+    type:
+    - string
+  location:
+    description: github user location
+    type:
+    - string
+  access_token:
+    description: token to access api
+    type:
+    - string
+  created_at:
+    description: when me was created
+    format: date-time
+    type:
+    - string
+  updated_at:
+    description: when me was updated
+    format: date-time
+    type:
+    - string
+links:
+- description: Create a new me.
+  href: "/me"
+  method: POST
+  rel: create
+  schema:
+    properties:
+      name:
+        "$ref": "/schemata/me#/definitions/name"
+      avatar_url:
+        "$ref": "/schemata/me#/definitions/avatar_url"
+      location:
+        "$ref": "/schemata/me#/definitions/location"
+    type:
+    - object
+  title: Create
+- description: Info for existing me.
+  href: "/me"
+  method: GET
+  rel: self
+  schema:
+    properties:
+      access_token:
+        "$ref": "/schemata/me#/definitions/access_token"
+    type:
+    - object
+  title: Info
+- description: Update an existing me.
+  href: "/me"
+  method: PATCH
+  rel: update
+  schema:
+    properties:
+      access_token:
+        "$ref": "/schemata/me#/definitions/access_token"
+      name:
+        "$ref": "/schemata/me#/definitions/name"
+      avatar_url:
+        "$ref": "/schemata/me#/definitions/avatar_url"
+      location:
+        "$ref": "/schemata/me#/definitions/location"
+    type:
+    - object
+  title: Update
+properties:
+  id:
+    "$ref": "/schemata/me#/definitions/id"
+  name:
+    "$ref": "/schemata/me#/definitions/name"
+  avatar_url:
+    "$ref": "/schemata/me#/definitions/avatar_url"
+  location:
+    "$ref": "/schemata/me#/definitions/location"
+  access_token:
+    "$ref": "/schemata/me#/definitions/access_token"
+  created_at:
+    "$ref": "/schemata/me#/definitions/created_at"
+  updated_at:
+    "$ref": "/schemata/me#/definitions/updated_at"
+id: schemata/me

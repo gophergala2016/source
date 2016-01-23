@@ -1,0 +1,163 @@
+---
+"$schema": http://json-schema.org/draft-04/hyper-schema
+title: Item
+description: recommended library
+stability: prototype
+strictProperties: true
+type:
+- object
+definitions:
+  id:
+    description: identity
+    type:
+    - integer
+  identity:
+    "$ref": "/schemata/item#/definitions/id"
+  user_id:
+    description: user post this item 
+    type:
+    - integer
+  github_url:
+    description: github url
+    type:
+    - string
+  name:
+    description: github name
+    type:
+    - string
+  description:
+    description: github description 
+    type:
+    - string
+  comment:
+    description: user comment
+    type:
+    - string
+  created_at:
+    description: when item was created
+    format: date-time
+    type:
+    - string
+  updated_at:
+    description: when item was updated
+    format: date-time
+    type:
+    - string
+links:
+- description: Create a new item.
+  href: "/item"
+  method: POST
+  rel: create
+  schema:
+    properties:
+      access_token:
+        "$ref": "/schemata/me#/definitions/access_token"
+      github_url:
+        "$ref": "/schemata/item#/definitions/github_url"
+      name:
+        "$ref": "/schemata/item#/definitions/name"
+      comment:
+        "$ref": "/schemata/item#/definitions/comment"
+      description:
+        "$ref": "/schemata/item#/definitions/description"
+    type:
+    - object
+  title: Create
+- description: Info for existing item.
+  href: "/item/{(%2Fschemata%2Fitem%23%2Fdefinitions%2Fidentity)}"
+  method: GET
+  rel: self
+  title: Info
+- description: List existing items.
+  href: "/items"
+  method: GET
+  rel: instances
+  title: List
+  schema:
+    properties:
+      limit:
+        "$ref": "/schemata/common#/definitions/limit"
+      offset:
+        "$ref": "/schemata/common#/definitions/offset"
+    type:
+    - object
+  targetSchema:
+    properties:
+      instances:
+        type:
+        - array
+        items:
+          "$ref": "/schemata/item"
+    type:
+    - object
+- description: Favorite one item.
+  href: "/item/{(%2Fschemata%2Fitem%23%2Fdefinitions%2Fidentity)}/favorite"
+  method: POST
+  rel: create
+  schema:
+    properties:
+      access_token:
+        "$ref": "/schemata/me#/definitions/access_token"
+    type:
+    - object
+  title: Favorite
+- description: Favorite List existing items.
+  href: "/item/favorites"
+  method: GET
+  rel: instances
+  title: List
+  schema:
+    properties:
+      access_token:
+        "$ref": "/schemata/me#/definitions/access_token"
+      limit:
+        "$ref": "/schemata/common#/definitions/limit"
+      offset:
+        "$ref": "/schemata/common#/definitions/offset"
+    type:
+    - object
+  targetSchema:
+    properties:
+      instances:
+        type:
+        - array
+        items:
+          "$ref": "/schemata/item"
+    type:
+    - object
+  title: Favorite List
+- description: Tagged one item.
+  href: "/item/{(%2Fschemata%2Fitem%23%2Fdefinitions%2Fidentity)}/tag/{(%2Fschemata%2Ftag%23%2Fdefinitions%2Fidentity)}"
+  method: POST
+  rel: create
+  schema:
+    properties:
+      access_token:
+        "$ref": "/schemata/me#/definitions/access_token"
+    type:
+    - object
+  title: Tag
+properties:
+  id:
+    "$ref": "/schemata/item#/definitions/id"
+  github_url:
+    "$ref": "/schemata/item#/definitions/github_url"
+  name:
+    "$ref": "/schemata/item#/definitions/name"
+  comment:
+    "$ref": "/schemata/item#/definitions/comment"
+  description:
+    "$ref": "/schemata/item#/definitions/description"
+  created_at:
+    "$ref": "/schemata/item#/definitions/created_at"
+  updated_at:
+    "$ref": "/schemata/item#/definitions/updated_at"
+  user:
+    "$ref": "/schemata/user#"
+  tags:
+    description: tags item has
+    type:
+    - array
+    items:
+      "$ref": "/schemata/tag#"
+id: schemata/item

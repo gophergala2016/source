@@ -1,0 +1,19 @@
+---
+"$schema": http://json-schema.org/draft-04/hyper-schema
+title: Common Parameters
+description: for list request
+stability: prototype
+strictProperties: true
+type:
+- object
+definitions:
+  limit:
+    description: Limit
+    type:
+    - integer
+  offset:
+    description: Offset
+    type:
+    - integer
+links: []
+id: schemata/common
