@@ -1,0 +1,6 @@
+[view.ga]
+property_id = "UA-34139434-6"
+
+[view.template]
+delimiters = "{{{ }}}"
+

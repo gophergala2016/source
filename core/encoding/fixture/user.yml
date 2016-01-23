@@ -1,0 +1,12 @@
+user1:
+    id: 1
+    name: 'User 1'
+    email: 'user01@example.com'
+user2:
+    id: 2
+    name: 'User 2'
+    email: 'user02@example.com'
+user3:
+    id: 3
+    name: 'User 3'
+    email: 'user03@example.com'

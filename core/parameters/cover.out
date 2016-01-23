@@ -1,0 +1,9 @@
+mode: set
+github.com/gophergala2016/source/core/parameters/me_request.go:10.40,12.2 1 0
+github.com/gophergala2016/source/core/parameters/root_request.go:15.50,16.12 1 1
+github.com/gophergala2016/source/core/parameters/root_request.go:21.2,21.12 1 1
+github.com/gophergala2016/source/core/parameters/root_request.go:16.12,17.50 1 1
+github.com/gophergala2016/source/core/parameters/root_request.go:17.50,19.4 1 1
+github.com/gophergala2016/source/core/parameters/root_request.go:25.47,27.2 1 1
+github.com/gophergala2016/source/core/parameters/root_request.go:30.52,32.2 1 1
+github.com/gophergala2016/source/core/parameters/root_request.go:58.45,60.2 1 1

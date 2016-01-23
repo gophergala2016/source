@@ -1,0 +1,7 @@
+mode: set
+github.com/gophergala2016/source/core/parameters/accesstoken/access_token.go:16.36,18.2 1 1
+github.com/gophergala2016/source/core/parameters/accesstoken/access_token.go:21.40,23.28 2 1
+github.com/gophergala2016/source/core/parameters/accesstoken/access_token.go:28.2,29.26 2 1
+github.com/gophergala2016/source/core/parameters/accesstoken/access_token.go:23.28,27.3 3 1
+github.com/gophergala2016/source/core/parameters/accesstoken/access_token.go:33.38,35.2 1 1
+github.com/gophergala2016/source/core/parameters/accesstoken/access_token.go:38.39,44.2 3 1

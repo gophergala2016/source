@@ -1,0 +1,9 @@
+animal1:
+    id: 1
+    tag: 'animal 1'
+animal2:
+    id: 2
+    tag: 'animal 2'
+animal3:
+    id: 3
+    tag: 'animal 3'
