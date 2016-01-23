@@ -1,3 +1,5 @@
+##########
+##### APIUserController
 [[controller]]
 struct          = "APIUserController"
 root_controller = "APIRootController"
@@ -8,3 +10,83 @@ path        = "/v1/user/:id"
 controller  = "api.APIUserController.GetUser"
 parameter   = "parameters.GetUserRequest"
 
+
+##########
+##### APIMeController
+[[controller]]
+struct          = "APIMeController"
+root_controller = "APIRootController"
+
+[[endpoint.route]]
+method      = "GET"
+path        = "/v1/me"
+controller  = "api.APIMeController.GetMe"
+parameter   = "parameters.GetMeRequest"
+
+[[endpoint.route]]
+method      = "POST"
+path        = "/v1/me"
+controller  = "api.APIMeController.LoginMe"
+parameter   = "parameters.LoginMeRequest"
+
+[[endpoint.route]]
+method      = "PATCH"
+path        = "/v1/me"
+controller  = "api.APIMeController.UpdateMe"
+parameter   = "parameters.UpdateMeRequest"
+
+
+##########
+##### APIItemController
+[[controller]]
+struct          = "APIItemController"
+root_controller = "APIRootController"
+
+[[endpoint.route]]
+method      = "GET"
+path        = "/v1/item/:id"
+controller  = "api.APIItemController.GetItem"
+parameter   = "parameters.GetItemRequest"
+
+[[endpoint.route]]
+method      = "GET"
+path        = "/v1/items"
+controller  = "api.APIItemController.GetItemList"
+parameter   = "parameters.GetItemListRequest"
+
+[[endpoint.route]]
+method      = "GET"
+path        = "/v1/item/favorites"
+controller  = "api.APIItemController.GetItemFavoriteList"
+parameter   = "parameters.GetItemFavoriteListRequest"
+
+[[endpoint.route]]
+method      = "POST"
+path        = "/v1/item/:id/favorite"
+controller  = "api.APIItemController.CreateItemFavorite"
+parameter   = "parameters.CreateItemFavoriteRequest"
+
+[[endpoint.route]]
+method      = "POST"
+path        = "/v1/item"
+controller  = "api.APIItemController.CreateItem"
+parameter   = "parameters.CreateItemRequest"
+
+
+##########
+##### APITagController
+[[controller]]
+struct          = "APITagController"
+root_controller = "APIRootController"
+
+[[endpoint.route]]
+method      = "GET"
+path        = "/v1/tags"
+controller  = "api.APITagController.GetTagList"
+parameter   = "parameters.GetTagListRequest"
+
+[[endpoint.route]]
+method      = "POST"
+path        = "/v1/tag"
+controller  = "api.APITagController.CreateTag"
+parameter   = "parameters.CreateTagRequest"

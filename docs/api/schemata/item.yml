@@ -126,17 +126,6 @@ links:
     type:
     - object
   title: Favorite List
-- description: Tagged one item.
-  href: "/item/{(%2Fschemata%2Fitem%23%2Fdefinitions%2Fidentity)}/tag/{(%2Fschemata%2Ftag%23%2Fdefinitions%2Fidentity)}"
-  method: POST
-  rel: create
-  schema:
-    properties:
-      access_token:
-        "$ref": "/schemata/me#/definitions/access_token"
-    type:
-    - object
-  title: Tag
 properties:
   id:
     "$ref": "/schemata/item#/definitions/id"
