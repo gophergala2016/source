@@ -8,6 +8,8 @@ import (
 	"github.com/mitchellh/mapstructure"
 
 	"github.com/gophergala2016/source/core/foundation"
+	"github.com/gophergala2016/source/core/infra/database"
+	"github.com/gophergala2016/source/core/net/context/accessor"
 	"github.com/gophergala2016/source/internal/modules/parameters"
 )
 
@@ -67,6 +69,9 @@ type (
 // SetContext sets foundation.Context to initialize controller.
 func (c *RootController) SetContext(ctx foundation.Context) {
 	c.RootController.SetContext(ctx)
+
+	orm := database.NewGorm()
+	accessor.SetDatabase(ctx, orm)
 }
 
 // API returns APIController Interface

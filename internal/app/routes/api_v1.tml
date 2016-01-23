@@ -29,13 +29,6 @@ path        = "/v1/me"
 controller  = "api.APIMeController.LoginMe"
 parameter   = "parameters.LoginMeRequest"
 
-[[endpoint.route]]
-method      = "PATCH"
-path        = "/v1/me"
-controller  = "api.APIMeController.UpdateMe"
-parameter   = "parameters.UpdateMeRequest"
-
-
 ##########
 ##### APIItemController
 [[controller]]
@@ -56,13 +49,13 @@ parameter   = "parameters.GetItemListRequest"
 
 [[endpoint.route]]
 method      = "GET"
-path        = "/v1/item/favorites"
+path        = "/v1/favorites"
 controller  = "api.APIItemController.GetItemFavoriteList"
 parameter   = "parameters.GetItemFavoriteListRequest"
 
 [[endpoint.route]]
 method      = "POST"
-path        = "/v1/item/:id/favorite"
+path        = "/v1/favorite/:id"
 controller  = "api.APIItemController.CreateItemFavorite"
 parameter   = "parameters.CreateItemFavoriteRequest"
 

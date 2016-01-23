@@ -1,6 +1,8 @@
 package accessor
 
 import (
+	"github.com/jinzhu/gorm"
+
 	"github.com/gophergala2016/source/core/foundation"
 )
 
@@ -31,4 +33,34 @@ func GetAction(ctx foundation.Context) (ret string) {
 // SetAction sets a value of string.
 func SetAction(ctx foundation.Context, v interface{}) foundation.Context {
 	return WithValue(ctx, "action", v)
+}
+
+// GetDatabase returns a value of *xorm.Xorm by database.
+func GetDatabase(ctx foundation.Context) (ret *gorm.DB) {
+	if v := Value(ctx, "database"); v != nil {
+		if t, ok := v.(*gorm.DB); ok {
+			ret = t
+		}
+	}
+	return
+}
+
+// SetDatabase sets a value of *xorm.Xorm.
+func SetDatabase(ctx foundation.Context, v interface{}) foundation.Context {
+	return WithValue(ctx, "database", v)
+}
+
+// GetMe returns a value of interface{} by me.
+func GetMe(ctx foundation.Context) (ret interface{}) {
+	if v := Value(ctx, "me"); v != nil {
+		if t, ok := v.(interface{}); ok {
+			ret = t
+		}
+	}
+	return
+}
+
+// SetMe sets a value of interface{}.
+func SetMe(ctx foundation.Context, v interface{}) foundation.Context {
+	return WithValue(ctx, "me", v)
 }

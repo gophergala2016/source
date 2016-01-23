@@ -2,6 +2,8 @@ package facades
 
 import (
 	"github.com/gophergala2016/source/core/foundation"
+	"github.com/gophergala2016/source/core/models"
+	"github.com/gophergala2016/source/internal/services"
 )
 
 type UserFacade struct {
@@ -14,6 +16,7 @@ func NewUserFacade(ctx foundation.Context) UserFacade {
 	}
 }
 
-func (f UserFacade) GetUserByID(id interface{}) Result {
-	return ResultUser{}
+func (f UserFacade) GetUserByID(id uint64) (*models.User, error) {
+	userService := services.NewUserService(f.ctx)
+	return userService.GetUserByID(id)
 }

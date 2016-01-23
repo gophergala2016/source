@@ -1,0 +1,3 @@
+[database]
+driver = "mysql"
+source = "root@tcp(localhost:3306)/source?charset=utf8mb4&parseTime=True"

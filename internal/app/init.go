@@ -4,8 +4,9 @@ import (
 	"strings"
 
 	"github.com/gophergala2016/source/core/config"
-
 	"github.com/gophergala2016/source/core/foundation"
+	"github.com/gophergala2016/source/core/infra/database"
+	"github.com/gophergala2016/source/core/infra/database/scheme"
 )
 
 func init() {
@@ -29,6 +30,10 @@ func init() {
 		foundation.DebugPrintHeaderMiddleware(),
 		DebugMiddleware(),
 	}
+
+	// db
+	orm := database.NewGorm()
+	scheme.Sync(orm)
 }
 
 /////////////////////////////////////////////////
