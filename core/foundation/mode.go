@@ -23,7 +23,7 @@ func Mode() string {
 func init() {
 	mode := os.Getenv(ENV_SOURCE_MODE)
 	if len(mode) == 0 {
-		SetMode(DevMode)
+		SetMode(ProdMode)
 	} else {
 		SetMode(mode)
 	}
