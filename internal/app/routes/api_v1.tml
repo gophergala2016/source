@@ -1,0 +1,10 @@
+[[controller]]
+struct          = "APIUserController"
+root_controller = "APIRootController"
+
+[[endpoint.route]]
+method      = "GET"
+path        = "/v1/user/:id"
+controller  = "api.APIUserController.GetUser"
+parameter   = "parameters.GetUserRequest"
+

@@ -1,0 +1,8 @@
+[[controller]]
+struct          = "WebLoginController"
+root_controller = "WebRootController"
+
+[[endpoint.route]]
+method     = "GET"
+path       = "/login"
+controller = "web.WebLoginController.Login"
