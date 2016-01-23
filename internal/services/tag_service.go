@@ -26,3 +26,13 @@ func (s TagService) CreateTag(name, color string) (*models.Tag, error) {
 	tagRepository := models.NewTagRepository(s.ctx)
 	return tagRepository.Create(tag)
 }
+
+func (s TagService) FindLatestTagByCollection(limit, offset int) ([]models.Tag, error) {
+	tagRepository := models.NewTagRepository(s.ctx)
+	return tagRepository.FindLatestByCollection(limit, offset)
+}
+
+func (s TagService) FindPopularTagByCollection(limit, offset int) ([]models.Tag, error) {
+	tagRepository := models.NewTagRepository(s.ctx)
+	return tagRepository.FindPopularByCollection(limit, offset)
+}

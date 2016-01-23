@@ -21,12 +21,12 @@ func (s UserFavoriteItemService) CreateUserFavoriteItem(userID, itemID uint64) (
 	return userFavItemRepository.Create(userFavItem)
 }
 
-func (s UserFavoriteItemService) FindUserFavoriteItemByUserID(userID uint64) ([]models.UserFavoriteItem, error) {
+func (s UserFavoriteItemService) FindLatestUserFavoriteItemByUserID(userID uint64) ([]models.UserFavoriteItem, error) {
 	userFavItemRepository := models.NewUserFavoriteItemRepository(s.ctx)
-	return userFavItemRepository.FindByUserID(userID)
+	return userFavItemRepository.FindLatestByUserID(userID)
 }
 
-func (s UserFavoriteItemService) FindUserFavoriteItemByCollection(userID uint64, limit, offset int) ([]models.UserFavoriteItem, error) {
+func (s UserFavoriteItemService) FindLatestUserFavoriteItemByCollection(userID uint64, limit, offset int) ([]models.UserFavoriteItem, error) {
 	userFavItemRepository := models.NewUserFavoriteItemRepository(s.ctx)
-	return userFavItemRepository.FindByUserIDAndCollection(userID, limit, offset)
+	return userFavItemRepository.FindLatestByUserIDAndCollection(userID, limit, offset)
 }

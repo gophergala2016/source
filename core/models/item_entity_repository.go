@@ -37,9 +37,9 @@ func (r *ItemRepository) FindByIDs(ids []uint64) ([]Item, error) {
 	return ents, nil
 }
 
-func (r *ItemRepository) FindByCollection(limit, offset int) ([]Item, error) {
+func (r *ItemRepository) FindLatestByCollection(limit, offset int) ([]Item, error) {
 	var ents []Item
-	if err := r.Orm.Limit(limit).Offset(offset).Find(&ents).Error; err != nil {
+	if err := r.Orm.Limit(limit).Offset(offset).Order("created_at desc").Find(&ents).Error; err != nil {
 		return nil, err
 	}
 	return ents, nil

@@ -32,7 +32,7 @@ func (s ItemService) FindItemByIDs(ids []uint64) ([]models.Item, error) {
 	return itemRepository.FindByIDs(ids)
 }
 
-func (s ItemService) FindItemByCollection(limit, offset int) ([]models.Item, error) {
+func (s ItemService) FindLatestItemByCollection(limit, offset int) ([]models.Item, error) {
 	itemRepository := models.NewItemRepository(s.ctx)
-	return itemRepository.FindByCollection(limit, offset)
+	return itemRepository.FindLatestByCollection(limit, offset)
 }

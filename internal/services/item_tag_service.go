@@ -15,10 +15,9 @@ func NewItemTagService(ctx foundation.Context) ItemTagService {
 	}
 }
 
-// GetItemTagByID get item entity by id from db
-func (s ItemTagService) GetItemTagByID(itemID uint64) (*models.ItemTag, error) {
+func (s ItemTagService) FindItemTagByID(itemID uint64) ([]models.ItemTag, error) {
 	itemTagRepository := models.NewItemTagRepository(s.ctx)
-	return itemTagRepository.GetByItemID(itemID)
+	return itemTagRepository.FindByItemID(itemID)
 }
 
 func (s ItemTagService) CreateItemTag(itemID, tagID uint64) (*models.ItemTag, error) {

@@ -14,12 +14,12 @@ func NewItemTagRepository(ctx foundation.Context) *ItemTagRepository {
 	}
 }
 
-func (r *ItemTagRepository) GetByItemID(itemID uint64) (*ItemTag, error) {
-	ent := new(ItemTag)
-	if err := r.Orm.Where("item_id = ?", itemID).First(ent).Error; err != nil {
+func (r *ItemTagRepository) FindByItemID(itemID uint64) ([]ItemTag, error) {
+	var ents []ItemTag
+	if err := r.Orm.Where("item_id = ?", itemID).Find(ents).Error; err != nil {
 		return nil, err
 	}
-	return ent, nil
+	return ents, nil
 }
 
 func (r *ItemTagRepository) Create(ent *ItemTag) (*ItemTag, error) {

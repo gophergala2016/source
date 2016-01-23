@@ -14,17 +14,17 @@ func NewUserFavoriteItemRepository(ctx foundation.Context) *UserFavoriteItemRepo
 	}
 }
 
-func (r *UserFavoriteItemRepository) FindByUserID(userID uint64) ([]UserFavoriteItem, error) {
+func (r *UserFavoriteItemRepository) FindLatestByUserID(userID uint64) ([]UserFavoriteItem, error) {
 	var ents []UserFavoriteItem
-	if err := r.Orm.Where("user_id = ?", userID).Find(ents).Error; err != nil {
+	if err := r.Orm.Where("user_id = ?", userID).Order("created_at desc").Find(ents).Error; err != nil {
 		return nil, err
 	}
 	return ents, nil
 }
 
-func (r *UserFavoriteItemRepository) FindByUserIDAndCollection(userID uint64, limit, offset int) ([]UserFavoriteItem, error) {
+func (r *UserFavoriteItemRepository) FindLatestByUserIDAndCollection(userID uint64, limit, offset int) ([]UserFavoriteItem, error) {
 	var ents []UserFavoriteItem
-	if err := r.Orm.Where("user_id = ?", userID).Limit(limit).Offset(offset).Find(ents).Error; err != nil {
+	if err := r.Orm.Where("user_id = ?", userID).Limit(limit).Offset(offset).Order("created_at desc").Find(ents).Error; err != nil {
 		return nil, err
 	}
 	return ents, nil
