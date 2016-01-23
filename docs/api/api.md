@@ -18,13 +18,13 @@ recommended library
 | **id** | *integer* | identity | `42` |
 | **name** | *string* | github name | `"example"` |
 | **tags** | *array* | tags item has | `[{"id":42,"name":"example","color":"example","created_at":"2015-01-01T12:00:00Z","updated_at":"2015-01-01T12:00:00Z"}]` |
-| **[updated_at](#resource-user)** | *date-time* | when item was updated | `"2015-01-01T12:00:00Z"` |
+| **updated_at** | *date-time* | when item was updated | `"2015-01-01T12:00:00Z"` |
 | **[user:avatar_url](#resource-user)** | *string* | github user avatar url | `"example"` |
 | **[user:created_at](#resource-user)** | *date-time* | when me was created | `"2015-01-01T12:00:00Z"` |
 | **[user:id](#resource-user)** | *integer* | identity | `42` |
 | **[user:location](#resource-user)** | *string* | github user location | `"example"` |
 | **[user:name](#resource-user)** | *string* | github user id | `"example"` |
-| **user:updated_at** | *date-time* | when me was updated | `"2015-01-01T12:00:00Z"` |
+| **[user:updated_at](#resource-user)** | *date-time* | when me was updated | `"2015-01-01T12:00:00Z"` |
 
 ### Item Create
 
@@ -429,56 +429,6 @@ GET /me
 $ curl -n https://api.getsource.io/v1/me
  -G \
   -d access_token=example
-```
-
-
-#### Response Example
-
-```
-HTTP/1.1 200 OK
-```
-
-```json
-{
-  "id": 42,
-  "name": "example",
-  "avatar_url": "example",
-  "location": "example",
-  "access_token": "example",
-  "created_at": "2015-01-01T12:00:00Z",
-  "updated_at": "2015-01-01T12:00:00Z"
-}
-```
-
-### Me Update
-
-Update an existing me.
-
-```
-PATCH /me
-```
-
-#### Optional Parameters
-
-| Name | Type | Description | Example |
-| ------- | ------- | ------- | ------- |
-| **access_token** | *string* | token to access api | `"example"` |
-| **avatar_url** | *string* | github user avatar url | `"example"` |
-| **location** | *string* | github user location | `"example"` |
-| **name** | *string* | github user id | `"example"` |
-
-
-#### Curl Example
-
-```bash
-$ curl -n -X PATCH https://api.getsource.io/v1/me \
-  -d '{
-  "access_token": "example",
-  "name": "example",
-  "avatar_url": "example",
-  "location": "example"
-}' \
-  -H "Content-Type: application/json"
 ```
 
 
