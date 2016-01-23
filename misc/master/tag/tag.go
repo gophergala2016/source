@@ -29,7 +29,7 @@ func main() {
 		fmt.Printf("Scann error: %v\n", err)
 		os.Exit(1)
 	}
-	if err := ioutil.WriteFile("queries.txt", queries.Bytes(), os.ModePerm); err != nil {
+	if err := ioutil.WriteFile("insert_tags.sql", queries.Bytes(), os.ModePerm); err != nil {
 		fmt.Printf("Write error: %v\n", err)
 		os.Exit(1)
 	}
