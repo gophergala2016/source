@@ -19,7 +19,7 @@ func newGorm() *gorm.DB {
 
 var gormDB *gorm.DB
 
-// NewGorm ...
+// NewGorm open db
 func NewGorm() *gorm.DB {
 	if gormDB == nil {
 		gormDB = newGorm()

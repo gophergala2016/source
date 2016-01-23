@@ -6,6 +6,7 @@ import (
 	"github.com/gophergala2016/source/core/models"
 )
 
+// Create all tables
 func createTables(db *gorm.DB) {
 	db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4").CreateTable(&models.User{})
 	db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4").CreateTable(&models.Article{})
@@ -15,6 +16,7 @@ func createTables(db *gorm.DB) {
 	db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4").CreateTable(&models.Tag{})
 }
 
+// Migrate all tables
 func autoMigrateTables(db *gorm.DB) {
 	db.AutoMigrate(&models.User{})
 	db.AutoMigrate(&models.Article{})

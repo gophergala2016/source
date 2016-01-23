@@ -31,7 +31,7 @@ func init() {
 		DebugMiddleware(),
 	}
 
-	// db
+	// Sync database scheme (create or migrate tables)
 	orm := database.NewGorm()
 	scheme.Sync(orm)
 }

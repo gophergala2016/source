@@ -70,6 +70,7 @@ type (
 func (c *RootController) SetContext(ctx foundation.Context) {
 	c.RootController.SetContext(ctx)
 
+	// Set database to context
 	orm := database.NewGorm()
 	accessor.SetDatabase(ctx, orm)
 }
