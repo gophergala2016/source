@@ -194,14 +194,14 @@ const (
 )
 
 var (
-	port = flag.String("port", "", "Port number to listen the application. (default \"8080\")")
+	port = flag.String("port", "", "Port number to listen the application. (default \"8888\")")
 	sock = flag.String("sock", "", "Path to a UNIX socket to listen the application.")
 )
 
 func main() {
 	flag.Parse()
 	if len(*port) == 0 {
-		*port = ":8080"
+		*port = ":8888"
 	}
 
 	if !strings.HasPrefix(*port, ":") {
