@@ -8,7 +8,7 @@ import (
 	"github.com/mitchellh/mapstructure"
 
 	"github.com/gophergala2016/source/core/foundation"
-	"github.com/gophergala2016/source/core/parameters"
+	"github.com/gophergala2016/source/internal/modules/parameters"
 )
 
 type (

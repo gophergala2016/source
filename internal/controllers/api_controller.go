@@ -3,7 +3,7 @@ package controllers
 import (
 	"net/http"
 
-	"github.com/gophergala2016/source/core/parameters"
+	"github.com/gophergala2016/source/internal/modules/parameters"
 )
 
 func (c *apiController) Preprocess(p parameters.RequestParameter) bool {

@@ -1,8 +1,8 @@
 package parameters
 
 import (
-	"github.com/gophergala2016/source/core/parameters/accesstoken"
 	"github.com/gophergala2016/source/core/validator"
+	"github.com/gophergala2016/source/internal/modules/parameters/accesstoken"
 )
 
 type (
