@@ -10,7 +10,6 @@ type Item struct {
 	GithubURL   string    `json:"github_url"  gorm:"column:github_url"     sql:"default null;unique_index;type:varchar(190)"`
 	Name        string    `json:"name"        gorm:"column:name"           sql:"default null;type:varchar(190)"`
 	Description string    `json:"description" gorm:"column:description"    sql:"default null;type:varchar(500)"`
-	Body        string    `json:"body"        gorm:"column:body"           sql:"default null;type:varchar(1000)"`
 	CreatedAt   time.Time `json:"created_at"  gorm:"column:created_at"     sql:"not null;type:datetime"`
 	UpdatedAt   time.Time `json:"updated_at"  gorm:"column:updated_at"     sql:"not null;type:datetime"`
 	DeletedAt   time.Time `json:"deleted_at"  gorm:"column:deleted_at"     sql:"default null;type:datetime"`
