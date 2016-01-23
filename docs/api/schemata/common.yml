@@ -1,7 +1,7 @@
 ---
 "$schema": http://json-schema.org/draft-04/hyper-schema
 title: Common Parameters
-description: for list request
+description: useful
 stability: prototype
 strictProperties: true
 type:
