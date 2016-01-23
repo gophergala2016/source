@@ -223,6 +223,7 @@ func main() {
 {{range .html}}
 	router.LoadHTMLGlob(filepath.Clean(internal.JoinPath("{{.RelativePath}}")),
 		filepath.Clean(internal.JoinPath("{{.Pattern}}"))){{end}}
+	_ = filepath.Clean("")
 
 	switch {
 	case len(*sock) != 0:
@@ -271,6 +272,7 @@ func init() {
 {{range .html}}
 	router.LoadHTMLGlob(filepath.Clean(internal.JoinPath("{{.RelativePath}}")),
 		filepath.Clean(internal.JoinPath("{{.Pattern}}"))){{end}}
+	_ = filepath.Clean("")
 
 	http.Handle("/", router.DefaultMux())
 }

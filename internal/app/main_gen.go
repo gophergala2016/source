@@ -35,6 +35,8 @@ func main() {
 
 	router := router()
 
+	_ = filepath.Clean("")
+
 	switch {
 	case len(*sock) != 0:
 		router.RunUnix(*sock)
