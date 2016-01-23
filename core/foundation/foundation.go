@@ -2,6 +2,7 @@ package foundation
 
 import (
 	"os"
+	"path"
 
 	"github.com/gin-gonic/gin"
 )
@@ -29,7 +30,7 @@ func init() {
 		if err != nil {
 			Panic(err)
 		}
-		BasePath = dir
+		BasePath = path.Clean(path.Join(dir, "..", ".."))
 	}
 }
 
