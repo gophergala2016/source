@@ -119,13 +119,13 @@ func (c RootController) IsAllowedMethod() bool {
 func (c RootController) ParseRequestHeader(p parameters.RequestParameter) error {
 	req := c.GetContext().Request()
 
-	// ClientID
-	clientID := req.Header("Client")
-	if len(clientID) <= 0 {
-		return fmt.Errorf("Not found the Client.")
+	// API
+	apiToken := req.Header("Token")
+	if len(apiToken) <= 0 {
+		return fmt.Errorf("Not found the ApiToken.")
 	}
-	if clientID != config.GetApp().ClientID {
-		return fmt.Errorf("Not matched the Client.")
+	if apiToken != config.GetAPI().Token {
+		return fmt.Errorf("Not matched the ApiToken.")
 	}
 
 	// AccessToken
