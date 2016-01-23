@@ -339,67 +339,6 @@ HTTP/1.1 200 OK
 }
 ```
 
-### Item Tag
-
-Tagged one item.
-
-```
-POST /item/{item_id}/tag/{tag_id}
-```
-
-#### Optional Parameters
-
-| Name | Type | Description | Example |
-| ------- | ------- | ------- | ------- |
-| **access_token** | *string* | token to access api | `"example"` |
-
-
-#### Curl Example
-
-```bash
-$ curl -n -X POST https://api.getsource.io/v1/item/$ITEM_ID/tag/$TAG_ID \
-  -d '{
-  "access_token": "example"
-}' \
-  -H "Content-Type: application/json"
-```
-
-
-#### Response Example
-
-```
-HTTP/1.1 201 Created
-```
-
-```json
-{
-  "id": 42,
-  "github_url": "example",
-  "name": "example",
-  "comment": "example",
-  "description": "example",
-  "created_at": "2015-01-01T12:00:00Z",
-  "updated_at": "2015-01-01T12:00:00Z",
-  "user": {
-    "id": 42,
-    "name": "example",
-    "avatar_url": "example",
-    "location": "example",
-    "created_at": "2015-01-01T12:00:00Z",
-    "updated_at": "2015-01-01T12:00:00Z"
-  },
-  "tags": [
-    {
-      "id": 42,
-      "name": "example",
-      "color": "example",
-      "created_at": "2015-01-01T12:00:00Z",
-      "updated_at": "2015-01-01T12:00:00Z"
-    }
-  ]
-}
-```
-
 
 ## <a name="resource-me"></a>Me
 
