@@ -16,6 +16,16 @@ func (c *apiController) Preprocess(p parameters.RequestParameter) bool {
 		return false
 	}
 
+	// Parse Requesr Header
+	if err := c.ParseRequestHeader(p); err != nil {
+		c.BadRequest(map[string]interface{}{
+			"status":  "NG",
+			"func":    "ParseRequestHeader",
+			"message": err.Error(),
+		})
+		return false
+	}
+
 	// Parse Request Parameter
 	if err := c.ParseRequestParameter(p); err != nil {
 		c.BadRequest(map[string]interface{}{

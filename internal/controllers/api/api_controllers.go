@@ -1,6 +1,7 @@
 package api
 
 import (
+	"github.com/gophergala2016/source/core/net/context/accessor"
 	"github.com/gophergala2016/source/internal/facades"
 	"github.com/gophergala2016/source/internal/modules/parameters"
 )
@@ -97,6 +98,7 @@ func (c *APIMeController) LoginMe() {
 		})
 		return
 	}
+	accessor.SetMe(c.GetContext(), me)
 
 	// Render result
 	c.API().OK(map[string]interface{}{

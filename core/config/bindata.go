@@ -2,13 +2,10 @@
 // sources:
 // data/app.tml
 // data/dev/database.tml
-// data/dev/elasticsearch.tml
 // data/dev/view.tml
 // data/prod/database.tml
-// data/prod/elasticsearch.tml
 // data/prod/view.tml
 // data/test/database.tml
-// data/test/elasticsearch.tml
 // data/test/view.tml
 // DO NOT EDIT!
 
@@ -58,6 +55,7 @@ var _dataAppTml = []byte(`[app]
 name   = "source"
 secret = "rTnWHcueJGgOmKS21bjY20Ah7Oq2fwab4pSr08VDi"
 
+client_id = "qaw35dRtgyhtpDdDA21vgbjmyr43474kkdj"
 `)
 
 func dataAppTmlBytes() ([]byte, error) {
@@ -70,7 +68,7 @@ func dataAppTml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "data/app.tml", size: 78, mode: os.FileMode(420), modTime: time.Unix(1453522739, 0)}
+	info := bindataFileInfo{name: "data/app.tml", size: 128, mode: os.FileMode(420), modTime: time.Unix(1453564926, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -91,25 +89,6 @@ func dataDevDatabaseTml() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "data/dev/database.tml", size: 102, mode: os.FileMode(420), modTime: time.Unix(1453532906, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _dataDevElasticsearchTml = []byte(`[elasticsearch]
-endpoint     = "http://localhost:9200"
-`)
-
-func dataDevElasticsearchTmlBytes() ([]byte, error) {
-	return _dataDevElasticsearchTml, nil
-}
-
-func dataDevElasticsearchTml() (*asset, error) {
-	bytes, err := dataDevElasticsearchTmlBytes()
-	if err != nil {
-		return nil, err
-	}
-
-	info := bindataFileInfo{name: "data/dev/elasticsearch.tml", size: 55, mode: os.FileMode(420), modTime: time.Unix(1453532849, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -157,25 +136,6 @@ func dataProdDatabaseTml() (*asset, error) {
 	return a, nil
 }
 
-var _dataProdElasticsearchTml = []byte(`[elasticsearch]
-endpoint     = "http://localhost:9200"
-`)
-
-func dataProdElasticsearchTmlBytes() ([]byte, error) {
-	return _dataProdElasticsearchTml, nil
-}
-
-func dataProdElasticsearchTml() (*asset, error) {
-	bytes, err := dataProdElasticsearchTmlBytes()
-	if err != nil {
-		return nil, err
-	}
-
-	info := bindataFileInfo{name: "data/prod/elasticsearch.tml", size: 55, mode: os.FileMode(420), modTime: time.Unix(1453522739, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
 var _dataProdViewTml = []byte(`[view.ga]
 property_id = "UA-34139434-6"
 
@@ -215,25 +175,6 @@ func dataTestDatabaseTml() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "data/test/database.tml", size: 102, mode: os.FileMode(420), modTime: time.Unix(1453532940, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _dataTestElasticsearchTml = []byte(`[elasticsearch]
-endpoint     = "http://localhost:9200"
-`)
-
-func dataTestElasticsearchTmlBytes() ([]byte, error) {
-	return _dataTestElasticsearchTml, nil
-}
-
-func dataTestElasticsearchTml() (*asset, error) {
-	bytes, err := dataTestElasticsearchTmlBytes()
-	if err != nil {
-		return nil, err
-	}
-
-	info := bindataFileInfo{name: "data/test/elasticsearch.tml", size: 55, mode: os.FileMode(420), modTime: time.Unix(1453522739, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -313,16 +254,13 @@ func AssetNames() []string {
 
 // _bindata is a table, holding each asset generator, mapped to its name.
 var _bindata = map[string]func() (*asset, error){
-	"data/app.tml":                dataAppTml,
-	"data/dev/database.tml":       dataDevDatabaseTml,
-	"data/dev/elasticsearch.tml":  dataDevElasticsearchTml,
-	"data/dev/view.tml":           dataDevViewTml,
-	"data/prod/database.tml":      dataProdDatabaseTml,
-	"data/prod/elasticsearch.tml": dataProdElasticsearchTml,
-	"data/prod/view.tml":          dataProdViewTml,
-	"data/test/database.tml":      dataTestDatabaseTml,
-	"data/test/elasticsearch.tml": dataTestElasticsearchTml,
-	"data/test/view.tml":          dataTestViewTml,
+	"data/app.tml":           dataAppTml,
+	"data/dev/database.tml":  dataDevDatabaseTml,
+	"data/dev/view.tml":      dataDevViewTml,
+	"data/prod/database.tml": dataProdDatabaseTml,
+	"data/prod/view.tml":     dataProdViewTml,
+	"data/test/database.tml": dataTestDatabaseTml,
+	"data/test/view.tml":     dataTestViewTml,
 }
 
 // AssetDir returns the file names below a certain
@@ -369,19 +307,16 @@ var _bintree = &bintree{nil, map[string]*bintree{
 	"data": {nil, map[string]*bintree{
 		"app.tml": {dataAppTml, map[string]*bintree{}},
 		"dev": {nil, map[string]*bintree{
-			"database.tml":      {dataDevDatabaseTml, map[string]*bintree{}},
-			"elasticsearch.tml": {dataDevElasticsearchTml, map[string]*bintree{}},
-			"view.tml":          {dataDevViewTml, map[string]*bintree{}},
+			"database.tml": {dataDevDatabaseTml, map[string]*bintree{}},
+			"view.tml":     {dataDevViewTml, map[string]*bintree{}},
 		}},
 		"prod": {nil, map[string]*bintree{
-			"database.tml":      {dataProdDatabaseTml, map[string]*bintree{}},
-			"elasticsearch.tml": {dataProdElasticsearchTml, map[string]*bintree{}},
-			"view.tml":          {dataProdViewTml, map[string]*bintree{}},
+			"database.tml": {dataProdDatabaseTml, map[string]*bintree{}},
+			"view.tml":     {dataProdViewTml, map[string]*bintree{}},
 		}},
 		"test": {nil, map[string]*bintree{
-			"database.tml":      {dataTestDatabaseTml, map[string]*bintree{}},
-			"elasticsearch.tml": {dataTestElasticsearchTml, map[string]*bintree{}},
-			"view.tml":          {dataTestViewTml, map[string]*bintree{}},
+			"database.tml": {dataTestDatabaseTml, map[string]*bintree{}},
+			"view.tml":     {dataTestViewTml, map[string]*bintree{}},
 		}},
 	}},
 }}

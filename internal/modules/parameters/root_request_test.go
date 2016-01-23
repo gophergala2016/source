@@ -14,8 +14,10 @@ func TestRootRequest(t *testing.T) {
 
 	var req RootRequest
 	req = RootRequest{}
-	assert.NoError(req.validate(false))
-	assert.Error(req.validate(true))
+	req.needAccessToken = false
+	assert.NoError(req.validate())
+	req.needAccessToken = true
+	assert.Error(req.validate())
 	assert.Equal("", req.GetAccessToken())
 
 	token := accesstoken.Generate([]byte("foobar"))

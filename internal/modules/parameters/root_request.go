@@ -8,17 +8,23 @@ import (
 type (
 	// RootRequest is a based request parameter.
 	RootRequest struct {
-		AccessToken accesstoken.AccessToken
+		needAccessToken bool
+		AccessToken     accesstoken.AccessToken
 	}
 )
 
-func (p RootRequest) validate(strict bool) error {
-	if strict {
+func (p RootRequest) validate() error {
+	if p.needAccessToken {
 		if err := p.AccessToken.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+// NeedAccessToken bool need access token into header
+func (p *RootRequest) NeedAccessToken() bool {
+	return p.needAccessToken
 }
 
 // GetAccessToken returns an uuid of user.

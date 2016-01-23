@@ -11,6 +11,7 @@ type (
 		Parameter
 		GetAccessToken() string
 		SetAccessToken(string)
+		NeedAccessToken() bool
 	}
 
 	// ResponseParameter interface

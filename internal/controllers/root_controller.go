@@ -2,11 +2,13 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"reflect"
 	"strings"
 
 	"github.com/mitchellh/mapstructure"
 
+	"github.com/gophergala2016/source/core/config"
 	"github.com/gophergala2016/source/core/foundation"
 	"github.com/gophergala2016/source/core/infra/database"
 	"github.com/gophergala2016/source/core/net/context/accessor"
@@ -111,6 +113,31 @@ func (c RootController) IsAllowedMethod() bool {
 		return true
 	}
 	return false
+}
+
+// ParseRequestHeader check if need access token.
+func (c RootController) ParseRequestHeader(p parameters.RequestParameter) error {
+	req := c.GetContext().Request()
+
+	// ClientID
+	clientID := req.Header("Client")
+	if len(clientID) <= 0 {
+		return fmt.Errorf("Not found the Client.")
+	}
+	if clientID != config.GetApp().ClientID {
+		return fmt.Errorf("Not matched the Client.")
+	}
+
+	// AccessToken
+	if !p.NeedAccessToken() {
+		return nil
+	}
+	auth := req.Header("Authorization")
+	if len(auth) <= 0 || !strings.HasPrefix(auth, "Bearer ") {
+		return fmt.Errorf("Not found the Authorization.")
+	}
+	p.SetAccessToken(strings.TrimPrefix(auth, "Bearer "))
+	return nil
 }
 
 // ParseRequestParameter applies parameters of request from body and query.

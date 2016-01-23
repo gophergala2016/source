@@ -14,19 +14,27 @@ type (
 )
 
 func NewGetMeRequest() GetMeRequest {
-	return GetMeRequest{}
+	return GetMeRequest{
+		RootRequest: RootRequest{
+			needAccessToken: true,
+		},
+	}
 }
 
 // Validate ...
 func (p GetMeRequest) Validate() error {
-	return p.RootRequest.validate(true)
+	return p.RootRequest.validate()
 }
 
 func NewLoginMeRequest() LoginMeRequest {
-	return LoginMeRequest{}
+	return LoginMeRequest{
+		RootRequest: RootRequest{
+			needAccessToken: false,
+		},
+	}
 }
 
 // Validate ...
 func (p LoginMeRequest) Validate() error {
-	return p.RootRequest.validate(false)
+	return p.RootRequest.validate()
 }

@@ -7,10 +7,14 @@ type (
 )
 
 func NewGetUserRequest() GetUserRequest {
-	return GetUserRequest{}
+	return GetUserRequest{
+		RootRequest: RootRequest{
+			needAccessToken: false,
+		},
+	}
 }
 
 // Validate ...
 func (p GetUserRequest) Validate() error {
-	return p.RootRequest.validate(false)
+	return p.RootRequest.validate()
 }
