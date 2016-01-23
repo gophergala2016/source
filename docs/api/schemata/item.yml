@@ -60,6 +60,12 @@ links:
         "$ref": "/schemata/item#/definitions/comment"
       description:
         "$ref": "/schemata/item#/definitions/description"
+      tags:
+        description: tag ids
+        type:
+        - array
+        items:
+          "$ref": "/schemata/tag#/definitions/id"
     type:
     - object
   title: Create
