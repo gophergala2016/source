@@ -61,6 +61,11 @@ func Default() *Engine {
 	return engine
 }
 
+// DefaultMux returns
+func (engine *Engine) DefaultMux() *gin.Engine {
+	return engine.core
+}
+
 // Attachs a global middleware to the router.
 func (engine *Engine) Use(middleware ...gin.HandlerFunc) IRoutes {
 	engine.core.Use(middleware...)
