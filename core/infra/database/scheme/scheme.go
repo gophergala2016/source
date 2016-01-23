@@ -9,20 +9,20 @@ import (
 // Create all tables
 func createTables(db *gorm.DB) {
 	db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4").CreateTable(&models.User{})
-	db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4").CreateTable(&models.Article{})
-	db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4").CreateTable(&models.UserFavoriteArticle{})
-	db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4").CreateTable(&models.ArticleImpression{})
-	db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4").CreateTable(&models.ArticleTag{})
+	db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4").CreateTable(&models.Item{})
+	db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4").CreateTable(&models.UserFavoriteItem{})
+	db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4").CreateTable(&models.ItemImpression{})
+	db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4").CreateTable(&models.ItemTag{})
 	db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4").CreateTable(&models.Tag{})
 }
 
 // Migrate all tables
 func autoMigrateTables(db *gorm.DB) {
 	db.AutoMigrate(&models.User{})
-	db.AutoMigrate(&models.Article{})
-	db.AutoMigrate(&models.UserFavoriteArticle{})
-	db.AutoMigrate(&models.ArticleImpression{})
-	db.AutoMigrate(&models.ArticleTag{})
+	db.AutoMigrate(&models.Item{})
+	db.AutoMigrate(&models.UserFavoriteItem{})
+	db.AutoMigrate(&models.ItemImpression{})
+	db.AutoMigrate(&models.ItemTag{})
 	db.AutoMigrate(&models.Tag{})
 }
 

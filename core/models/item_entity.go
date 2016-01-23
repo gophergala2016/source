@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-type Article struct {
+type Item struct {
 	ID          uint64    `json:"id"          gorm:"column:id;primary_key" sql:"not null;type:bigint(20)"`
 	UserID      uint64    `json:"user_id"     gorm:"column:user_id"        sql:"not null;index;type:bigint(20)"`
 	GithubURL   string    `json:"github_url"  gorm:"column:github_url"     sql:"default null;unique_index;type:varchar(190)"`
@@ -16,6 +16,6 @@ type Article struct {
 	DeletedAt   time.Time `json:"deleted_at"  gorm:"column:deleted_at"     sql:"default null;type:datetime"`
 }
 
-func NewArticle() *Article {
-	return &Article{}
+func NewItem() *Item {
+	return &Item{}
 }
