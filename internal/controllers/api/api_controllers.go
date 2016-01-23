@@ -1,8 +1,6 @@
 package api
 
 import (
-	"strconv"
-
 	"github.com/gophergala2016/source/internal/facades"
 	"github.com/gophergala2016/source/internal/modules/parameters"
 )
@@ -29,12 +27,18 @@ func (c APIUserController) GetUser(id string) {
 	if ok := c.API().Preprocess(&param); !ok {
 		return
 	}
-	uint64ID, _ := strconv.ParseUint(id, 10, 64)
+
+	// Parse string id to uint64
+	uint64ID := c.ParseUint64(id)
+	if uint64ID <= 0 {
+		return
+	}
+
 	//// Call a facade
-	f := facades.NewUserFacade(c.GetContext())
-	user, err := f.GetUserByID(uint64ID)
+	userFacade := facades.NewUserFacade(c.GetContext())
+	user, err := userFacade.GetUserByID(uint64ID)
 	if err != nil {
-		c.API().BadRequest(map[string]interface{}{
+		c.API().InternalServerError(map[string]interface{}{
 			"status":  "NG",
 			"func":    "GetUser::UserFacade",
 			"message": err,
