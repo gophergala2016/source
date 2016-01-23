@@ -61,6 +61,8 @@ properties:
     "$ref": "/schemata/tag#/definitions/id"
   name:
     "$ref": "/schemata/tag#/definitions/name"
+  color:
+    "$ref": "/schemata/tag#/definitions/color"
   created_at:
     "$ref": "/schemata/tag#/definitions/created_at"
   updated_at:
