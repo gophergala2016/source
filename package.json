@@ -19,7 +19,6 @@
     "gulp-csscomb": "^3.0.6",
     "gulp-if": "^2.0.0",
     "gulp-install": "^0.6.0",
-    "gulp-karma": "0.0.5",
     "gulp-load-plugins": "^1.0.0-rc",
     "gulp-ng-annotate": "^1.0.0",
     "gulp-notify": "^2.2.0",
@@ -40,7 +39,6 @@
     "main-bower-files": "^2.9.0",
     "mocha": "*",
     "node-notifier": "^4.2.3",
-    "protractor": "^3.0.0",
     "require-dir": "^0.3.0",
     "superagent": "^1.2.0",
     "typescript": "1.7.5"
@@ -50,7 +48,7 @@
   },
   "scripts": {
       "ts": "gulp ts",
-      "watch": "gulp watch"
+      "watch": "gulp watch",
+      "build": "gulp build"
   }
-
 }

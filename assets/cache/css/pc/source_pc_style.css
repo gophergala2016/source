@@ -1,0 +1,22 @@
+html {
+  height: 100%;
+}
+
+body {
+  word-break: break-all;
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+  -moz-transition: background-color 0.25s linear;
+  -o-transition: background-color 0.25s linear;
+  -webkit-transition: background-color 0.25s linear;
+  transition: background-color 0.25s linear;
+}
+
+img {
+  vertical-align: bottom;
+}
