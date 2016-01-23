@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -18,11 +19,21 @@ func main() {
 	defer file.Close()
 
 	queries := bytes.NewBuffer(make([]byte, 0))
-	insertQuery := "INSERT INTO tag (name,color,created_at,updated_at) VALUES('%s','%s', now(), now());\n"
+	insertQuery := "INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('%s','%s', %d, now(), now());\n"
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		info := strings.Split(scanner.Text(), ":")
-		insertTagQuery := fmt.Sprintf(insertQuery, strings.TrimSpace(info[0]), strings.TrimSpace(info[1]))
+		score, err := strconv.Atoi(strings.TrimSpace(info[2]))
+		if err != nil {
+			fmt.Printf("Atoi error: %v\n", err)
+			continue
+		}
+		insertTagQuery := fmt.Sprintf(
+			insertQuery,
+			strings.TrimSpace(info[0]),
+			strings.TrimSpace(info[1]),
+			score,
+		)
 		queries.WriteString(insertTagQuery)
 	}
 	if err := scanner.Err(); err != nil {
