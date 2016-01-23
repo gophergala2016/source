@@ -29,17 +29,17 @@ func (r *TagRepository) Create(ent *Tag) (*Tag, error) {
 	return ent, nil
 }
 
-func (r *TagRepository) UpdateByID(ent *Tag) (*Tag, error) {
+func (r *TagRepository) UpdateByID(ent *Tag) error {
 	if err := r.Orm.Where("id = ?", ent.ID).Save(ent).Error; err != nil {
-		return nil, err
+		return err
 	}
-	return ent, nil
+	return nil
 }
 
 func (r *TagRepository) FindLatestByCollection(limit, offset int) ([]Tag, error) {
 	var ents []Tag
 	if err := r.Orm.Limit(limit).Offset(offset).Order("created_at desc").Find(&ents).Error; err != nil {
-		return nil, err
+		return ents, err
 	}
 	return ents, nil
 }
@@ -47,7 +47,7 @@ func (r *TagRepository) FindLatestByCollection(limit, offset int) ([]Tag, error)
 func (r *TagRepository) FindPopularByCollection(limit, offset int) ([]Tag, error) {
 	var ents []Tag
 	if err := r.Orm.Limit(limit).Offset(offset).Order("score desc").Find(&ents).Error; err != nil {
-		return nil, err
+		return ents, err
 	}
 	return ents, nil
 }

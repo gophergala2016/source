@@ -13,11 +13,11 @@ type Tag struct {
 	UpdatedAt time.Time `json:"updated_at" gorm:"column:updated_at"     sql:"not null;type:datetime"`
 }
 
-func NewTag(name, color string) *Tag {
+func NewTag(name, color string, score uint) *Tag {
 	return &Tag{
 		Name:  name,
 		Color: color,
-		Score: 0,
+		Score: score,
 	}
 }
 

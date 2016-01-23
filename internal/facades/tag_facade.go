@@ -20,3 +20,8 @@ func (f TagFacade) FindPopularTag(limit int) ([]models.Tag, error) {
 	tagService := services.NewTagService(f.ctx)
 	return tagService.FindPopularTagByCollection(limit, 0)
 }
+
+func (f TagFacade) CreateTag(name, color string, score uint) (*models.Tag, error) {
+	tagService := services.NewTagService(f.ctx)
+	return tagService.CreateTag(name, color, score)
+}

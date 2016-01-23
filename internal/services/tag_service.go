@@ -21,8 +21,8 @@ func (s TagService) GetTagByID(id uint64) (*models.Tag, error) {
 	return tagRepository.GetByID(id)
 }
 
-func (s TagService) CreateTag(name, color string) (*models.Tag, error) {
-	tag := models.NewTag(name, color)
+func (s TagService) CreateTag(name, color string, score uint) (*models.Tag, error) {
+	tag := models.NewTag(name, color, score)
 	tagRepository := models.NewTagRepository(s.ctx)
 	return tagRepository.Create(tag)
 }

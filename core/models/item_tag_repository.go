@@ -29,9 +29,9 @@ func (r *ItemTagRepository) Create(ent *ItemTag) (*ItemTag, error) {
 	return ent, nil
 }
 
-func (r *ItemTagRepository) UpdateByID(ent *ItemTag) (*ItemTag, error) {
+func (r *ItemTagRepository) UpdateByID(ent *ItemTag) error {
 	if err := r.Orm.Where("item_id = ?", ent.ItemID).Save(ent).Error; err != nil {
-		return nil, err
+		return err
 	}
-	return ent, nil
+	return nil
 }

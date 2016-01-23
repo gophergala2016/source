@@ -29,11 +29,11 @@ func (r *ItemImpressionRepository) Create(ent *ItemImpression) (*ItemImpression,
 	return ent, nil
 }
 
-func (r *ItemImpressionRepository) UpdateByID(ent *ItemImpression) (*ItemImpression, error) {
+func (r *ItemImpressionRepository) UpdateByID(ent *ItemImpression) error {
 	if err := r.Orm.Where("item_id = ?", ent.ItemID).Save(ent).Error; err != nil {
-		return nil, err
+		return err
 	}
-	return ent, nil
+	return nil
 }
 
 func (r *ItemImpressionRepository) UpdateCountByID(itemID uint64, count int) error {
