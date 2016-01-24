@@ -22,6 +22,14 @@ func (r *UserRepository) GetByID(id uint64) (*User, error) {
 	return ent, nil
 }
 
+func (r *UserRepository) FindByIDs(ids []uint64) ([]User, error) {
+	var ents []User
+	if err := r.Orm.Where("id IN (?)", ids).Find(&ents).Error; err != nil {
+		return ents, err
+	}
+	return ents, nil
+}
+
 func (r *UserRepository) GetByAccessToken(token string) (*User, error) {
 	ent := new(User)
 	if err := r.Orm.Where("access_token = ?", token).First(ent).Error; err != nil {

@@ -20,3 +20,16 @@ func (f UserFacade) GetUserByID(id uint64) (*models.User, error) {
 	userService := services.NewUserService(f.ctx)
 	return userService.GetUserByID(id)
 }
+
+func (f UserFacade) FindUserMap(ids []uint64) (map[uint64]models.User, error) {
+	userService := services.NewUserService(f.ctx)
+	users, err := userService.FindUserByIDs(ids)
+	if err != nil {
+		return nil, err
+	}
+	res := make(map[uint64]models.User, len(users))
+	for _, user := range users {
+		res[user.ID] = user
+	}
+	return res, nil
+}

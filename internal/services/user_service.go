@@ -20,3 +20,8 @@ func (s UserService) GetUserByID(id uint64) (*models.User, error) {
 	userRepository := models.NewUserRepository(s.ctx)
 	return userRepository.GetByID(id)
 }
+
+func (s UserService) FindUserByIDs(ids []uint64) ([]models.User, error) {
+	userRepository := models.NewUserRepository(s.ctx)
+	return userRepository.FindByIDs(ids)
+}

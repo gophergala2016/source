@@ -22,6 +22,14 @@ func (r *ItemImpressionRepository) GetByItemID(itemID uint64) (*ItemImpression, 
 	return ent, nil
 }
 
+func (r *ItemImpressionRepository) FindByItemIDs(itemIDs []uint64) ([]ItemImpression, error) {
+	var ents []ItemImpression
+	if err := r.Orm.Where("item_id IN (?)", itemIDs).Find(&ents).Error; err != nil {
+		return ents, err
+	}
+	return ents, nil
+}
+
 func (r *ItemImpressionRepository) Create(ent *ItemImpression) (*ItemImpression, error) {
 	if err := r.Orm.Create(ent).Error; err != nil {
 		return nil, err

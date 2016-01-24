@@ -1,8 +1,10 @@
 package api
 
 import (
+	"github.com/gophergala2016/source/core/models"
 	"github.com/gophergala2016/source/internal/facades"
 	"github.com/gophergala2016/source/internal/modules/parameters"
+	"github.com/gophergala2016/source/internal/modules/responses"
 )
 
 type APIUserController struct {
@@ -22,35 +24,6 @@ type APITagController struct {
 }
 
 func (c APIUserController) GetUser(id string) {
-	//// Apply Request Parameters
-	param := parameters.NewGetUserRequest()
-	if ok := c.API().Preprocess(&param); !ok {
-		return
-	}
-
-	// Parse string id to uint64
-	uint64ID := c.ParseUint64(id)
-	if uint64ID <= 0 {
-		return
-	}
-
-	//// Call a facade
-	userFacade := facades.NewUserFacade(c.GetContext())
-	user, err := userFacade.GetUserByID(uint64ID)
-	if err != nil {
-		c.API().InternalServerError(map[string]interface{}{
-			"status":  "NG",
-			"func":    "GetUser::UserFacade",
-			"message": err,
-		})
-		return
-	}
-
-	// Render result
-	c.API().OK(map[string]interface{}{
-		"status":   "OK",
-		"instance": user,
-	})
 }
 
 func (c *APIMeController) GetMe() {
@@ -106,35 +79,63 @@ func (c *APIMeController) LoginMe() {
 }
 
 func (c *APIItemController) GetItem(id string) {
-	//// Apply Request Parameters
-	param := parameters.NewGetItemRequest()
-	if ok := c.API().Preprocess(&param); !ok {
-		return
-	}
+}
 
-	// Parse string id to uint64
-	uint64ID := c.ParseUint64(id)
-	if uint64ID <= 0 {
-		return
-	}
-
-	//// Call a facade
+func (c *APIItemController) ConvertItems(items []models.Item) ([]responses.ItemResponse, error) {
 	itemFacade := facades.NewItemFacade(c.GetContext())
-	item, err := itemFacade.GetItemByID(uint64ID)
-	if err != nil {
-		c.API().InternalServerError(map[string]interface{}{
-			"status":  "NG",
-			"func":    "GetItemByID::ItemFacade",
-			"message": err,
-		})
-		return
+
+	// Get only item ids
+	itemIDs := make([]uint64, len(items))
+	itemUserIDs := make([]uint64, len(items))
+	for i, item := range items {
+		itemIDs[i] = item.ID
+		itemUserIDs[i] = item.UserID
 	}
 
-	// Render result
-	c.API().OK(map[string]interface{}{
-		"status":   "OK",
-		"instance": item,
-	})
+	itemImpressionMap, err := itemFacade.FindItemImpressionMap(itemIDs)
+	if err != nil {
+		return nil, err
+	}
+
+	itemTagIDsMap, err := itemFacade.FindItemTagIDsMap(itemIDs)
+	if err != nil {
+		return nil, err
+	}
+
+	userFacade := facades.NewUserFacade(c.GetContext())
+	itemUserMap, err := userFacade.FindUserMap(itemUserIDs)
+	if err != nil {
+		return nil, err
+	}
+
+	// Make a response
+	itemResponseList := make([]responses.ItemResponse, len(items))
+	for i, item := range items {
+		itemResponse := responses.NewItemResponse(
+			item.ID,
+			item.GithubURL,
+			item.Author,
+			item.Name,
+			item.Description,
+			item.CreatedAt,
+		)
+		itemImpression := itemImpressionMap[item.ID]
+		itemResponse.SetImpression(itemImpression.View, itemImpression.Star)
+
+		itemUser := itemUserMap[item.ID]
+		itemResponse.SetUser(responses.NewUserResponse(itemUser.Name, itemUser.AvatarURL))
+
+		itemTagIDs := itemTagIDsMap[item.ID]
+		tagFacade := facades.NewTagFacade(c.GetContext())
+		tags, _ := tagFacade.FindTagByIDs(itemTagIDs)
+		for _, tag := range tags {
+			itemResponse.AppendTag(responses.NewTagResponse(tag.Name, tag.Color))
+		}
+
+		itemResponseList[i] = itemResponse
+	}
+
+	return itemResponseList, nil
 }
 
 func (c *APIItemController) GetItemList() {
@@ -156,10 +157,20 @@ func (c *APIItemController) GetItemList() {
 		return
 	}
 
+	itemResponseList, err := c.ConvertItems(items)
+	if err != nil {
+		c.API().InternalServerError(map[string]interface{}{
+			"status":  "NG",
+			"func":    "ConvertItems::ItemController",
+			"message": err,
+		})
+		return
+	}
+
 	// Render result
 	c.API().OK(map[string]interface{}{
 		"status":    "OK",
-		"instances": items,
+		"instances": itemResponseList,
 	})
 }
 
@@ -193,10 +204,20 @@ func (c *APIItemController) GetItemFavoriteList() {
 		return
 	}
 
+	itemResponseList, err := c.ConvertItems(items)
+	if err != nil {
+		c.API().InternalServerError(map[string]interface{}{
+			"status":  "NG",
+			"func":    "ConvertItems::ItemController",
+			"message": err,
+		})
+		return
+	}
+
 	// Render result
 	c.API().OK(map[string]interface{}{
 		"status":    "OK",
-		"instances": items,
+		"instances": itemResponseList,
 	})
 }
 

@@ -21,6 +21,11 @@ func (s TagService) GetTagByID(id uint64) (*models.Tag, error) {
 	return tagRepository.GetByID(id)
 }
 
+func (s TagService) FindTagByIDs(ids []uint64) ([]models.Tag, error) {
+	tagRepository := models.NewTagRepository(s.ctx)
+	return tagRepository.FindByIDs(ids)
+}
+
 func (s TagService) FindTagByNames(names []string) ([]models.Tag, error) {
 	tagRepository := models.NewTagRepository(s.ctx)
 	return tagRepository.FindByNames(names)

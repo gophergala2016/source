@@ -103,3 +103,29 @@ func (f ItemFacade) FindFavoriteItem(userID uint64, limit int) ([]models.Item, e
 	itemService := services.NewItemService(f.ctx)
 	return itemService.FindItemByIDs(itemIDs)
 }
+
+func (f ItemFacade) FindItemImpressionMap(itemIDs []uint64) (map[uint64]models.ItemImpression, error) {
+	itemImpressionService := services.NewItemImpressionService(f.ctx)
+	impressions, err := itemImpressionService.FindItemImpressionByIDs(itemIDs)
+	if err != nil {
+		return nil, err
+	}
+	res := make(map[uint64]models.ItemImpression, len(impressions))
+	for _, impression := range impressions {
+		res[impression.ItemID] = impression
+	}
+	return res, nil
+}
+
+func (f ItemFacade) FindItemTagIDsMap(itemIDs []uint64) (map[uint64][]uint64, error) {
+	itemTagService := services.NewItemTagService(f.ctx)
+	itemTags, err := itemTagService.FindItemTagByIDs(itemIDs)
+	if err != nil {
+		return nil, err
+	}
+	res := make(map[uint64][]uint64, len(itemTags))
+	for _, itemTag := range itemTags {
+		res[itemTag.ItemID] = append(res[itemTag.ItemID], itemTag.TagID)
+	}
+	return res, nil
+}

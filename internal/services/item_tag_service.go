@@ -20,6 +20,11 @@ func (s ItemTagService) FindItemTagByID(itemID uint64) ([]models.ItemTag, error)
 	return itemTagRepository.FindByItemID(itemID)
 }
 
+func (s ItemTagService) FindItemTagByIDs(itemIDs []uint64) ([]models.ItemTag, error) {
+	itemTagRepository := models.NewItemTagRepository(s.ctx)
+	return itemTagRepository.FindByItemIDs(itemIDs)
+}
+
 func (s ItemTagService) CreateItemTag(itemID, tagID uint64) (*models.ItemTag, error) {
 	itemTag := models.NewItemTag(itemID, tagID)
 	itemTagRepository := models.NewItemTagRepository(s.ctx)

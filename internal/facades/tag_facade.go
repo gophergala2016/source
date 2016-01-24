@@ -25,3 +25,8 @@ func (f TagFacade) CreateTag(name, color string, score uint) (*models.Tag, error
 	tagService := services.NewTagService(f.ctx)
 	return tagService.CreateTag(name, color, score)
 }
+
+func (f TagFacade) FindTagByIDs(ids []uint64) ([]models.Tag, error) {
+	tagService := services.NewTagService(f.ctx)
+	return tagService.FindTagByIDs(ids)
+}

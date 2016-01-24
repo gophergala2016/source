@@ -16,7 +16,15 @@ func NewItemTagRepository(ctx foundation.Context) *ItemTagRepository {
 
 func (r *ItemTagRepository) FindByItemID(itemID uint64) ([]ItemTag, error) {
 	var ents []ItemTag
-	if err := r.Orm.Where("item_id = ?", itemID).Find(ents).Error; err != nil {
+	if err := r.Orm.Where("item_id = ?", itemID).Find(&ents).Error; err != nil {
+		return nil, err
+	}
+	return ents, nil
+}
+
+func (r *ItemTagRepository) FindByItemIDs(itemIDs []uint64) ([]ItemTag, error) {
+	var ents []ItemTag
+	if err := r.Orm.Where("item_id IN (?)", itemIDs).Find(&ents).Error; err != nil {
 		return nil, err
 	}
 	return ents, nil

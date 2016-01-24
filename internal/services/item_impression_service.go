@@ -21,6 +21,11 @@ func (s ItemImpressionService) GetItemImpressionByID(itemID uint64) (*models.Ite
 	return itemImpRepository.GetByItemID(itemID)
 }
 
+func (s ItemImpressionService) FindItemImpressionByIDs(itemIDs []uint64) ([]models.ItemImpression, error) {
+	itemImpRepository := models.NewItemImpressionRepository(s.ctx)
+	return itemImpRepository.FindByItemIDs(itemIDs)
+}
+
 func (s ItemImpressionService) CreateItemImpression(itemID uint64, star uint) (*models.ItemImpression, error) {
 	itemImp := models.NewItemImpression(itemID, star)
 	itemImpRepository := models.NewItemImpressionRepository(s.ctx)
