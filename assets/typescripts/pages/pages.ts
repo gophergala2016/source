@@ -9,7 +9,8 @@ import {BrowserLocation} from 'angular2/src/router/browser_location';
 import {GithubService} from '../services/GithubService';
 import {CreateBook} from './create/create-book';
 import {EditBook} from './edit/edit-book';
-import {ListItems} from './list/list-items';
+import {MainItemLists} from './list/MainItemList';
+import {RecommendedItemLists} from './list/RecommendedItemList';
 import {ViewBook} from './view/view-book';
 
 import {TagList} from '../partial/TagList';
@@ -25,8 +26,8 @@ import {TagList} from '../partial/TagList';
             <div id="head_left">
                 <div id="head_logo"><img src="/public/img/source_logo.svg" width="80px" height="20px"></div>
                 <ul>
-                    <li class="" router-link="list">Home</li>
-                    <li class="head_menu_active" router-link="recommend">Recommended</li>
+                    <li class="" router-link="main_list">Home</li>
+                    <li class="head_menu_active" router-link="recommended_list">Recommended</li>
                 </ul>
             </div>
             <div id="head_right">
@@ -58,9 +59,9 @@ import {TagList} from '../partial/TagList';
 })
 
 @RouteConfig([
-    { path: '/',            redirectTo: '/list' },
-    { path: '/#/list',      as: 'list',      component: ListItems },
-    { path: '/#/recommend', as: 'recommend', component: CreateBook },
+    { path: '/',            redirectTo: '/MainItemLists' },
+    { path: '/#/main_list',      as: 'main_list',    component: MainItemLists },
+    { path: '/#/RecommendedItemLists', as: 'recommended_list', component: RecommendedItemLists },
     { path: '/edit/:id',    as: 'edit',      component: EditBook },
     { path: '/view/:id',    as: 'view',      component: ViewBook }
 ])
