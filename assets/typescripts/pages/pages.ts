@@ -22,7 +22,7 @@ import {ViewBook} from './view/view-book';
                 <div id="head_logo"><img src="/public/img/source_logo.svg" width="80px" height="20px"></div>
                 <ul>
                     <li class="head_menu_active" router-link="list">Home</li>
-                    <li router-link="recommend">Recommend</li>
+                    <li router-link="recommend">Recommended</li>
                 </ul>
             </div>
             <div id="head_right">
