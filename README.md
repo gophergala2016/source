@@ -1,4 +1,4 @@
-# source - Recommend Source Code for All Developers
+# source
 
 [source](http://getsource.io) provides source code hosted on [GitHub](https://github.com).
 
