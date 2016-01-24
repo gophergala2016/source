@@ -139,7 +139,7 @@ h5 {
 		font-weight: bold;
 }
 
-p.langage_tag {
+p.language_tag {
 		margin: 10px 0;
 		padding: 5px;
 		background-color: $color_tag_go;
@@ -149,7 +149,7 @@ p.langage_tag {
 		font-weight: bold;
 }
 
-p.langage_tag_active {
+p.language_tag_active {
 		margin: 10px 0;
 		padding: 5px;
 		border: solid 1px $color_tag_go;
@@ -236,7 +236,7 @@ p.langage_tag_active {
 				display: flex;
 			}
 
-			.item_langage {
+			.item_language {
 				margin-right: 12px;
 				font-size: 1em;
 			}
@@ -332,6 +332,8 @@ p.langage_tag_active {
 
 			p {
 				font-size: 1.4em;
+				line-height: 1.6em;
+				color: $color;
 			}
 		}
 

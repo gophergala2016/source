@@ -304,7 +304,7 @@ h5
     color: #9099a6;
 }
 
-p.langage_tag
+p.language_tag
 {
     font-size: 1.2em;
     font-weight: bold;
@@ -317,7 +317,7 @@ p.langage_tag
     background-color: #375eab;
 }
 
-p.langage_tag_active
+p.language_tag_active
 {
     font-size: 1.2em;
 
@@ -422,7 +422,7 @@ p.langage_tag_active
 
     color: #9aa2ad;
 }
-#right_content #content .item .item_langage
+#right_content #content .item .item_language
 {
     font-size: 1em;
 
@@ -533,6 +533,9 @@ p.langage_tag_active
 .detail_item .detail_item_description .detail_item_readme p
 {
     font-size: 1.4em;
+    line-height: 1.6em;
+
+    color: #5e5e5e;
 }
 .detail_item .detail_item_description .detail_item_info
 {
