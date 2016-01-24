@@ -5,6 +5,7 @@ import (
 	"github.com/jinzhu/gorm"
 
 	"github.com/gophergala2016/source/core/config"
+	"github.com/gophergala2016/source/core/foundation"
 )
 
 func newGorm() *gorm.DB {
@@ -14,6 +15,12 @@ func newGorm() *gorm.DB {
 	}
 	db.DB().SetMaxIdleConns(10)
 	db.DB().SetMaxOpenConns(100)
+
+	// Trace SQL
+	if foundation.IsDev() {
+		db.LogMode(true)
+		db.Debug()
+	}
 	return &db
 }
 
