@@ -134,6 +134,8 @@ func (c *APIItemController) ConvertItems(items []models.Item) ([]responses.ItemR
 		return nil, err
 	}
 
+	tagFacade := facades.NewTagFacade(c.GetContext())
+
 	// Make a response
 	itemResponseList := make([]responses.ItemResponse, len(items))
 	for i, item := range items {
@@ -152,7 +154,6 @@ func (c *APIItemController) ConvertItems(items []models.Item) ([]responses.ItemR
 		itemResponse.SetUser(responses.NewUserResponse(itemUser.Name, itemUser.AvatarURL))
 
 		itemTagIDs := itemTagIDsMap[item.ID]
-		tagFacade := facades.NewTagFacade(c.GetContext())
 		tags, _ := tagFacade.FindTagByIDs(itemTagIDs)
 		for _, tag := range tags {
 			itemResponse.AppendTag(responses.NewTagResponse(tag.Name, tag.Color))
@@ -293,11 +294,30 @@ func (c *APIItemController) CreateItemFavorite(id string) {
 		return
 	}
 
+	go c.scoring(me.ID, item.ID)
+
 	// Render result
 	c.API().OK(map[string]interface{}{
 		"status":   "OK",
 		"instance": item,
 	})
+}
+
+func (c *APIItemController) scoring(meID, itemID uint64) {
+	itemFacade := facades.NewItemFacade(c.GetContext())
+	itemTagIDsMap, err := itemFacade.FindItemTagIDsMap([]uint64{itemID})
+	if err != nil {
+		return
+	}
+	tagFacade := facades.NewTagFacade(c.GetContext())
+	itemTagIDs := itemTagIDsMap[itemID]
+	tags, err := tagFacade.FindTagByIDs(itemTagIDs)
+	if err != nil {
+		return
+	}
+	for _, tag := range tags {
+		tagFacade.ScoringTag(meID, tag.ID)
+	}
 }
 
 func (c *APIItemController) CreateItem() {
@@ -330,6 +350,8 @@ func (c *APIItemController) CreateItem() {
 		return
 	}
 
+	go c.scoring(me.ID, item.ID)
+
 	// Render result
 	c.API().OK(map[string]interface{}{
 		"status":   "OK",
@@ -344,9 +366,26 @@ func (c *APITagController) GetTagList() {
 		return
 	}
 
-	//// Call a facade
-	tagFacade := facades.NewTagFacade(c.GetContext())
-	tags, err := tagFacade.FindPopularTag(param.Limit)
+	tags, err := func() ([]models.Tag, error) {
+		//// Call a facade
+		tagFacade := facades.NewTagFacade(c.GetContext())
+		meFacade := facades.NewMeFacade(c.GetContext())
+		me, _ := meFacade.GetMe(param.GetAccessToken())
+		if me != nil {
+			const scoreCountThreshold = 3
+			tags, _ := tagFacade.FindTagByScore(me.ID, param.Limit)
+			counter := 0
+			for _, tag := range tags {
+				if tag.Score > 5 {
+					counter++
+				}
+			}
+			if scoreCountThreshold >= counter {
+				return tags, nil
+			}
+		}
+		return tagFacade.FindPopularTag(param.Limit)
+	}()
 	if err != nil {
 		c.API().InternalServerError(map[string]interface{}{
 			"status":  "NG",
@@ -355,7 +394,6 @@ func (c *APITagController) GetTagList() {
 		})
 		return
 	}
-
 	// Render result
 	c.API().OK(map[string]interface{}{
 		"status":    "OK",

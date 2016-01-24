@@ -37,10 +37,10 @@ func main() {
 
 	router := router()
 
-	router.Static("/public", internal.JoinPath("./public"))
+	router.Static("/public", internal.JoinPath("./client"))
 
-	router.LoadHTMLGlob(filepath.Clean(internal.JoinPath("./internal/views")),
-		filepath.Clean(internal.JoinPath("./internal/views")))
+	router.LoadHTMLGlob(filepath.Clean(internal.JoinPath("./client")),
+		filepath.Clean(internal.JoinPath("./client")))
 
 	switch {
 	case len(*sock) != 0:

@@ -9,7 +9,8 @@ import {ItemService} from '../../services/ItemService';
 import {Item} from '../../models/Item';
 
 @Component({
-    selector: 'list-items'
+    selector: 'list-items',
+    appInjector: [ItemService]
 })
 
 @View({
@@ -25,9 +26,14 @@ export class ListItems {
     }
 
     getItems(limit:string) {
-        this.itemService.getItems(limit)
-            .map(res => res.json())
-            .subscribe(res => this.items = res);
+        this.itemService.getItems(limit).then(function(response) {
+            console.log('response', response)
+          }).then(function(json) {
+            console.log('parsed json', json)
+            this.items = json;
+          }).catch(function(ex) {
+            console.log('parsing failed', ex)
+          });
     }
 
     viewItem(item) {

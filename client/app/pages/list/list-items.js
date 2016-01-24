@@ -19,10 +19,14 @@ var ListItems = (function () {
         this.getItems('10');
     }
     ListItems.prototype.getItems = function (limit) {
-        var _this = this;
-        this.itemService.getItems(limit)
-            .map(function (res) { return res.json(); })
-            .subscribe(function (res) { return _this.items = res; });
+        this.itemService.getItems(limit).then(function (response) {
+            console.log('response', response);
+        }).then(function (json) {
+            console.log('parsed json', json);
+            this.items = json;
+        }).catch(function (ex) {
+            console.log('parsing failed', ex);
+        });
     };
     ListItems.prototype.viewItem = function (item) {
         this.router.parent.navigate('/view/' + item.isbn);
@@ -36,7 +40,8 @@ var ListItems = (function () {
     };
     ListItems = __decorate([
         angular2_1.Component({
-            selector: 'list-items'
+            selector: 'list-items',
+            appInjector: [ItemService_1.ItemService]
         }),
         angular2_1.View({
             directives: [angular2_1.coreDirectives],
