@@ -12,19 +12,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var angular2_1 = require('angular2/angular2');
 var router_1 = require('angular2/router');
 var browser_location_1 = require('angular2/src/router/browser_location');
+var GithubService_1 = require('../services/GithubService');
 var edit_book_1 = require('./edit/edit-book');
 var MainItemList_1 = require('./list/MainItemList');
 var RecommendedItemList_1 = require('./list/RecommendedItemList');
 var view_book_1 = require('./view/view-book');
 var TagList_1 = require('../partial/TagList');
 var App = (function () {
-    function App(router, browserLocation) {
+    function App(router, browserLocation, githubService) {
+        this.githubService = githubService;
     }
     App.prototype.isHome = function (browserLocation) {
         return { head_menu_active: browserLocation.path() == '/' };
     };
     App.prototype.openGithubLogin = function () {
-        alert("click!!!!");
+        this.githubService.doLogin();
+        //alert("click!!!!");
     };
     App.prototype.openCreateItem = function () {
         alert("create item!!!!");
@@ -32,6 +35,7 @@ var App = (function () {
     App = __decorate([
         angular2_1.Component({
             selector: 'source-app',
+            appInjector: [GithubService_1.GithubService]
         }),
         angular2_1.View({
             directives: [router_1.RouterOutlet, router_1.RouterLink, angular2_1.coreDirectives, TagList_1.TagList],
@@ -44,7 +48,7 @@ var App = (function () {
             { path: '/edit/:id', as: 'edit', component: edit_book_1.EditBook },
             { path: '/view/:id', as: 'view', component: view_book_1.ViewBook }
         ]), 
-        __metadata('design:paramtypes', [router_1.Router, browser_location_1.BrowserLocation])
+        __metadata('design:paramtypes', [router_1.Router, browser_location_1.BrowserLocation, GithubService_1.GithubService])
     ], App);
     return App;
 })();

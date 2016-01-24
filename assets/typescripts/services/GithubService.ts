@@ -4,27 +4,68 @@ import {Inject} from 'angular2/di';
 
 export class GithubService {
 
+    private windowHandle:any = null;
+    private intervalId:any = null;
+    private loopCount = 600;
+    private intervalLength = 100;
     
     constructor() {
     }
 
-    _callAPI(url:string, method:string, data:any) {
-        return window.fetch(url, {
-            method: method,
-            headers: {},
-            body: JSON.stringify(data)
-        })
+    createWindow(url:string, name:string='Window', width:number=500, height:number=600, left:number=0, top:number=0) {
+        if (url == null) {
+            return null;
+        }
+        var options = `width=${width},height=${height},left=${left},top=${top}`;
+        return window.open(url, name, options);
     }
 
     getAuthorizeURL() {
-        return 'https://github.com/login/oauth/authorize?client_id=dd3e0054b2eab3c42a53&redirect_uri=source://oauth-callback/github&response_type=code'; 
+        return 'https://github.com/login/oauth/authorize?client_id=dd3e0054b2eab3c42a53&redirect_uri=http://getsource.io/auth/callback&response_type=code'; 
     }
+
+    public doLogin() {
+        var loopCount = this.loopCount;
+        this.windowHandle = window.open(this.getAuthorizeURL());
+
+        this.intervalId = setInterval(() => {
+        if (loopCount-- < 0) { // if we get below 0, it's a timeout and we close the window
+            clearInterval(this.intervalId);
+            this.windowHandle.close();
+        } else { // otherwise we check the URL of the window
+            var href:string;
+            try {
+                href = this.windowHandle.location.href;
+            } catch (e) {
+                console.log('Error:', e);
+            }
+            if (href != null) { // if the URL is not null
+                var authCode = href.indexOf("code") > -1 ? href.match(/[&\?]code=([\w\/\-]+)/)[1] : null;
+                if (authCode != null) { // and if the URL has an access token then process the URL for access token and expiration time
+                    
+                console.log(authCode);
+
+                        this.windowHandle.close();
+                        
+                        this.getAccessToken(authCode).then(function(response) {
+                            console.log('response', response)
+                          }).then(function(json) {
+                            console.log('parsed json', json)
+                          }).catch(function(ex) {
+                            console.log('parsing failed', ex)
+                          });
+                }
+            }
+        }
+    }, this.intervalLength);
+    }
+
 
     getQueryString() {
         var result = {};
-        if( 1 < window.location.search.length )
+        if( 1 < this.windowHandle.location.search.length )
         {
-            var query = window.location.search.substring( 1 );
+            var query = this.windowHandle.location.search.substring( 1 );
             var parameters = query.split( '&' );
 
             for( var i = 0; i < parameters.length; i++ )
@@ -40,10 +81,13 @@ export class GithubService {
         return result;
     }
 
-    getCode() {
-        var query = this.getQueryString();
-        return query['code'];
-    }
+    _callAPI(url:string, method:string, data:any) {
+        return window.fetch(url, {
+            method: method,
+            headers: {},
+            body: JSON.stringify(data)
+        })
+    }   
 
     getAccessToken(code:string) {
         var data = {
@@ -51,7 +95,7 @@ export class GithubService {
             'client_id': 'dd3e0054b2eab3c42a53',
             'client_secret': 'xxx',
             'grant_type': 'authorization_code',     
-            'redirect_uri': 'source://oauth-callback/github',
+            'redirect_uri': 'http://getsource.io/auth/callback',
         };
         return this._callAPI('https://github.com/login/oauth/access_token', 'POST', data);
     }
