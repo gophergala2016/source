@@ -244,7 +244,6 @@ import (
 	"net/http"
 
 	"github.com/gophergala2016/source/internal"
-	"github.com/gophergala2016/source/core/foundation"
 )
 
 var _ = filepath.Separator
