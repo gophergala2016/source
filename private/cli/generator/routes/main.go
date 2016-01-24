@@ -238,7 +238,6 @@ func main() {
 const gaeSource = `
 import (
 	"flag"
-	"html/template"
 	"strings"
 	"path/filepath"
 	"net/http"
@@ -272,7 +271,6 @@ func init() {
 
 	router := router()
 
-	var t *template.Template
 	names, bodies := []string{}, []string{}
 	for filename, _ := range _bindata {
 		if !strings.HasPrefix(filename, "html") {
