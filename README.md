@@ -1,5 +1,9 @@
 ![](https://github.com/gophergala2016/source/blob/master/private/design/source_logo.png)
 
+----
+
+## About source
+
 [source](http://getsource.io) provides source code hosted on [GitHub](https://github.com).
 
 **For All Developers**
