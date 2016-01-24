@@ -277,7 +277,7 @@ func init() {
 
 	names, bodies := []string{}, []string{}
 	for filename, _ := range _bindata {
-		if !strings.HasPrefix(filename, "html") {
+		if !strings.HasSuffix(filename, "html") {
 			continue
 		}
 		b, err := Asset(filename)
