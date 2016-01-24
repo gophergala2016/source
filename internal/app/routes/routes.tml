@@ -4,11 +4,11 @@ name = "github.com/gophergala2016/source/internal/controllers/api"
 [[package]]
 name = "github.com/gophergala2016/source/internal/controllers/web"
 
-# [[static]]
-# path            = "/public"
-# relative_path   = "./public"
-# 
-# [[html]]
-# pattern         = "./internal/views"
-# relative_path   = "./internal/views"
-# 
+[[static]]
+path            = "/public"
+relative_path   = "./public"
+
+[[html]]
+pattern         = "./internal/views"
+relative_path   = "./internal/views"
+

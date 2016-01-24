@@ -35,6 +35,10 @@ func main() {
 
 	router := router()
 
+	router.Static("/public", internal.JoinPath("./public"))
+
+	router.LoadHTMLGlob(filepath.Clean(internal.JoinPath("./internal/views")),
+		filepath.Clean(internal.JoinPath("./internal/views")))
 	_ = filepath.Clean("")
 
 	switch {
