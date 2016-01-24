@@ -38,20 +38,6 @@ var GithubService = (function () {
                 catch (e) {
                     console.log('Error:', e);
                 }
-                if (href != null) {
-                    var authCode = href.indexOf("code") > -1 ? href.match(/[&\?]code=([\w\/\-]+)/)[1] : null;
-                    if (authCode != null) {
-                        console.log(authCode);
-                        _this.windowHandle.close();
-                        _this.getAccessToken(authCode).then(function (response) {
-                            console.log('response', response);
-                        }).then(function (json) {
-                            console.log('parsed json', json);
-                        }).catch(function (ex) {
-                            console.log('parsing failed', ex);
-                        });
-                    }
-                }
             }
         }, this.intervalLength);
     };

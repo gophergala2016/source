@@ -69,6 +69,7 @@ import {TagList} from '../partial/TagList';
 
 export class App {
     constructor(router: Router, browserLocation: BrowserLocation, public githubService: GithubService) {
+        this.checkCallback();
     }
 
     public isHome(browserLocation: BrowserLocation){
@@ -80,6 +81,22 @@ export class App {
     }
     public openCreateItem(){
         alert("create item!!!!");
+    }
+    private checkCallback(){
+        var authCode: string ;
+        if (location.href.indexOf("code") > -1){
+            authCode = location.href.match(/[&\?]code=([\w\/\-]+)/)[1];
+            console.log(authCode);
+        }
+        if (authCode != null) { // and if the URL has an access token then process the URL for access token and expiration time
+            this.getAccessToken(authCode).then(function(response) {
+                console.log('response', response)
+            }).then(function(json) {
+                console.log('parsed json', json)
+            }).catch(function(ex) {
+                console.log('parsing failed', ex)
+            });
+        }
     }
 
 }

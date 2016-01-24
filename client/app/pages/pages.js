@@ -21,6 +21,7 @@ var TagList_1 = require('../partial/TagList');
 var App = (function () {
     function App(router, browserLocation, githubService) {
         this.githubService = githubService;
+        this.checkCallback();
     }
     App.prototype.isHome = function (browserLocation) {
         return { head_menu_active: browserLocation.path() == '/' };
@@ -31,6 +32,22 @@ var App = (function () {
     };
     App.prototype.openCreateItem = function () {
         alert("create item!!!!");
+    };
+    App.prototype.checkCallback = function () {
+        var authCode;
+        if (location.href.indexOf("code") > -1) {
+            authCode = location.href.match(/[&\?]code=([\w\/\-]+)/)[1];
+            console.log(authCode);
+        }
+        if (authCode != null) {
+            this.getAccessToken(authCode).then(function (response) {
+                console.log('response', response);
+            }).then(function (json) {
+                console.log('parsed json', json);
+            }).catch(function (ex) {
+                console.log('parsing failed', ex);
+            });
+        }
     };
     App = __decorate([
         angular2_1.Component({
