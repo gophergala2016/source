@@ -28,12 +28,15 @@ test:
 	@echo "go test source and vendor packages"
 	@go test $(source_ONLY_PKGS)
 
-generate: gen-core gen-app
+generate: gen-core gen-app gen-views
 
-generate-gae: gen-core gen-app-gae
+generate-gae: gen-core gen-app-gae gen-views
 
 gen-core:
 	go generate ./core/...
+
+gen-views:
+	go generate ./internal/views/...
 
 gen-app:
 	go generate ./internal/app/...
