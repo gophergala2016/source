@@ -59,6 +59,31 @@ func templateName(relativePath, filename string) string {
 	return name
 }
 
+// applyBody
+func applyBody(t *template.Template, name, body string) (*template.Template, error) {
+	var tmpl *template.Template
+	if t == nil {
+		t = template.New(name)
+	}
+	if name == t.Name() {
+		tmpl = t
+	} else {
+		tmpl = t.New(name)
+	}
+	if len(Template.Filters) > 0 {
+		tmpl = applyFilters(tmpl, Template.Filters...)
+	}
+	if Template.Delims.isValid() {
+		tmpl.Delims(Template.Delims.Get())
+	}
+	DebugPrintf("Parse as \"%s\"\n", name)
+	_, err = tmpl.Parse(body)
+	if err != nil {
+		return nil, err
+	}
+	return t, nil
+}
+
 // parseFiles is the helper for the method and function. If the argument
 // template is nil, it is created from the first file.
 func parseFiles(t *template.Template, relativePath string, filenames ...string) (*template.Template, error) {

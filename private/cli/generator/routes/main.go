@@ -195,6 +195,8 @@ import (
 	"github.com/gophergala2016/source/internal"
 )
 
+var _ = filepath.Separator
+
 const (
 	appName = "{{.appName}}"
 )
@@ -223,7 +225,6 @@ func main() {
 {{range .html}}
 	router.LoadHTMLGlob(filepath.Clean(internal.JoinPath("{{.RelativePath}}")),
 		filepath.Clean(internal.JoinPath("{{.Pattern}}"))){{end}}
-	_ = filepath.Clean("")
 
 	switch {
 	case len(*sock) != 0:
@@ -237,12 +238,16 @@ func main() {
 const gaeSource = `
 import (
 	"flag"
+	"html/template"
 	"strings"
 	"path/filepath"
 	"net/http"
 
 	"github.com/gophergala2016/source/internal"
+	"github.com/gophergala2016/source/core/foundation"
 )
+
+var _ = filepath.Separator
 
 const (
 	appName = "{{.appName}}"
@@ -267,12 +272,21 @@ func init() {
 	internal.Init(appName, *port)
 
 	router := router()
-{{range .static}}
-	router.Static("{{.Path}}", internal.JoinPath("{{.RelativePath}}")){{end}}
-{{range .html}}
-	router.LoadHTMLGlob(filepath.Clean(internal.JoinPath("{{.RelativePath}}")),
-		filepath.Clean(internal.JoinPath("{{.Pattern}}"))){{end}}
-	_ = filepath.Clean("")
+
+	var t *template.Template
+	names, bodies := []string{}, []string{}
+	for filename, _ := range _bindata {
+		if !strings.HasPrefix(filename, "html") {
+			continue
+		}
+		b, err := Asset(filename)
+		if err != nil {
+			panic(err)
+		}
+		names = append(names, filename)
+		bodies = append(bodies, string(b))
+	}
+	foundation.LoadHTML(names, bodies)
 
 	http.Handle("/", router.DefaultMux())
 }

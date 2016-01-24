@@ -92,6 +92,18 @@ func (engine *Engine) LoadHTMLGlob(relativePath, pattern string) {
 	engine.SetHTMLTemplate(templ)
 }
 
+// LoadHTML
+func (engine *Engine) LoadHTML(name, body []string) {
+	var templ *template.Template
+	for i := 0; i < len(name); i++ {
+		templ, err = applyBody(templ, name[i], body[i])
+		if err != nil {
+			Panic(err)
+		}
+	}
+	engine.SetHTMLTemplate(templ)
+}
+
 func (engine *Engine) SetHTMLTemplate(templ *template.Template) {
 	engine.core.SetHTMLTemplate(templ)
 }
