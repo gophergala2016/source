@@ -1,4 +1,8 @@
-# source
+![](https://github.com/gophergala2016/source/blob/master/private/design/source_logo.png)
+
+----
+
+## About source
 
 [source](http://getsource.io) provides source code hosted on [GitHub](https://github.com).
 
@@ -18,7 +22,11 @@ The "source" service has a powerful recommendation system. You don't need to sea
 
 ### Beautiful Entrance Page
 
-### Registration Page
+![](https://github.com/gophergala2016/source/blob/master/private/design/HOME.png)
+
+### Detail Page
+
+![](https://github.com/gophergala2016/source/blob/master/private/design/ITEM.png)
 
 ## Installation
 
