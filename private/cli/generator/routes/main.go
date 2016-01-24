@@ -195,6 +195,8 @@ import (
 	"github.com/gophergala2016/source/internal"
 )
 
+var _ = filepath.Separator
+
 const (
 	appName = "{{.appName}}"
 )
@@ -223,7 +225,6 @@ func main() {
 {{range .html}}
 	router.LoadHTMLGlob(filepath.Clean(internal.JoinPath("{{.RelativePath}}")),
 		filepath.Clean(internal.JoinPath("{{.Pattern}}"))){{end}}
-	_ = filepath.Clean("")
 
 	switch {
 	case len(*sock) != 0:
@@ -242,7 +243,11 @@ import (
 	"net/http"
 
 	"github.com/gophergala2016/source/internal"
+	"github.com/gophergala2016/source/core/foundation"
+	"github.com/gophergala2016/source/core/config"
 )
+
+var _ = filepath.Separator
 
 const (
 	appName = "{{.appName}}"
@@ -254,12 +259,14 @@ var (
 )
 
 func init() {
+	foundation.SetMode(foundation.ProdMode)
+	config.Load()
 	flag.Parse()
 	if len(*port) == 0 {
 		*port = ":8888"
 	}
 
-	if !strings.HasPrefix(*port, ":") {
+	if !strings.HasSuffix(*port, ":") {
 		*port = ":"+*port
 	}
 
@@ -267,12 +274,20 @@ func init() {
 	internal.Init(appName, *port)
 
 	router := router()
-{{range .static}}
-	router.Static("{{.Path}}", internal.JoinPath("{{.RelativePath}}")){{end}}
-{{range .html}}
-	router.LoadHTMLGlob(filepath.Clean(internal.JoinPath("{{.RelativePath}}")),
-		filepath.Clean(internal.JoinPath("{{.Pattern}}"))){{end}}
-	_ = filepath.Clean("")
+
+	names, bodies := []string{}, []string{}
+	for filename, _ := range _bindata {
+		if !strings.HasPrefix(filename, "html") {
+			continue
+		}
+		b, err := Asset(filename)
+		if err != nil {
+			panic(err)
+		}
+		names = append(names, filename)
+		bodies = append(bodies, string(b))
+	}
+	router.LoadHTML(names, bodies)
 
 	http.Handle("/", router.DefaultMux())
 }

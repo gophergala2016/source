@@ -11,6 +11,8 @@ import (
 	"github.com/gophergala2016/source/internal"
 )
 
+var _ = filepath.Separator
+
 const (
 	appName = "source"
 )
@@ -39,7 +41,6 @@ func main() {
 
 	router.LoadHTMLGlob(filepath.Clean(internal.JoinPath("./internal/views")),
 		filepath.Clean(internal.JoinPath("./internal/views")))
-	_ = filepath.Clean("")
 
 	switch {
 	case len(*sock) != 0:
