@@ -136,5 +136,6 @@ func (f ItemFacade) UpdateItemImpressionView(itemID uint64) error {
 	if err != nil {
 		return err
 	}
-	return itemImpressionService.UpdateItemImpressionViewByID(itemID, uint(itemImp.View+1))
+	itemImp.View = itemImp.View + 1
+	return itemImpressionService.UpdateItemImpressionByID(itemImp)
 }

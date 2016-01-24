@@ -32,7 +32,7 @@ func (s ItemImpressionService) CreateItemImpression(itemID uint64, star uint) (*
 	return itemImpRepository.Create(itemImp)
 }
 
-func (s ItemImpressionService) UpdateItemImpressionViewByID(itemID uint64, view uint) error {
+func (s ItemImpressionService) UpdateItemImpressionByID(ent *models.ItemImpression) error {
 	itemImpRepository := models.NewItemImpressionRepository(s.ctx)
-	return itemImpRepository.UpdateCountByID(itemID, view)
+	return itemImpRepository.UpdateByID(ent)
 }
