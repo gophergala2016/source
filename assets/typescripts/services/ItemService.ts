@@ -1,6 +1,7 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
 import {Inject} from 'angular2/di';
+import { Cookie } from '../common/Cookie';
 
 export class ItemService {
 
@@ -17,7 +18,7 @@ export class ItemService {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Token': 'qaw35dRtgyhtpDdDA21vgbjmyr43474kkdj',
-                'Authorization': 'Bearer HCDbAav5VUWkUNFunGhRU41JXVT7gfxysZmLCtrx'
+                'Authorization': 'Bearer ' + Cookie.getCookie('accessToken')
             },
             body: JSON.stringify(data)
         })
