@@ -22,6 +22,14 @@ func (r *TagRepository) GetByID(id uint64) (*Tag, error) {
 	return ent, nil
 }
 
+func (r *TagRepository) FindByNames(names []string) ([]Tag, error) {
+	var ents []Tag
+	if err := r.Orm.Where("name IN (?)", names).Find(ents).Error; err != nil {
+		return ents, err
+	}
+	return ents, nil
+}
+
 func (r *TagRepository) Create(ent *Tag) (*Tag, error) {
 	if err := r.Orm.Create(ent).Error; err != nil {
 		return nil, err

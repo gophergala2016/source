@@ -21,9 +21,53 @@ func (f ItemFacade) GetItemByID(id uint64) (*models.Item, error) {
 	return itemService.GetItemByID(id)
 }
 
-func (f ItemFacade) CreateItem(userID uint64, githubURL string) (*models.Item, error) {
-	itemService := services.NewItemService(f.ctx)
-	return itemService.CreateItem(userID, githubURL)
+func (f ItemFacade) CreateItem(userID uint64, githubURL string) (item *models.Item, err error) {
+
+	item = models.NewItem(userID, githubURL)
+
+	// Get github info
+	var github *models.Github
+	githubService := services.NewGithubService()
+	if github, err = githubService.GetGithub(githubURL); err != nil {
+		return nil, err
+	}
+
+	{
+		// Item
+		itemService := services.NewItemService(f.ctx)
+		item.Author = github.Author
+		item.Name = github.Name
+		item.Description = github.Description
+		if item, err = itemService.CreateItem(item); err != nil {
+			return nil, err
+		}
+	}
+
+	{
+		// Star
+		itemImpressionService := services.NewItemImpressionService(f.ctx)
+		if _, err = itemImpressionService.CreateItemImpression(item.ID, uint(github.Star)); err != nil {
+			return nil, err
+		}
+	}
+
+	{
+		// Tag
+		var tags []models.Tag
+		tagService := services.NewTagService(f.ctx)
+		if tags, err = tagService.FindTagByNames(github.Languages); err != nil {
+			return nil, err
+		}
+
+		itemTagService := services.NewItemTagService(f.ctx)
+		for _, tag := range tags {
+			if _, err = itemTagService.CreateItemTag(item.ID, tag.ID); err != nil {
+				return nil, err
+			}
+		}
+	}
+
+	return
 }
 
 func (f ItemFacade) FindLatestItem(limit int) ([]models.Item, error) {

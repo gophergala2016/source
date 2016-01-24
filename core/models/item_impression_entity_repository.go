@@ -36,8 +36,15 @@ func (r *ItemImpressionRepository) UpdateByID(ent *ItemImpression) error {
 	return nil
 }
 
-func (r *ItemImpressionRepository) UpdateCountByID(itemID uint64, count int) error {
-	if err := r.Orm.Model(&ItemImpression{}).Where("item_id = ?", itemID).Update("count", count).Error; err != nil {
+func (r *ItemImpressionRepository) UpdateCountByID(itemID uint64, view int) error {
+	if err := r.Orm.Model(&ItemImpression{}).Where("item_id = ?", itemID).Update("view", view).Error; err != nil {
+		return err
+	}
+	return nil
+}
+
+func (r *ItemImpressionRepository) UpdateStarByID(itemID uint64, star int) error {
+	if err := r.Orm.Model(&ItemImpression{}).Where("item_id = ?", itemID).Update("star", star).Error; err != nil {
 		return err
 	}
 	return nil

@@ -21,8 +21,7 @@ func (s ItemService) GetItemByID(id uint64) (*models.Item, error) {
 	return itemRepository.GetByID(id)
 }
 
-func (s ItemService) CreateItem(userID uint64, githubURL string) (*models.Item, error) {
-	item := models.NewItem(userID, githubURL)
+func (s ItemService) CreateItem(item *models.Item) (*models.Item, error) {
 	itemRepository := models.NewItemRepository(s.ctx)
 	return itemRepository.Create(item)
 }

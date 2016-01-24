@@ -8,7 +8,7 @@ NewLisp: #87AED7  : 0
 Jupyter Notebook: #DA5B0B  : 0
 Rebol: #358a5b  : 0
 Frege: #00cafe  : 0
-Dart: #00B4AB  : 1
+Dart: #00B4AB  : 0
 AspectJ: #a957b0  : 0
 Shell: #89e051  : 1
 Web Ontology Language: #9cc9dd  : 0
@@ -18,7 +18,7 @@ Nix: #7e7eff  : 0
 RAML: #77d9fb  : 0
 MTML: #b7e1f4  : 0
 Racket: #22228f  : 0
-Elixir: #6e4a7e  : 2
+Elixir: #6e4a7e  : 1
 SAS: #B34936  : 0
 Agda: #315665  : 0
 wisp: #7582D1  : 0
@@ -192,7 +192,7 @@ Haskell: #29b544  : 1
 NCL: #28431f  : 0
 Io: #a9188d  : 0
 Rouge: #cc0088  : 0
-cpp: #f34b7d  : 2
+C++: #f34b7d  : 2
 AGS Script: #B9D9FF : 0 
 Dogescript: #cca760  : 0
 nesC: #94B0C7 : 0
