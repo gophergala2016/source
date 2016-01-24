@@ -1,28 +1,47 @@
-# source
+# source - Recommend Source Code for All Developers
 
-すべてのエンジニアのために
+[source](http://getsource.io) provides source code hosted on [GitHub](https://github.com).
 
-- 独自のレコメンドシステムで最適な,まだ出会ったことのない素敵なライブラリ
+**For All Developers**
 
-を提案するサービス
+GitHub is a very important and famous web site for developers around the world. An user creates an awesome project to publish. It's a great way to contribute to the world but sometimes the project is obscured under more that 5 million open source projects on GitHub. Finally, we released a grate matching code service which is responsible for appropriated codes for you.
 
-### 動機
+The "source" service has a powerful recommendation system. You don't need to search what you want anymore from now on.
 
-良いライブラリを見つけるのには時間がかかる。
-プログラミング言語は増え続けていて、最適なライブラリを見つけることは更に難しくなる。
+## Features
 
-エンジニアをもっと楽にしてあげたい。
-
-### 機能
-
-- githubのURLから記事を自動生成
-
-- プログラミング言語でライブラリを検索
+- Generate contents by GitHub's URL.
+- Search projects by Programming Languages.
 
 
-### サービス画像
+## Screenshots
 
-- HOGE1
+### Beautiful Entrance Page
 
-- HOGE2
+### Registration Page
+
+## Installation
+
+`source` app is hosted on Google App Engine.
+
+Perhaps, the project is runnable without Google App Engine on your local machin.
+
+```
+$ go get -u github.com/gophergala2016/source
+$ cd /path/to/source
+$ make gen-app
+$ go run ./internal/app/*.go
+```
+
+Check the following command if you host on Google App Engine
+
+```
+$ go get -u github.com/gophergala2016/source
+$ cd /path/to/source
+$ make gen-app-gae
+$ vim ./internal/app/app.yaml
+$ goapp deploy ./internal/app
+```
+
+## Ours
 
