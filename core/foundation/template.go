@@ -60,26 +60,29 @@ func templateName(relativePath, filename string) string {
 }
 
 // applyBody
-func applyBody(t *template.Template, name, body string) (*template.Template, error) {
-	var tmpl *template.Template
-	if t == nil {
-		t = template.New(name)
-	}
-	if name == t.Name() {
-		tmpl = t
-	} else {
-		tmpl = t.New(name)
-	}
-	if len(Template.Filters) > 0 {
-		tmpl = applyFilters(tmpl, Template.Filters...)
-	}
-	if Template.Delims.isValid() {
-		tmpl.Delims(Template.Delims.Get())
-	}
-	DebugPrintf("Parse as \"%s\"\n", name)
-	_, err := tmpl.Parse(body)
-	if err != nil {
-		return nil, err
+func applyBody(t *template.Template, names, bodies []string) (*template.Template, error) {
+	for i := 0; i < len(names); i++ {
+		name, body := names[i], bodies[i]
+		var tmpl *template.Template
+		if t == nil {
+			t = template.New(name)
+		}
+		if name == t.Name() {
+			tmpl = t
+		} else {
+			tmpl = t.New(name)
+		}
+		if len(Template.Filters) > 0 {
+			tmpl = applyFilters(tmpl, Template.Filters...)
+		}
+		if Template.Delims.isValid() {
+			tmpl.Delims(Template.Delims.Get())
+		}
+		DebugPrintf("Parse as \"%s\"\n", name)
+		_, err := tmpl.Parse(body)
+		if err != nil {
+			return nil, err
+		}
 	}
 	return t, nil
 }

@@ -266,7 +266,7 @@ func init() {
 		*port = ":8888"
 	}
 
-	if !strings.HasPrefix(*port, ":") {
+	if !strings.HasSuffix(*port, ":") {
 		*port = ":"+*port
 	}
 

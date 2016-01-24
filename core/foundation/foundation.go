@@ -94,13 +94,9 @@ func (engine *Engine) LoadHTMLGlob(relativePath, pattern string) {
 
 // LoadHTML
 func (engine *Engine) LoadHTML(name, body []string) {
-	var templ *template.Template
-	var err error
-	for i := 0; i < len(name); i++ {
-		templ, err = applyBody(templ, name[i], body[i])
-		if err != nil {
-			Panic(err)
-		}
+	templ, err := applyBody(nil, name, body)
+	if err != nil {
+		panic(err)
 	}
 	engine.SetHTMLTemplate(templ)
 }
