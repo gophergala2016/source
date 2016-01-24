@@ -1,10 +1,12 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
 // Angular 2
+
 import {Component, View, coreDirectives} from 'angular2/angular2';
 import {RouteConfig, RouterOutlet, RouterLink, Router} from 'angular2/router';
 import {BrowserLocation} from 'angular2/src/router/browser_location';
 
+import {GithubService} from '../services/GithubService';
 import {CreateBook} from './create/create-book';
 import {EditBook} from './edit/edit-book';
 import {ListItems} from './list/list-items';
@@ -15,21 +17,21 @@ import {ViewBook} from './view/view-book';
 })
 
 @View({
-    directives: [ RouterOutlet, RouterLink, coreDirectives ],
+    directives: [ RouterOutlet, RouterLink, coreDirectives],
     template: `
         <header>
             <div id="head_left">
                 <div id="head_logo"><img src="/public/img/source_logo.svg" width="80px" height="20px"></div>
                 <ul>
-                    <li class="head_menu_active" router-link="list">Home</li>
-                    <li router-link="recommend">Recommended</li>
+                    <li class="" router-link="list">Home</li>
+                    <li class="head_menu_active" router-link="recommend">Recommended</li>
                 </ul>
             </div>
             <div id="head_right">
                 <div id="button_add">
                     <img src="/public/img/plus.svg" width="12px" height="12px">Add Item
                 </div>
-                <div id="button_login">
+                <div (click)="openGithubLogin()" id="button_login">
                     <img src="/public/img/github.svg" width="15px" height="15px">
                     Login to Github
                 </div>
@@ -59,19 +61,23 @@ import {ViewBook} from './view/view-book';
 })
 
 @RouteConfig([
-    { path: '/login',          redirectTo: '/list' },
+    { path: '/',            redirectTo: '/list' },
     { path: '/#/list',      as: 'list',      component: ListItems },
-    { path: '/#/recommend',    as: 'recommend',    component: CreateBook },
-    { path: '/edit/:id',  as: 'edit',      component: EditBook },
-    { path: '/view/:id',  as: 'view',      component: ViewBook }
+    { path: '/#/recommend', as: 'recommend', component: CreateBook },
+    { path: '/edit/:id',    as: 'edit',      component: EditBook },
+    { path: '/view/:id',    as: 'view',      component: ViewBook }
 ])
 
 export class App {
     constructor(router: Router, browserLocation: BrowserLocation) {
-
-        // we need to manually go to the correct uri until the router is fixed
-        let uri = browserLocation.path();
-        console.log(uri);
     }
+
+    public isHome(browserLocation: BrowserLocation){
+        return {head_menu_active: browserLocation.path() == '/'}
+    }
+    public openGithubLogin(){
+        alert("click!!!!");
+    }
+
 }
 
