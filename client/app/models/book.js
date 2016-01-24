@@ -34,4 +34,4 @@ var Book = (function () {
 })();
 exports.Book = Book;
 
-//# sourceMappingURL=book.js.map
+//# sourceMappingURL=Book.js.map
