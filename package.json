@@ -50,9 +50,10 @@
     "bootstrap": "^3.3.6"
   },
   "scripts": {
-      "ts": "gulp compile-ts",
-      "tslint": "gulp ts-lint",
-      "watch": "gulp watch",
-      "build": "gulp build"
+      "ts":         "gulp compile-ts",
+      "tslint":     "gulp ts-lint",
+      "js-vendor":  "gulp js-vendor",
+      "watch":      "gulp watch",
+      "build":      "gulp build"
   }
 }

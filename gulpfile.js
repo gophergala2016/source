@@ -43,12 +43,6 @@ gulp.task('compile-ts', ['ts-lint'],
         .pipe(gulp.dest('./client/app'));
 });
 
-gulp.task('clean', function (done) {
-    del([
-        config.dest + '/**'
-    ], done);
-});
-
 gulp.task('watch', function() {
     gulp.watch([config.allTypeScript], ['ts-lint', 'compile-ts']);
     gulp.watch(['assets/stylesheets/pc/**/*.scss'], ['scss:pc']);
@@ -73,7 +67,7 @@ var routine = function(path) {
       minifier: false // boolean
     }))
     .pipe($.concat(path + '.css'))
-    .pipe(gulp.dest('public/css/'));
+    .pipe(gulp.dest('client/css/'));
 }
 
 // task for PC compass
@@ -88,23 +82,11 @@ gulp.task('scss:sp',function(){
 
 gulp.task('build', ['scss:pc', 'scss:sp', 'ts-lint', 'compile-ts']);
 
-
-gulp.task('js-vendor', ['ts-vendor', 'js-vendor-pc', 'js-vendor-sp']);
-
-gulp.task('js-vendor-pc', function(){
+gulp.task('js-vendor', function(){
   gulp.src(['assets/vendor/**/*.js'])
     .pipe($.concatVendor('vendor.js'))
-    .pipe($.if(isRelease, $.uglify({
+    .pipe($.uglify({
       preserveComments: 'some',
-    }).on('error', util.log)))
-    .pipe(gulp.dest('public/js/pc/'));
-});
-
-gulp.task('js-vendor-sp', function(){
-  gulp.src(['assets/vendor/**/*.js'])
-    .pipe($.concatVendor('vendor.js'))
-    .pipe($.if(isRelease, $.uglify({
-      preserveComments: 'some',
-    }).on('error', util.log)))
-    .pipe(gulp.dest('public/js/sp/'));
+    }))
+    .pipe(gulp.dest('client/app/'));
 });
