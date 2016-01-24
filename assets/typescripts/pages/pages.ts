@@ -12,7 +12,7 @@ import {EditBook} from './edit/edit-book';
 import {ListItems} from './list/list-items';
 import {ViewBook} from './view/view-book';
 
-import {TagList} from './tag_list';
+import {TagList} from '../partial/TagList';
 
 @Component({
     selector: 'source-app',
