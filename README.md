@@ -32,7 +32,7 @@ The "source" service has a powerful recommendation system. You don't need to sea
 
 `source` app is hosted on Google App Engine.
 
-Perhaps, the project is runnable without Google App Engine on your local machin.
+Perhaps, the project is runnable without Google App Engine on your local machine.
 
 ```
 $ go get -u github.com/gophergala2016/source
@@ -56,6 +56,7 @@ $ goapp deploy ./internal/app
 ### Go
 
 - Go1.4.2+
+    - Because of GAE.
     - Buildable and Runnable over than Go1.5.
 - `internal` package
     - The feature is available from Go1.5.
