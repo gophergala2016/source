@@ -40,12 +40,14 @@ var App = (function () {
             console.log(authCode);
         }
         if (authCode != null) {
-            this.getAccessToken(authCode).then(function (response) {
+            this.githubService.getAccessToken(authCode).then(function (response) {
                 console.log('response', response);
             }).then(function (json) {
                 console.log('parsed json', json);
             }).catch(function (ex) {
                 console.log('parsing failed', ex);
+                alert('error');
+                location.href = '/';
             });
         }
     };

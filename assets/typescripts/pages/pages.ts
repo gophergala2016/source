@@ -89,12 +89,14 @@ export class App {
             console.log(authCode);
         }
         if (authCode != null) { // and if the URL has an access token then process the URL for access token and expiration time
-            this.getAccessToken(authCode).then(function(response) {
-                console.log('response', response)
+            this.githubService.getAccessToken(authCode).then(function(response) {
+                console.log('response', response);
             }).then(function(json) {
-                console.log('parsed json', json)
+                console.log('parsed json', json);
             }).catch(function(ex) {
-                console.log('parsing failed', ex)
+                console.log('parsing failed', ex);
+                alert('error');
+                location.href = '/';
             });
         }
     }
