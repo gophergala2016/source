@@ -50,6 +50,7 @@ type (
 	Render interface {
 		HTML(int, string, interface{})
 		JSON(int, interface{})
+		Redirect(int, string)
 	}
 
 	Request interface {
@@ -199,6 +200,11 @@ func (c *FoundationContext) HTML(code int, name string, obj interface{}) {
 // It also sets the Content-Type as "application/json".
 func (c *FoundationContext) JSON(code int, obj interface{}) {
 	c.opt.JSON(code, obj)
+}
+
+// Redirect returns a HTTP redirect to the specific location.
+func (c *FoundationContext) Redirect(code int, location string) {
+	c.opt.Redirect(code, location)
 }
 
 ////////////////////////////////////////
