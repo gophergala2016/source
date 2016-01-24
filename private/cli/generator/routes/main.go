@@ -243,6 +243,8 @@ import (
 	"net/http"
 
 	"github.com/gophergala2016/source/internal"
+	"github.com/gophergala2016/source/core/foundation"
+	"github.com/gophergala2016/source/core/config"
 )
 
 var _ = filepath.Separator
@@ -257,6 +259,8 @@ var (
 )
 
 func init() {
+	foundation.SetMode(foundation.ProdMode)
+	config.Load()
 	flag.Parse()
 	if len(*port) == 0 {
 		*port = ":8888"
