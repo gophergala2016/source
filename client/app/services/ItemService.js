@@ -31,6 +31,17 @@ var ItemService = (function () {
             console.log('parsing failed', ex);
         });
     };
+    ItemService.prototype.getItemsByTag = function (tagID, limit) {
+        var data = {};
+        this._callAPI(this.baseURL + '/items?limit=' + limit + '&tag_id=' + tagID, 'GET', data)
+            .then(function (response) {
+            console.log('response', response);
+        }).then(function (json) {
+            console.log('parsed json', json);
+        }).catch(function (ex) {
+            console.log('parsing failed', ex);
+        });
+    };
     ItemService.prototype.createItem = function (githubURL) {
         var data = {
             'github_url': githubURL,

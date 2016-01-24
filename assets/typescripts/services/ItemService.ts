@@ -41,6 +41,18 @@ export class ItemService {
           });
     }
 
+    getItemsByTag(tagID:string, limit:string) {
+        var data = {};
+        this._callAPI(this.baseURL + '/items?limit=' + limit + '&tag_id=' + tagID, 'GET', data)
+          .then(function(response) {
+            console.log('response', response)
+          }).then(function(json) {
+            console.log('parsed json', json)
+          }).catch(function(ex) {
+            console.log('parsing failed', ex)
+          });
+    }
+
     createItem(githubURL:string) {
         var data = {
             'github_url': githubURL,
