@@ -1,15 +1,12 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
 import {Inject} from 'angular2/di';
-import {Http, Headers, httpInjectables} from 'angular2/http';
 
 export class ItemService {
 
-    http: Http;
     baseURL: string;
     
-    constructor(@Inject(Http) http) {
-        this.http = http;
+    constructor() {
         this.baseURL = '/v1';
     }
 
@@ -26,23 +23,41 @@ export class ItemService {
         })
     }
 
-    getItems(limit:string) {
-        return this.http.get(this.baseURL + '/items?limit=' + limit);
+    getItem(id:string) {
+        var data = {};
+        return this._callAPI(this.baseURL + '/item/' + id, 'GET', data);
     }
 
-    getItem(id:string) {
-        return this.http.get(this.baseURL + '/item/' + id);
+    getItems(limit:string) {
+        var data = {};
+        this._callAPI(this.baseURL + '/items?limit=' + limit, 'GET', data)
+          .then(function(response) {
+            console.log('response', response)
+          }).then(function(json) {
+            console.log('parsed json', json)
+          }).catch(function(ex) {
+            console.log('parsing failed', ex)
+          });
     }
-    
+
     createItem(githubURL:string) {
         var data = {
             'github_url': githubURL,
-        }
+        };
         return this._callAPI(this.baseURL + '/item', 'POST', data);
+    }
+
+    createFavorite(id:string) {
+        var data = {};
+        return this._callAPI(this.baseURL + 'favorite/' + id, 'POST', data);
+    }
+
+    getFavorites(limit:string) {
+        var data = {};
+        return this._callAPI(this.baseURL + '/favorites?limit=' + limit, 'GET', data);
     }
 }
 
 export let itemServiceInjectables = [
-    ItemService,
-    httpInjectables
+    ItemService
 ];
