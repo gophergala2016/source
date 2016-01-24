@@ -286,7 +286,7 @@ func init() {
 		names = append(names, filename)
 		bodies = append(bodies, string(b))
 	}
-	foundation.LoadHTML(names, bodies)
+	router.LoadHTML(names, bodies)
 
 	http.Handle("/", router.DefaultMux())
 }

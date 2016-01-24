@@ -77,7 +77,7 @@ func applyBody(t *template.Template, name, body string) (*template.Template, err
 		tmpl.Delims(Template.Delims.Get())
 	}
 	DebugPrintf("Parse as \"%s\"\n", name)
-	_, err = tmpl.Parse(body)
+	_, err := tmpl.Parse(body)
 	if err != nil {
 		return nil, err
 	}
