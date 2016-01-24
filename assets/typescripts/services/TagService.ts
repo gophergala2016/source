@@ -24,7 +24,7 @@ export class TagService {
         })
     }
 
-    getTags(limit:string) {
+    public getTags(limit:string) {
         var data = {};
         return this._callAPI(this.baseURL + '/tags?limit=' + limit, 'GET', data);
     }

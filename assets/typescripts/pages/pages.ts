@@ -2,7 +2,7 @@
 
 // Angular 2
 
-import {Component, View, coreDirectives} from 'angular2/angular2';
+import {bootstrap, Component, View, coreDirectives, NgFor, NgIf} from 'angular2/angular2';
 import {RouteConfig, RouterOutlet, RouterLink, Router} from 'angular2/router';
 import {BrowserLocation} from 'angular2/src/router/browser_location';
 
@@ -12,13 +12,15 @@ import {EditBook} from './edit/edit-book';
 import {ListItems} from './list/list-items';
 import {ViewBook} from './view/view-book';
 
+import {TagList} from './tag_list';
+
 @Component({
     selector: 'source-app',
     appInjector: [GithubService]
 })
 
 @View({
-    directives: [ RouterOutlet, RouterLink, coreDirectives],
+    directives: [ RouterOutlet, RouterLink, coreDirectives, TagList],
     template: `
         <header>
             <div id="head_left">
@@ -29,7 +31,7 @@ import {ViewBook} from './view/view-book';
                 </ul>
             </div>
             <div id="head_right">
-                <div id="button_add">
+                <div (click)="openCreateItem()" id="button_add">
                     <img src="/public/img/plus.svg" width="12px" height="12px">Add Item
                 </div>
                 <div (click)="openGithubLogin()" id="button_login">
@@ -40,7 +42,6 @@ import {ViewBook} from './view/view-book';
         </header>
         <div id="main_content">
 
-
             <div id="left_navigation">
                 <ul>
                     <li class="left_navigation_active">Poplur</li>
@@ -48,11 +49,7 @@ import {ViewBook} from './view/view-book';
                     <li>Your stars</li>
                 </ul>
 
-                <h5>Language</h5>
-
-                <p class="language_tag_active">Go</p>
-                <p class="language_tag">Go</p>
-                <p class="language_tag">Go</p>
+                <tag-lists></tag-lists>
             </div>
             <div id="right_content">
                 <router-outlet></router-outlet>
@@ -79,6 +76,9 @@ export class App {
     public openGithubLogin(){
         this.githubService.doLogin();
         //alert("click!!!!");
+    }
+    public openCreateItem(){
+        alert("create item!!!!");
     }
 
 }
