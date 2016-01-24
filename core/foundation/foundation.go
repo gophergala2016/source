@@ -1,6 +1,7 @@
 package foundation
 
 import (
+	"html/template"
 	"os"
 	"path"
 
@@ -88,6 +89,10 @@ func (engine *Engine) LoadHTMLGlob(relativePath, pattern string) {
 	if err != nil {
 		Panic(err)
 	}
+	engine.SetHTMLTemplate(templ)
+}
+
+func (engine *Engine) SetHTMLTemplate(templ *template.Template) {
 	engine.core.SetHTMLTemplate(templ)
 }
 
