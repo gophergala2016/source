@@ -1,8 +1,8 @@
 [[controller]]
-struct          = "WebLoginController"
+struct          = "WebIndexController"
 root_controller = "WebRootController"
 
 [[endpoint.route]]
 method     = "GET"
-path       = "/login"
-controller = "web.WebLoginController.Login"
+path       = "/"
+controller = "web.WebIndexController.Index"

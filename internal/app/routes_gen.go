@@ -119,14 +119,14 @@ func router() *foundation.Engine {
 		controller.CreateTag()
 	})
 
-	// GET /login
-	// web.WebLoginController.Login
-	router.GET("/login", func(c *gin.Context) {
-		controller := &web.WebLoginController{}
+	// GET /
+	// web.WebIndexController.Index
+	router.GET("/", func(c *gin.Context) {
+		controller := &web.WebIndexController{}
 		ctx := foundation.NewContext(c)
-		accessor.SetAction(ctx, "WebLoginController.Login")
+		accessor.SetAction(ctx, "WebIndexController.Index")
 		controller.SetContext(ctx)
-		controller.Login()
+		controller.Index()
 	})
 
 	return router
