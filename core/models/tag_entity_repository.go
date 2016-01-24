@@ -2,15 +2,18 @@ package models
 
 import (
 	"github.com/gophergala2016/source/core/foundation"
+	"github.com/gophergala2016/source/core/models/appengine"
 )
 
 type TagRepository struct {
 	RootRepository
+	*appengine.Datastore
 }
 
 func NewTagRepository(ctx foundation.Context) *TagRepository {
 	return &TagRepository{
 		RootRepository: NewRootRepository(ctx),
+		Datastore:      appengine.NewDatastore(ctx),
 	}
 }
 

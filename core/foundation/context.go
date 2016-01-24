@@ -53,6 +53,7 @@ type (
 	}
 
 	Request interface {
+		Ref() *http.Request
 		Clone() *http.Request
 		Body() []byte
 		Method() string
@@ -203,6 +204,11 @@ func (c *FoundationContext) JSON(code int, obj interface{}) {
 ////////////////////////////////////////
 /// Request interface
 ////////////////////////////////////////
+
+// Ref returns the request of the Context.
+func (c *FoundationContext) Ref() *http.Request {
+	return c.opt.Request
+}
 
 // Clone returns the cloned request of the Context.
 func (c *FoundationContext) Clone() *http.Request {
