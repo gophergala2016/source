@@ -24,6 +24,9 @@ func (r *UserRepository) GetByID(id uint64) (*User, error) {
 
 func (r *UserRepository) FindByIDs(ids []uint64) ([]User, error) {
 	var ents []User
+	if len(ids) == 0 {
+		return ents, nil
+	}
 	if err := r.Orm.Where("id IN (?)", ids).Find(&ents).Error; err != nil {
 		return ents, err
 	}

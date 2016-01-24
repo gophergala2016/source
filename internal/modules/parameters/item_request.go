@@ -6,7 +6,8 @@ type (
 	}
 	GetItemListRequest struct {
 		RootRequest
-		Limit int `json:"limit" mapstructure:"limit"`
+		TagID uint64 `json:"tag_id" mapstructure:"tag_id"`
+		Limit int    `json:"limit" mapstructure:"limit"`
 	}
 	GetItemFavoriteListRequest struct {
 		RootRequest

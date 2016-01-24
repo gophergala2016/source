@@ -80,6 +80,20 @@ func (f ItemFacade) FindLatestItem(limit int) ([]models.Item, error) {
 	return itemService.FindLatestItemByCollection(limit, 0)
 }
 
+func (f ItemFacade) FindLatestItemByTagID(tagID uint64, limit int) ([]models.Item, error) {
+	itemTagService := services.NewItemTagService(f.ctx)
+	itemTags, err := itemTagService.FindLatestItemTagByCollection(tagID, limit)
+	if err != nil {
+		return nil, err
+	}
+	itemIDs := make([]uint64, len(itemTags))
+	for i, itemTag := range itemTags {
+		itemIDs[i] = itemTag.ItemID
+	}
+	itemService := services.NewItemService(f.ctx)
+	return itemService.FindItemByIDs(itemIDs)
+}
+
 func (f ItemFacade) CreateFavoriteItem(userID, itemID uint64) (*models.Item, error) {
 	userFavItemService := services.NewUserFavoriteItemService(f.ctx)
 	_, err := userFavItemService.CreateUserFavoriteItem(userID, itemID)

@@ -30,3 +30,8 @@ func (s ItemTagService) CreateItemTag(itemID, tagID uint64) (*models.ItemTag, er
 	itemTagRepository := models.NewItemTagRepository(s.ctx)
 	return itemTagRepository.Create(itemTag)
 }
+
+func (s ItemTagService) FindLatestItemTagByCollection(tagID uint64, limit int) ([]models.ItemTag, error) {
+	itemTagRepository := models.NewItemTagRepository(s.ctx)
+	return itemTagRepository.FindLatestByTagIDAndCollection(tagID, limit, 0)
+}

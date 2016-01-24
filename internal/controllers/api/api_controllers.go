@@ -173,12 +173,22 @@ func (c *APIItemController) GetItemList() {
 
 	//// Call a facade
 	itemFacade := facades.NewItemFacade(c.GetContext())
-	items, err := itemFacade.FindLatestItem(param.Limit)
-	if err != nil {
+
+	var (
+		items   []models.Item
+		findErr error
+	)
+	switch {
+	case param.TagID > 0:
+		items, findErr = itemFacade.FindLatestItemByTagID(param.TagID, param.Limit)
+	default:
+		items, findErr = itemFacade.FindLatestItem(param.Limit)
+	}
+	if findErr != nil {
 		c.API().InternalServerError(map[string]interface{}{
 			"status":  "NG",
-			"func":    "FindLatestItem::ItemFacade",
-			"message": err,
+			"func":    "FindItem::ItemFacade",
+			"message": findErr,
 		})
 		return
 	}

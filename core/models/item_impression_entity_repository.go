@@ -24,6 +24,9 @@ func (r *ItemImpressionRepository) GetByItemID(itemID uint64) (*ItemImpression, 
 
 func (r *ItemImpressionRepository) FindByItemIDs(itemIDs []uint64) ([]ItemImpression, error) {
 	var ents []ItemImpression
+	if len(itemIDs) == 0 {
+		return ents, nil
+	}
 	if err := r.Orm.Where("item_id IN (?)", itemIDs).Find(&ents).Error; err != nil {
 		return ents, err
 	}
