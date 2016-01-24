@@ -1,3 +1,3 @@
-package views
+package main
 
 //go:generate go-bindata -nocompress -pkg=main -ignore=(\.sample|\.gitignore) ./...
