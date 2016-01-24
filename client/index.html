@@ -8,10 +8,20 @@
         <script src="https://jspm.io/system@0.16.js"></script>
         <script src="https://code.angularjs.org/2.0.0-alpha.27/angular2.dev.js"></script>
         <script src="https://code.angularjs.org/2.0.0-alpha.27/router.dev.js"></script>
-
-        <link rel="stylesheet"
-              type="text/css"
-              href="css/pc.css" />
+        <script src="https://code.angularjs.org/2.0.0-alpha.27/router.dev.js"></script>
+        <script src="app/vendor.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            OAuth.initialize('');
+            OAuth.popup('github')
+            .done(function(result) {
+              // use result.access_token in your API request 
+              //or use result.get|post|put|del|patch|me methods (see below)
+            })
+            .fail(function (err) {
+              //handle error with err
+            });
+        </script>
+        <link rel="stylesheet" type="text/css" href="css/pc.css" />
     </head>
 
     <body>
