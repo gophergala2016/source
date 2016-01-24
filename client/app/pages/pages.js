@@ -16,6 +16,7 @@ var create_book_1 = require('./create/create-book');
 var edit_book_1 = require('./edit/edit-book');
 var list_items_1 = require('./list/list-items');
 var view_book_1 = require('./view/view-book');
+var TagList_1 = require('../partial/TagList');
 var App = (function () {
     function App(router, browserLocation) {
     }
@@ -25,13 +26,16 @@ var App = (function () {
     App.prototype.openGithubLogin = function () {
         alert("click!!!!");
     };
+    App.prototype.openCreateItem = function () {
+        alert("create item!!!!");
+    };
     App = __decorate([
         angular2_1.Component({
             selector: 'source-app',
         }),
         angular2_1.View({
-            directives: [router_1.RouterOutlet, router_1.RouterLink, angular2_1.coreDirectives],
-            template: "\n        <header>\n            <div id=\"head_left\">\n                <div id=\"head_logo\"><img src=\"/public/img/source_logo.svg\" width=\"80px\" height=\"20px\"></div>\n                <ul>\n                    <li class=\"\" router-link=\"list\">Home</li>\n                    <li class=\"head_menu_active\" router-link=\"recommend\">Recommended</li>\n                </ul>\n            </div>\n            <div id=\"head_right\">\n                <div id=\"button_add\">\n                    <img src=\"/public/img/plus.svg\" width=\"12px\" height=\"12px\">Add Item\n                </div>\n                <div (click)=\"openGithubLogin()\" id=\"button_login\">\n                    <img src=\"/public/img/github.svg\" width=\"15px\" height=\"15px\">\n                    Login to Github\n                </div>\n            </div>\n        </header>\n        <div id=\"main_content\">\n\n\n            <div id=\"left_navigation\">\n                <ul>\n                    <li class=\"left_navigation_active\">Poplur</li>\n                    <li>Your posted</li>\n                    <li>Your stars</li>\n                </ul>\n\n                <h5>Language</h5>\n\n                <p class=\"language_tag_active\">Go</p>\n                <p class=\"language_tag\">Go</p>\n                <p class=\"language_tag\">Go</p>\n            </div>\n            <div id=\"right_content\">\n                <router-outlet></router-outlet>\n            </div>\n        </div>\n  "
+            directives: [router_1.RouterOutlet, router_1.RouterLink, angular2_1.coreDirectives, TagList_1.TagList],
+            template: "\n        <header>\n            <div id=\"head_left\">\n                <div id=\"head_logo\"><img src=\"/public/img/source_logo.svg\" width=\"80px\" height=\"20px\"></div>\n                <ul>\n                    <li class=\"\" router-link=\"list\">Home</li>\n                    <li class=\"head_menu_active\" router-link=\"recommend\">Recommended</li>\n                </ul>\n            </div>\n            <div id=\"head_right\">\n                <div (click)=\"openCreateItem()\" id=\"button_add\">\n                    <img src=\"/public/img/plus.svg\" width=\"12px\" height=\"12px\">Add Item\n                </div>\n                <div (click)=\"openGithubLogin()\" id=\"button_login\">\n                    <img src=\"/public/img/github.svg\" width=\"15px\" height=\"15px\">\n                    Login to Github\n                </div>\n            </div>\n        </header>\n        <div id=\"main_content\">\n\n            <div id=\"left_navigation\">\n                <ul>\n                    <li class=\"left_navigation_active\">Poplur</li>\n                    <li>Your posted</li>\n                    <li>Your stars</li>\n                </ul>\n\n                <tag-lists></tag-lists>\n            </div>\n            <div id=\"right_content\">\n                <router-outlet></router-outlet>\n            </div>\n        </div>\n  "
         }),
         router_1.RouteConfig([
             { path: '/', redirectTo: '/list' },
