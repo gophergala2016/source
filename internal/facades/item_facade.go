@@ -129,3 +129,12 @@ func (f ItemFacade) FindItemTagIDsMap(itemIDs []uint64) (map[uint64][]uint64, er
 	}
 	return res, nil
 }
+
+func (f ItemFacade) UpdateItemImpressionView(itemID uint64) error {
+	itemImpressionService := services.NewItemImpressionService(f.ctx)
+	itemImp, err := itemImpressionService.GetItemImpressionByID(itemID)
+	if err != nil {
+		return err
+	}
+	return itemImpressionService.UpdateItemImpressionViewByID(itemID, uint(itemImp.View+1))
+}

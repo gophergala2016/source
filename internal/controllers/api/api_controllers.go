@@ -79,6 +79,32 @@ func (c *APIMeController) LoginMe() {
 }
 
 func (c *APIItemController) GetItem(id string) {
+	//// Apply Request Parameters
+	param := parameters.NewGetItemRequest()
+	if ok := c.API().Preprocess(&param); !ok {
+		return
+	}
+
+	itemFacade := facades.NewItemFacade(c.GetContext())
+	// Parse string id to uint64
+	uint64ID := c.ParseUint64(id)
+	if uint64ID <= 0 {
+		return
+	}
+
+	if err := itemFacade.UpdateItemImpressionView(uint64ID); err != nil {
+		c.API().InternalServerError(map[string]interface{}{
+			"status":  "NG",
+			"func":    "UpdateItemImpressionCount::ItemFacade",
+			"message": err,
+		})
+		return
+	}
+
+	// Render result
+	c.API().OK(map[string]interface{}{
+		"status": "OK",
+	})
 }
 
 func (c *APIItemController) ConvertItems(items []models.Item) ([]responses.ItemResponse, error) {
