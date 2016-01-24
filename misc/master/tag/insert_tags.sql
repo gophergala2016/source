@@ -8,7 +8,7 @@ INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('NewLisp','#87AE
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('Jupyter Notebook','#DA5B0B', 0, now(), now());
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('Rebol','#358a5b', 0, now(), now());
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('Frege','#00cafe', 0, now(), now());
-INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('Dart','#00B4AB', 1, now(), now());
+INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('Dart','#00B4AB', 0, now(), now());
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('AspectJ','#a957b0', 0, now(), now());
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('Shell','#89e051', 1, now(), now());
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('Web Ontology Language','#9cc9dd', 0, now(), now());
@@ -18,7 +18,7 @@ INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('Nix','#7e7eff',
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('RAML','#77d9fb', 0, now(), now());
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('MTML','#b7e1f4', 0, now(), now());
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('Racket','#22228f', 0, now(), now());
-INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('Elixir','#6e4a7e', 2, now(), now());
+INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('Elixir','#6e4a7e', 1, now(), now());
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('SAS','#B34936', 0, now(), now());
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('Agda','#315665', 0, now(), now());
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('wisp','#7582D1', 0, now(), now());
@@ -192,7 +192,7 @@ INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('Haskell','#29b5
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('NCL','#28431f', 0, now(), now());
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('Io','#a9188d', 0, now(), now());
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('Rouge','#cc0088', 0, now(), now());
-INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('cpp','#f34b7d', 2, now(), now());
+INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('C++','#f34b7d', 2, now(), now());
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('AGS Script','#B9D9FF', 0, now(), now());
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('Dogescript','#cca760', 0, now(), now());
 INSERT INTO tag (name,color,score,created_at,updated_at) VALUES('nesC','#94B0C7', 0, now(), now());

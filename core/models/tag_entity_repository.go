@@ -24,7 +24,7 @@ func (r *TagRepository) GetByID(id uint64) (*Tag, error) {
 
 func (r *TagRepository) FindByNames(names []string) ([]Tag, error) {
 	var ents []Tag
-	if err := r.Orm.Where("name IN (?)", names).Find(ents).Error; err != nil {
+	if err := r.Orm.Where("name IN (?)", names).Find(&ents).Error; err != nil {
 		return ents, err
 	}
 	return ents, nil

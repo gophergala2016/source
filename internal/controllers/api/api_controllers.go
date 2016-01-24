@@ -256,7 +256,7 @@ func (c *APIItemController) CreateItem() {
 		c.API().InternalServerError(map[string]interface{}{
 			"status":  "NG",
 			"func":    "GetMe::MeFacade",
-			"message": err,
+			"message": err.Error(),
 		})
 		return
 	}
@@ -268,7 +268,7 @@ func (c *APIItemController) CreateItem() {
 		c.API().InternalServerError(map[string]interface{}{
 			"status":  "NG",
 			"func":    "CreateItem::ItemFacade",
-			"message": err,
+			"message": err.Error(),
 		})
 		return
 	}

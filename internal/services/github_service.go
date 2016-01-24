@@ -28,7 +28,7 @@ func (s GithubService) GetGithub(githubURL string) (*models.Github, error) {
 	case strings.HasPrefix(githubURL, prefixSecureGithubURL) || strings.HasPrefix(githubURL, prefixGithubURL):
 		// Correct url
 	default:
-		return nil, errors.New("This is not githubURL")
+		return nil, errors.New("This is not github url.")
 	}
 
 	// Get author & repo name

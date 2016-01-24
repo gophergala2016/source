@@ -2,17 +2,8 @@ package log
 
 import (
 	"fmt"
-	"reflect"
-
-	"github.com/Sirupsen/logrus"
-
-	"github.com/doloopwhile/logrusltsv"
+	"log"
 )
-
-func init() {
-	logrus.SetFormatter(&logrusltsv.Formatter{})
-	logrus.SetLevel(logrus.DebugLevel)
-}
 
 type Entity struct {
 	message string
@@ -42,25 +33,14 @@ func (e *Entity) WithError(v interface{}) *Entity {
 	return e
 }
 
-func (e *Entity) Fields() logrus.Fields {
-	f := logrus.Fields{}
-	if e.Data != nil && !reflect.ValueOf(e.Data).IsNil() {
-		f["data"] = e.Data
-	}
-	if e.Err != nil && !reflect.ValueOf(e.Err).IsNil() {
-		f["error"] = e.Err
-	}
-	return f
-}
-
 func (e *Entity) Error() {
-	logrus.WithFields(e.Fields()).Error(e.message)
+	log.Println(e.message)
 }
 
 func (e *Entity) Info() {
-	logrus.WithFields(e.Fields()).Info(e.message)
+	log.Println(e.message)
 }
 
 func (e *Entity) Debug() {
-	logrus.WithFields(e.Fields()).Debug(e.message)
+	log.Println(e.message)
 }

@@ -2,6 +2,7 @@ package facades
 
 import (
 	"github.com/gophergala2016/source/core/foundation"
+	"github.com/gophergala2016/source/core/log"
 	"github.com/gophergala2016/source/core/models"
 	"github.com/gophergala2016/source/internal/services"
 )
@@ -39,6 +40,7 @@ func (f ItemFacade) CreateItem(userID uint64, githubURL string) (item *models.It
 		item.Name = github.Name
 		item.Description = github.Description
 		if item, err = itemService.CreateItem(item); err != nil {
+			log.New("CreateItem::ItemService").Error()
 			return nil, err
 		}
 	}
@@ -47,6 +49,7 @@ func (f ItemFacade) CreateItem(userID uint64, githubURL string) (item *models.It
 		// Star
 		itemImpressionService := services.NewItemImpressionService(f.ctx)
 		if _, err = itemImpressionService.CreateItemImpression(item.ID, uint(github.Star)); err != nil {
+			log.New("CreateItemImpression::ItemImpressionService").Error()
 			return nil, err
 		}
 	}
@@ -56,12 +59,14 @@ func (f ItemFacade) CreateItem(userID uint64, githubURL string) (item *models.It
 		var tags []models.Tag
 		tagService := services.NewTagService(f.ctx)
 		if tags, err = tagService.FindTagByNames(github.Languages); err != nil {
+			log.New("FindTagByNames::TagService").Error()
 			return nil, err
 		}
 
 		itemTagService := services.NewItemTagService(f.ctx)
 		for _, tag := range tags {
 			if _, err = itemTagService.CreateItemTag(item.ID, tag.ID); err != nil {
+				log.New("CreateItemTag::ItemTagService").Error()
 				return nil, err
 			}
 		}
