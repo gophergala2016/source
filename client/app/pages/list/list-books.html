@@ -9,24 +9,24 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ng-for="var book of books; #i = index">
-            <td>{{ book.isbn }}</td>
-            <td>{{ book.title }}</td>
-            <td>{{ book.author }}</td>
-            <td>{{ book.publicationDate }}</td>
+        <tr *ng-for="var item of items; #i = index">
+            <td>{{ item.isbn }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.author }}</td>
+            <td>{{ item.publicationDate }}</td>
             <td class="pull-left">
                 <button type="button"
                         id="viewButton-row-{{i + 1}}"
                         class="btn btn-default"
-                        (click)="viewBook(book)">View</button>
+                        (click)="viewBook(item)">View</button>
                 <button type="button"
                         id="editButton-row-{{i + 1}}"
                         class="btn btn-primary"
-                        (click)="editBook(book)">Edit</button>
+                        (click)="editBook(item)">Edit</button>
                 <button type="button"
                         id="deleteButton-row-{{i + 1}}"
                         class="btn btn-danger"
-                        (click)="deleteBook(book)">Delete</button>
+                        (click)="deleteBook(item)">Delete</button>
             </td>
         </tr>
     </tbody>

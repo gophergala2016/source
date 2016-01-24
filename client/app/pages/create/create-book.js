@@ -64,7 +64,7 @@ var CreateBook = (function () {
             selector: 'create-book'
         }),
         angular2_1.View({
-            templateUrl: './app/pages/create/create-book.html',
+            templateUrl: './public/app/pages/create/create-book.html',
             directives: [angular2_1.coreDirectives, forms_1.formDirectives]
         }), 
         __metadata('design:paramtypes', [router_1.Router, BookService_1.BookService, forms_1.FormBuilder])

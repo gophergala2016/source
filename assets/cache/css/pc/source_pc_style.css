@@ -1,10 +1,70 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
 html {
   height: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
 }
 
 body {
   word-break: break-all;
   height: 100%;
+  font-size: 62.5%;
+  background-color: #EBEFF4;
 }
 
 a {
@@ -19,4 +79,288 @@ a {
 
 img {
   vertical-align: bottom;
+}
+
+header {
+  margin: 0 auto;
+  padding: 8px 0;
+  width: 100%;
+  height: 34px;
+  border-bottom: solid 1px #DEE2E7;
+  font-weight: 400;
+}
+
+#head_left {
+  float: left;
+  padding: 10px 0;
+}
+
+#head_logo {
+  width: 130px;
+  height: 20px;
+  float: left;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+#head_left ul {
+  float: right;
+}
+
+#head_left ul li.head_menu_active {
+  padding-bottom: 12px;
+  color: #4E9DCE;
+  border-bottom: solid 6px #4E9DCE;
+}
+
+#head_left ul li {
+  float: left;
+  margin-right: 60px;
+  font-size: 1.5em;
+  color: #9AA2AD;
+}
+
+ul li.head_menu_active {
+  color: #4E9DCE;
+}
+
+#head_right {
+  float: right;
+  margin-right: 40px;
+}
+
+#button_add {
+  float: left;
+  width: 96px;
+  padding: 10px 0;
+  color: #fff;
+  font-size: 1.4em;
+  text-align: center;
+  background-color: #4E9DCE;
+  border-radius: 4px;
+}
+
+#button_login {
+  float: right;
+  margin-left: 16px;
+  width: 142px;
+  padding: 10px 0;
+  color: #fff;
+  font-size: 1.4em;
+  text-align: center;
+  background-color: #74BD51;
+  border-radius: 4px;
+}
+
+#main_content {
+  margin-top: 42px;
+  width: 100%;
+  clear: both;
+  display: flex;
+}
+
+h5 {
+  color: #9099A6;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+p.language_tag {
+  margin: 10px 0;
+  padding: 5px;
+  background-color: #375EAB;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+p.language_tag_active {
+  margin: 10px 0;
+  padding: 5px;
+  border: solid 1px #375EAB;
+  border-radius: 4px;
+  color: #375EAB;
+  font-size: 1.2em;
+}
+
+#left_navigation {
+  margin: 0 57px 0 40px;
+  width: 140px;
+  height: 100%;
+}
+#left_navigation ul {
+  margin-bottom: 30px;
+}
+#left_navigation ul li.left_navigation_active {
+  color: #4E9DCE;
+}
+#left_navigation ul li {
+  color: #9AA2AD;
+  font-size: 1.4em;
+  padding-bottom: 16px;
+}
+
+#right_content {
+  width: 100%;
+}
+#right_content h1 {
+  margin-bottom: 21px;
+  font-size: 2.4em;
+  color: #9099A6;
+  font-weight: 400;
+}
+#right_content #content .item {
+  float: left;
+  width: 324px;
+  margin: 0 19px 30px 0;
+  padding-bottom: 16px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+#right_content #content .item .item_title {
+  background-color: #375EAB;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  width: 100%;
+  height: 95px;
+  position: relative;
+}
+#right_content #content .item .item_title p {
+  position: absolute;
+  bottom: 11px;
+  left: 24px;
+  color: #fff;
+  font-weight: 100;
+  font-size: 2em;
+}
+#right_content #content .item .item_description {
+  margin: 16px 24px;
+  font-size: 1.4em;
+  color: #5E5E5E;
+  line-height: 1.6em;
+}
+#right_content #content .item .item_info {
+  margin: 0 24px;
+  width: 100%;
+  color: #9AA2AD;
+  font-size: 1.2em;
+  display: flex;
+}
+#right_content #content .item .item_language {
+  margin-right: 12px;
+  font-size: 1em;
+}
+#right_content #content .item .item_view_number {
+  margin-right: 12px;
+  font-size: 1em;
+}
+#right_content #content .item .item_star_number {
+  font-size: 1em;
+}
+#right_content #content_bottom {
+  width: 340px;
+  margin: 0 auto;
+  clear: both;
+}
+#right_content #content_bottom #paging {
+  margin: 0 aut;
+  display: flex;
+}
+#right_content #content_bottom #paging .paging_active {
+  margin: 0 2px;
+  padding: 8px 12px;
+  border: solid 1px #4E9DCE;
+  color: #4E9DCE;
+  font-size: 1.4em;
+  border-radius: 4px;
+}
+#right_content #content_bottom #paging .paging_link {
+  margin: 0 2px;
+  padding: 8px 12px;
+  color: #fff;
+  font-size: 1.4em;
+  background-color: #4E9DCE;
+  border-radius: 4px;
+}
+#right_content footer {
+  margin: 30px 0;
+  text-align: center;
+  color: #9AA2AD;
+}
+
+.detail_item {
+  width: 920px;
+  padding: 32px 64px;
+}
+.detail_item .detail_item_head {
+  width: 100%;
+  margin-bottom: 24px;
+}
+.detail_item .detail_item_head .users_icon {
+  float: left;
+  margin-right: 12px;
+}
+.detail_item .detail_item_head .item_title h1 {
+  margin-bottom: 4px;
+  font-size: 2.4em;
+  color: #5E5E5E;
+}
+.detail_item .detail_item_head .item_title p {
+  font-size: 1.4em;
+  color: #9099A6;
+}
+.detail_item .detail_item_description {
+  clear: both;
+  /*width: 920px;*/
+}
+.detail_item .detail_item_description .detail_item_readme {
+  float: left;
+  margin-right: 40px;
+  background-color: #fff;
+  border-radius: 4px;
+  width: 560px;
+  padding: 32px;
+}
+.detail_item .detail_item_description .detail_item_readme p {
+  font-size: 1.4em;
+  line-height: 1.6em;
+  color: #5E5E5E;
+}
+.detail_item .detail_item_description .detail_item_info {
+  width: 192px;
+  float: left;
+  color: #9AA2AD;
+}
+.detail_item .detail_item_description .detail_item_info #button_view_on_github {
+  width: 192px;
+  padding: 16px 0;
+  color: #fff;
+  font-size: 1.6em;
+  text-align: center;
+  background-color: #74BD51;
+  border-radius: 4px;
+}
+.detail_item .detail_item_description .detail_item_info .datail_views {
+  padding: 16px 0;
+  font-size: 1.4em;
+  border-bottom: solid 1px #DEE2E7;
+}
+.detail_item .detail_item_description .detail_item_info .datail_views img {
+  float: left;
+}
+.detail_item .detail_item_description .detail_item_info .datail_views p {
+  float: right;
+}
+.detail_item .detail_item_description .detail_item_info .datail_stars {
+  margin-bottom: 16px;
+  padding: 16px 0;
+  font-size: 1.4em;
+  border-bottom: solid 1px #DEE2E7;
+}
+.detail_item .detail_item_description .detail_item_info .datail_stars img {
+  float: left;
+}
+.detail_item .detail_item_description .detail_item_info .datail_stars p {
+  float: right;
 }

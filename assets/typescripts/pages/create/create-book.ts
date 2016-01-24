@@ -14,7 +14,7 @@ import {Book} from '../../models/Book';
 })
 
 @View({
-    templateUrl: './app/pages/create/create-book.html',
+    templateUrl: './public/app/pages/create/create-book.html',
     directives: [coreDirectives, formDirectives]
 })
 
