@@ -1,4 +1,4 @@
-![](https://github.com/gophergala2016/source/blob/private/design/source_logo.png)
+![](https://github.com/gophergala2016/source/blob/master/private/design/source_logo.png)
 
 # source
 
@@ -20,11 +20,11 @@ The "source" service has a powerful recommendation system. You don't need to sea
 
 ### Beautiful Entrance Page
 
-![](https://github.com/gophergala2016/source/blob/private/design/HOME.png)
+![](https://github.com/gophergala2016/source/blob/master/private/design/HOME.png)
 
 ### Detail Page
 
-![](https://github.com/gophergala2016/source/blob/private/design/ITEM.png)
+![](https://github.com/gophergala2016/source/blob/master/private/design/ITEM.png)
 
 ## Installation
 
