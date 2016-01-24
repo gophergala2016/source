@@ -14,6 +14,7 @@ import {ViewBook} from './view/view-book';
 
 @Component({
     selector: 'source-app',
+    appInjector: [GithubService]
 })
 
 @View({
@@ -69,14 +70,15 @@ import {ViewBook} from './view/view-book';
 ])
 
 export class App {
-    constructor(router: Router, browserLocation: BrowserLocation) {
+    constructor(router: Router, browserLocation: BrowserLocation, public githubService: GithubService) {
     }
 
     public isHome(browserLocation: BrowserLocation){
         return {head_menu_active: browserLocation.path() == '/'}
     }
     public openGithubLogin(){
-        alert("click!!!!");
+        this.githubService.doLogin();
+        //alert("click!!!!");
     }
 
 }
