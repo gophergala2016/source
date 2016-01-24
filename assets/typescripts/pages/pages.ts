@@ -7,7 +7,7 @@ import {BrowserLocation} from 'angular2/src/router/browser_location';
 
 import {CreateBook} from './create/create-book';
 import {EditBook} from './edit/edit-book';
-import {ListBooks} from './list/list-books';
+import {ListItems} from './list/list-items';
 import {ViewBook} from './view/view-book';
 
 @Component({
@@ -17,45 +17,61 @@ import {ViewBook} from './view/view-book';
 @View({
     directives: [ RouterOutlet, RouterLink, coreDirectives ],
     template: `
-  <nav class="navbar navbar-inverse navbar-static-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand">{{ title }}</a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a router-link="list">List</a>
-                </li>
-                <li>
-                    <a router-link="create">Create</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-  </nav>
+        <header>
+            <div id="head_left">
+                <div id="head_logo"><img src="/public/img/source_logo.svg" width="80px" height="20px"></div>
+                <ul>
+                    <li class="head_menu_active" router-link="list">Home</li>
+                    <li router-link="recommend">Recommend</li>
+                </ul>
+            </div>
+            <div id="head_right">
+                <div id="button_add">
+                    <img src="/public/img/plus.svg" width="12px" height="12px">Add Item
+                </div>
+                <div id="button_login">
+                    <img src="/public/img/github.svg" width="15px" height="15px">
+                    Login to Github
+                </div>
+            </div>
+        </header>
+        <div id="main_content">
 
-  <main>
-    <router-outlet></router-outlet>
-  </main>
+
+            <div id="left_navigation">
+                <ul>
+                    <li class="left_navigation_active">Poplur</li>
+                    <li>Your posted</li>
+                    <li>Your stars</li>
+                </ul>
+
+                <h5>Language</h5>
+
+                <p class="language_tag_active">Go</p>
+                <p class="language_tag">Go</p>
+                <p class="language_tag">Go</p>
+            </div>
+            <div id="right_content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
   `
 })
 
 @RouteConfig([
-    { path: '/list',      as: 'list',      component: ListBooks },
-    { path: '/create',    as: 'create',    component: CreateBook },
+    { path: '/login',          redirectTo: '/list' },
+    { path: '/#/list',      as: 'list',      component: ListItems },
+    { path: '/#/recommend',    as: 'recommend',    component: CreateBook },
     { path: '/edit/:id',  as: 'edit',      component: EditBook },
     { path: '/view/:id',  as: 'view',      component: ViewBook }
 ])
 
 export class App {
-    title: string;
     constructor(router: Router, browserLocation: BrowserLocation) {
-        this.title = 'Angular 2 CRUD Application';
 
         // we need to manually go to the correct uri until the router is fixed
         let uri = browserLocation.path();
-        router.navigate(uri);
+        console.log(uri);
     }
 }
 

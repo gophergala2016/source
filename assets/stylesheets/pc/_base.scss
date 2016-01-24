@@ -1,14 +1,37 @@
 @charset "utf-8";
+@include global-reset;
+
+//==========================================
+//      color setting
+//==========================================
+
+$color:#5E5E5E;
+$color_active:#4E9DCE;
+$color_link:#9AA2AD;
+$color_headline:#9099A6;
+$color_github:#74BD51;
+$color_tag_go:#375EAB;
+
+//==========================================
+//      size setting
+//==========================================
+
+$size_normal: 1.4em;
 
 //==========================================
 //      pc base
 //==========================================
+
 html {
     height: 100%;
+    font-family: 'Roboto', sans-serif;
+	font-weight: 400;
 }
 body {
     word-break: break-all;
     height: 100%;
+    font-size:62.5%;
+    background-color: #EBEFF4;
 }
 a {
     color: inherit;
@@ -18,4 +41,342 @@ a {
 }
 img {
     vertical-align: bottom;
+}
+
+//==========================================
+//      head
+//==========================================
+
+header{
+	margin: 0 auto;
+	padding: 8px 0;
+	width: 100%;
+	height: 34px;
+	border-bottom: solid 1px #DEE2E7;
+	font-weight: 400;
+}
+
+#head_left{
+	float: left;
+	padding: 10px 0;
+}
+
+#head_logo{
+	width: 130px;
+	height: 20px;
+	float: left;
+	margin-right: 40px;
+	margin-left: 40px;
+}
+
+#head_left ul {
+	float: right;
+}
+
+#head_left ul li.head_menu_active{
+	padding-bottom: 12px;
+	color: $color_active;
+	border-bottom: solid 6px $color_active;
+}
+
+#head_left ul li{
+	float: left;
+	margin-right: 60px;
+	font-size: 1.5em;
+	color: $color_link;
+}
+
+ul li.head_menu_active{
+	color: $color_active;
+}
+
+#head_right{
+	float: right;
+	margin-right: 40px;
+}
+
+#button_add{
+	float: left;
+	width: 96px;
+	padding: 10px 0;
+	color: #fff;
+	font-size: $size_normal;
+	text-align: center;
+	background-color: $color_active;
+	border-radius: 4px;
+}
+
+#button_login{
+	float: right;
+	margin-left: 16px;
+	width: 142px;
+	padding: 10px 0;
+	color: #fff;
+	font-size: $size_normal;
+	text-align: center;
+	background-color: $color_github;
+	border-radius: 4px;
+}
+
+//==========================================
+//      main content
+//==========================================
+
+#main_content{
+	margin-top: 42px;
+	width: 100%;
+	clear: both;
+	display: flex;
+}
+
+//==========================================
+//      left navigation
+//==========================================
+	
+h5 {
+		color: $color_headline;
+		font-size: 1.2em;
+		font-weight: bold;
+}
+
+p.language_tag {
+		margin: 10px 0;
+		padding: 5px;
+		background-color: $color_tag_go;
+		border-radius: 4px;
+		color: #fff;
+		font-size: 1.2em;
+		font-weight: bold;
+}
+
+p.language_tag_active {
+		margin: 10px 0;
+		padding: 5px;
+		border: solid 1px $color_tag_go;
+		border-radius: 4px;
+		color: $color_tag_go;
+		font-size: 1.2em;
+}
+
+#left_navigation{
+	margin: 0 57px 0 40px;
+	width: 140px;
+	height: 100%;
+
+	ul {
+		margin-bottom: 30px;
+
+		li.left_navigation_active {
+			color: $color_active;
+		}
+
+		li{
+			color:$color_link;
+			font-size: 1.4em;
+			padding-bottom: 16px;
+		}
+	}
+}
+
+//==========================================
+//      right content
+//==========================================
+
+
+#right_content{
+	width: 100%;
+
+	h1{
+		margin-bottom: 21px;
+		font-size: 2.4em;
+		color: $color_headline;
+		font-weight: 400;
+	}
+
+	#content{
+
+		.item {
+			float: left;
+			width: 324px;
+			margin: 0 19px 30px 0;
+			padding-bottom: 16px;
+			background-color: #fff;
+			border-radius: 4px;
+
+			.item_title {
+				background-color: $color_tag_go;
+				border-top-right-radius: 4px;
+				border-top-left-radius: 4px;
+				width: 100%;
+				height: 95px;
+				position: relative;
+
+				p {
+				position: absolute;
+				bottom: 11px;
+				left: 24px;
+				color: #fff;
+				font-weight: 100;
+				font-size: 2em;
+				}
+			}
+
+			.item_description {
+				margin: 16px 24px;
+				font-size: 1.4em;
+				color: $color;
+				line-height: 1.6em;
+			}
+
+			.item_info {
+				margin: 0 24px;
+				width: 100%;
+				color: $color_link;
+				font-size: 1.2em;
+				display: flex;
+			}
+
+			.item_language {
+				margin-right: 12px;
+				font-size: 1em;
+			}
+
+			.item_view_number {
+				margin-right: 12px;
+				font-size: 1em;
+			}
+
+			.item_star_number {
+				font-size: 1em;
+			}
+		}
+	}
+	
+	#content_bottom {
+		width: 340px;
+		margin: 0 auto;
+		clear: both;
+
+		#paging {
+			margin: 0 aut;
+			display: flex;
+
+			.paging_active {
+				margin: 0 2px;
+				padding: 8px 12px;
+				border: solid 1px $color_active;
+				color: $color_active;
+				font-size: 1.4em;
+				border-radius: 4px;
+			}
+
+			.paging_link {
+				margin: 0 2px;
+				padding: 8px 12px;
+				color: #fff;
+				font-size: 1.4em;
+				background-color: $color_active;
+				border-radius: 4px;
+			}
+		}
+	}
+
+	footer {
+		margin: 30px 0;
+		text-align: center;
+		color: $color_link;
+	}	
+	
+}
+
+//==========================================
+//      detail item
+//==========================================
+
+.detail_item {
+	width: 920px;
+	padding: 32px 64px;
+
+	.detail_item_head {
+		width: 100%;
+		margin-bottom: 24px;
+
+		.users_icon {
+			float: left;
+			margin-right: 12px;
+		}
+		.item_title {
+			h1 {
+				margin-bottom: 4px;
+				font-size: 2.4em;
+				color: $color;
+			}
+			p {
+				font-size: 1.4em;
+				color: $color_headline;
+			}
+		}
+	}	
+
+	.detail_item_description {
+		clear: both;
+		/*width: 920px;*/
+
+		.detail_item_readme {
+			float: left;
+			margin-right: 40px;
+			background-color: #fff;
+			border-radius: 4px;
+			width: 560px;
+			padding: 32px;
+
+			p {
+				font-size: 1.4em;
+				line-height: 1.6em;
+				color: $color;
+			}
+		}
+
+		.detail_item_info {
+			width: 192px;
+			float: left;
+			color: $color_link;
+
+			#button_view_on_github {
+				width: 192px;
+				padding: 16px 0;
+				color: #fff;
+				font-size: 1.6em;
+				text-align: center;
+				background-color: $color_github;
+				border-radius: 4px;
+			}
+
+			.datail_views {
+				padding: 16px 0;
+				font-size: $size_normal;
+				border-bottom: solid 1px #DEE2E7;
+				img {
+					float: left;
+				}
+				p {
+					float: right;
+				}
+			}
+
+			.datail_stars {
+				margin-bottom: 16px;
+				padding: 16px 0;
+				font-size: $size_normal;
+				border-bottom: solid 1px #DEE2E7;
+				img {
+					float: left;
+				}
+				p {
+					float: right;
+				}
+
+			}
+		}
+	}
 }

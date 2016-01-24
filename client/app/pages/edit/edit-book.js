@@ -70,7 +70,7 @@ var EditBook = (function () {
             selector: 'edit-book'
         }),
         angular2_1.View({
-            templateUrl: './app/pages/edit/edit-book.html',
+            templateUrl: './public/app/pages/edit/edit-book.html',
             directives: [angular2_1.coreDirectives, forms_1.formDirectives]
         }),
         __param(0, di_1.Inject(router_1.RouteParams)), 

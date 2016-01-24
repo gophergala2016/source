@@ -11,42 +11,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // Angular 2
 var angular2_1 = require('angular2/angular2');
 var router_1 = require('angular2/router');
-var BookService_1 = require('../../services/BookService');
-var ListBooks = (function () {
-    function ListBooks(router, bookService) {
+var ItemService_1 = require('../../services/ItemService');
+var ListItems = (function () {
+    function ListItems(router, itemService) {
         this.router = router;
-        this.bookService = bookService;
-        this.getBooks();
+        this.itemService = itemService;
+        this.getItems('10');
     }
-    ListBooks.prototype.getBooks = function () {
+    ListItems.prototype.getItems = function (limit) {
         var _this = this;
-        this.bookService.getBooks()
+        this.itemService.getItems(limit)
             .map(function (res) { return res.json(); })
-            .subscribe(function (res) { return _this.books = res; });
+            .subscribe(function (res) { return _this.items = res; });
     };
-    ListBooks.prototype.viewBook = function (book) {
-        this.router.parent.navigate('/view/' + book.isbn);
+    ListItems.prototype.viewItem = function (item) {
+        this.router.parent.navigate('/view/' + item.isbn);
     };
-    ListBooks.prototype.editBook = function (book) {
-        this.router.parent.navigate('/edit/' + book.isbn);
+    ListItems.prototype.editItem = function (item) {
+        this.router.parent.navigate('/edit/' + item.isbn);
     };
-    ListBooks.prototype.deleteBook = function (book) {
-        var _this = this;
-        this.bookService.deleteBook(book.isbn)
-            .subscribe(function (res) { return _this.getBooks(); });
+    ListItems.prototype.deleteItem = function (item) {
+        // this.itemService.deleteItem(item.isbn)
+        //     .subscribe(res => this.getItems('10'));
     };
-    ListBooks = __decorate([
+    ListItems = __decorate([
         angular2_1.Component({
-            selector: 'list-books'
+            selector: 'list-items'
         }),
         angular2_1.View({
             directives: [angular2_1.coreDirectives],
-            templateUrl: './public/app/pages/list/list-books.html'
+            templateUrl: './public/app/pages/list/list-items.html'
         }), 
-        __metadata('design:paramtypes', [router_1.Router, BookService_1.BookService])
-    ], ListBooks);
-    return ListBooks;
+        __metadata('design:paramtypes', [router_1.Router, ItemService_1.ItemService])
+    ], ListItems);
+    return ListItems;
 })();
-exports.ListBooks = ListBooks;
+exports.ListItems = ListItems;
 
-//# sourceMappingURL=list-books.js.map
+//# sourceMappingURL=list-items.js.map

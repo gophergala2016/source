@@ -4,23 +4,20 @@
     <head>
         <title>Angular 2 Boilerplate</title>
 
-        <script src="lib/traceur-runtime.js"></script>
+        <script src="/public/lib/traceur-runtime.js"></script>
         <script src="https://jspm.io/system@0.16.js"></script>
         <script src="https://code.angularjs.org/2.0.0-alpha.27/angular2.dev.js"></script>
         <script src="https://code.angularjs.org/2.0.0-alpha.27/router.dev.js"></script>
-
-        <link rel="stylesheet"
-              type="text/css"
-              href="css/pc.css" />
+        <link href='http://fonts.googleapis.com/css?family=Roboto:100,900,400' rel='stylesheet' type='text/css'>
+        <script src="/public/app/vendor.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="/public/css/pc.css" />
     </head>
 
     <body>
-        <source-app>
-            Loading... 
-        </source-app>
+        <source-app></source-app>
 
         <script>
-            System.import('app/index');
+            System.import('public/app/index');
         </script>
     </body>
 
