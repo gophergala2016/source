@@ -43,5 +43,43 @@ $ vim ./internal/app/app.yaml
 $ goapp deploy ./internal/app
 ```
 
-## Ours
+## Technical Specifications
+
+### Go
+
+- Go1.4.2+
+    - Buildable and Runnable over than Go1.5.
+- `internal` package
+    - The feature is available from Go1.5.
+    - Conceal outside packages. (partly private system)
+- go generate
+    - To generate app routes, app config, sql file and more.
+- go routine
+    - To calculate scores about powerfule recommendation system.
+
+### WAF - Web Application Framework
+
+- [gin-gonic/gin](https://github.com/gin-gonic/gin)
+    - Handle Request and Response.
+- source/core/foundation
+    - Equipped Context to provide important things.
+
+### ORM
+
+- [jinzhu/gorm](https://github.com/jinzhu/gorm)
+    - The ORM is so fantastic for go developers.
+
+### Front-end
+
+- AngularJS2
+- TypeScript
+
+### Google Cloud Platform
+
+- App Engine
+- Cloud SQL
+- Cloud Storage
+- Cloud Datastore
+- Networking
+
 
