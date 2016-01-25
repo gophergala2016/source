@@ -29,31 +29,7 @@ export class MainItemList {
     constructor(public itemService:ItemService) {
         this.kind = 'main';
         console.log("MainItemLists constructor")
-        // this.getItems('24');
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
-        this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));
+        this.getItems('24');
     }
 
     getItems(limit:string) {
