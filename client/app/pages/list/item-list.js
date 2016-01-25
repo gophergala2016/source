@@ -11,46 +11,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // Angular 2
 var angular2_1 = require('angular2/angular2');
 var router_1 = require('angular2/router');
-var ItemService_1 = require('../../services/ItemService');
-var ListItems = (function () {
-    function ListItems(router, itemService) {
+var ItemList = (function () {
+    function ItemList(router) {
         this.router = router;
-        this.itemService = itemService;
-        this.getItems('10');
     }
-    ListItems.prototype.getItems = function (limit) {
-        this.itemService.getItems(limit).then(function (response) {
-            console.log('response', response);
-        }).then(function (json) {
-            console.log('parsed json', json);
-            this.items = json;
-        }).catch(function (ex) {
-            console.log('parsing failed', ex);
-        });
+    ItemList.prototype.getItems = function (limit) {
     };
-    ListItems.prototype.viewItem = function (item) {
+    ItemList.prototype.viewItem = function (item) {
         this.router.parent.navigate('/view/' + item.isbn);
     };
-    ListItems.prototype.editItem = function (item) {
+    ItemList.prototype.editItem = function (item) {
         this.router.parent.navigate('/edit/' + item.isbn);
     };
-    ListItems.prototype.deleteItem = function (item) {
+    ItemList.prototype.deleteItem = function (item) {
         // this.itemService.deleteItem(item.isbn)
         //     .subscribe(res => this.getItems('10'));
     };
-    ListItems = __decorate([
+    ItemList = __decorate([
         angular2_1.Component({
-            selector: 'list-items',
-            appInjector: [ItemService_1.ItemService]
+            selector: 'item-list',
         }),
         angular2_1.View({
             directives: [angular2_1.coreDirectives],
-            templateUrl: './public/app/pages/list/list-items.html'
+            templateUrl: './public/app/pages/list/item-list.html'
         }), 
-        __metadata('design:paramtypes', [router_1.Router, ItemService_1.ItemService])
-    ], ListItems);
-    return ListItems;
+        __metadata('design:paramtypes', [router_1.Router])
+    ], ItemList);
+    return ItemList;
 })();
-exports.ListItems = ListItems;
+exports.ItemList = ItemList;
 
-//# sourceMappingURL=list-items.js.map
+//# sourceMappingURL=item-list.js.map

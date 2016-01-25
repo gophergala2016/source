@@ -13,9 +13,10 @@ var ItemService_1 = require('../../services/ItemService');
 var ItemList_1 = require('./ItemList');
 var Item_1 = require('../../models/Item');
 var Tag_1 = require('../../models/Tag');
-var RecommendedItemLists = (function () {
-    function RecommendedItemLists(itemService) {
+var RecommendedItemList = (function () {
+    function RecommendedItemList(itemService) {
         this.itemService = itemService;
+        this.kind = 'recommended';
         console.log("RecommendedItemLists constructor");
         // this.getItems('10');
         this.items.push(new Item_1.Item(0, "github.com/goka/goka", "katsuya goto", "Golang", "null null null null null null null null ", '2016-01-25 00:00:00', 0, 0, null, [new Tag_1.Tag("Go", "blue")]));
@@ -43,7 +44,7 @@ var RecommendedItemLists = (function () {
         this.items.push(new Item_1.Item(0, "github.com/goka/goka", "katsuya goto", "Golang", "null null null null null null null null ", '2016-01-25 00:00:00', 0, 0, null, [new Tag_1.Tag("Go", "blue")]));
         this.items.push(new Item_1.Item(0, "github.com/goka/goka", "katsuya goto", "Golang", "null null null null null null null null ", '2016-01-25 00:00:00', 0, 0, null, [new Tag_1.Tag("Go", "blue")]));
     }
-    RecommendedItemLists.prototype.getItems = function (limit) {
+    RecommendedItemList.prototype.getItems = function (limit) {
         this.itemService.getItems(limit).then(function (response) {
             console.log('response', response);
         }).then(function (json) {
@@ -53,19 +54,19 @@ var RecommendedItemLists = (function () {
             console.log('parsing failed', ex);
         });
     };
-    RecommendedItemLists = __decorate([
+    RecommendedItemList = __decorate([
         angular2_1.Component({
             selector: 'recommended-item-list',
             appInjector: [ItemService_1.ItemService]
         }),
         angular2_1.View({
-            directives: [ItemList_1.ItemList, angular2_1.coreDirectives],
-            templateUrl: '<list-items ["data"]="items" ["kind"]="recommended"></list-items>'
+            directives: [ItemList_1.ItemList],
+            template: "\n\n    <item-list ['data']=\"items\" ['kind']=\"kind\">\n\n    </item-list>\n"
         }), 
         __metadata('design:paramtypes', [ItemService_1.ItemService])
-    ], RecommendedItemLists);
-    return RecommendedItemLists;
+    ], RecommendedItemList);
+    return RecommendedItemList;
 })();
-exports.RecommendedItemLists = RecommendedItemLists;
+exports.RecommendedItemList = RecommendedItemList;
 
 //# sourceMappingURL=RecommendedItemList.js.map

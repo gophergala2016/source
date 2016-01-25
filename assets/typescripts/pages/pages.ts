@@ -9,8 +9,10 @@ import {BrowserLocation} from 'angular2/src/router/browser_location';
 import {GithubService} from '../services/GithubService';
 import {CreateBook} from './create/create-book';
 import {EditBook} from './edit/edit-book';
-import {MainItemLists} from './list/MainItemList';
-import {RecommendedItemLists} from './list/RecommendedItemList';
+
+import {MainItemList} from './list/MainItemList';
+import {RecommendedItemList} from './list/RecommendedItemList';
+
 import {ViewBook} from './view/view-book';
 
 import {TagList} from '../partial/TagList';
@@ -60,9 +62,8 @@ import {TagList} from '../partial/TagList';
 })
 
 @RouteConfig([
-    { path: '/',            redirectTo: '/MainItemLists' },
-    { path: '/#/main_list',      as: 'main_list',    component: MainItemLists },
-    { path: '/#/RecommendedItemLists', as: 'recommended_list', component: RecommendedItemLists },
+    { path: '/#/main_list',        as: 'main_list',        component: MainItemList },
+    { path: '/#/recommended_list', as: 'recommended_list', component: RecommendedItemList },
     { path: '/edit/:id',    as: 'edit',      component: EditBook },
     { path: '/view/:id',    as: 'view',      component: ViewBook }
 ])

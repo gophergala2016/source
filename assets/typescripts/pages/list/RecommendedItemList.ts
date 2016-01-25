@@ -1,6 +1,6 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
-import {Component, View, coreDirectives} from 'angular2/angular2';
+import {Component, View} from 'angular2/angular2';
 
 import {ItemService} from '../../services/ItemService';
 import {ItemList} from './ItemList';
@@ -13,14 +13,21 @@ import {Tag} from '../../models/Tag';
 })
 
 @View({
-    directives: [ItemList, coreDirectives],
-    templateUrl: '<list-items ["data"]="items" ["kind"]="recommended"></list-items>'
+    directives: [ItemList],
+    template: `
+
+    <item-list ['data']="items" ['kind']="kind">
+
+    </item-list>
+`
 })
 
-export class RecommendedItemLists {
-    items: Array<Item>;
+export class RecommendedItemList {
+    public items: Array<Item>;
+    public kind: string;
 
     constructor(public itemService:ItemService) {
+        this.kind = 'recommended';
         console.log("RecommendedItemLists constructor")
         // this.getItems('10');
         this.items.push(new Item(0,"github.com/goka/goka","katsuya goto", "Golang","null null null null null null null null ", '2016-01-25 00:00:00',0,0,null, [new Tag("Go", "blue")]));

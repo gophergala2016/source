@@ -16,7 +16,7 @@ var ItemList = (function () {
         console.log("ItemList constructor");
     }
     ItemList.prototype.viewItem = function (item) {
-        this.router.parent.navigate('/view/' + item.isbn);
+        this.router.parent.navigate('/view/' + item.name);
     };
     ItemList = __decorate([
         angular2_1.Component({
@@ -25,7 +25,7 @@ var ItemList = (function () {
         }),
         angular2_1.View({
             directives: [angular2_1.coreDirectives],
-            templateUrl: './public/app/pages/list/list-items.html'
+            templateUrl: './public/app/pages/list/item-list.html'
         }), 
         __metadata('design:paramtypes', [router_1.Router])
     ], ItemList);
