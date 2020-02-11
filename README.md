@@ -4,18 +4,13 @@
 
 ## About source
 
-[source](http://getsource.io) provides source code hosted on [GitHub](https://github.com).
+source provides source code hosted on [GitHub](https://github.com).
 
 **For All Developers**
 
 GitHub is a very important and famous web site for developers around the world. An user creates an awesome project to publish. It's a great way to contribute to the world but sometimes the project is obscured under more that 5 million open source projects on GitHub. Finally, we released a grate matching code service which is responsible for appropriated codes for you.
 
 The "source" service has a powerful recommendation system. You don't need to search what you want anymore from now on.
-
-## Link
-
-- [http://getsource.io](http://getsource.io)
-
 
 ## Features
 
